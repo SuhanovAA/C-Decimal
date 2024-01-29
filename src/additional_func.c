@@ -14,6 +14,20 @@ void nullify_big_decimal(big_decimal *dst){
     }
 }
 
+void nullify_mantissa_decimal(s21_decimal *dst){
+    int i;
+    for (i = 0; i <= SIZE_DECIMAL_MANTISSA; i++){
+        dst->bits[i] = 0;
+    }
+}
+
+void nulligy_mantissa_big_decimal(big_decimal *dst){
+    int i;
+    for (i = 0; i <= SIZE_BIG_DECIMAL_MANTISSA; i++){
+        dst->bits[i] = 0;
+    }
+}
+
 int check_decimal_zero(s21_decimal value){
     int i;
     int check_zero = 1;
