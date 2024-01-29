@@ -49,3 +49,17 @@ int check_big_decimal_zero(big_decimal value){
     }
     return check_zero;
 }
+
+
+
+
+int check_overflow(big_decimal value){
+    int i;
+    int check_overflow = 1;
+    for (i = 3; i <= SIZE_BIG_DECIMAL_MANTISSA && check_overflow != 0; i++){
+        if (value.bits[i] != 0){
+            check_overflow = 0;
+        }
+    }
+    return check_overflow;
+}

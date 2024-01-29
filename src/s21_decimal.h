@@ -44,8 +44,13 @@ void nulligy_mantissa_big_decimal(big_decimal *dst);
 int check_decimal_zero(s21_decimal value);
 int check_big_decimal_zero(big_decimal value);
 
-
-
+/**
+ * Проверка на overflow big_decomal
+ * 
+ * @param value значение в структуре big_decimal
+ * @return (1 - ОК / 0 - overflow)
+*/
+int check_overflow(big_decimal value);
 
 
 // --- arithmetic functions --- //
