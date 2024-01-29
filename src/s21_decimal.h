@@ -1,9 +1,28 @@
 #ifndef S21_DECIMAL_H
 #define S21_DECIMAL_H
 
+#define SIZE_DECIMAL 4
+#define SIZE_BIG_DECIMAL 8
+
 typedef struct {
-    int bits[4];
+    int bits[SIZE_DECIMAL];
 }s21_decimal;
+
+typedef struct {
+    int bits[SIZE_BIG_DECIMAL];
+}big_decimal;
+
+
+
+// --- additional_func --- //
+
+/**
+ * Зануление структур s21_decimal и big_decimal
+ * 
+ * @param dst Адрес на структуры
+ */
+void nullify_decimal(s21_decimal *dst);
+void nullify_big_decimal(big_decimal *dst);
 
 
 // --- arithmetic functions --- //
