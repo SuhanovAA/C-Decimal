@@ -1,6 +1,8 @@
 #ifndef S21_DECIMAL_H
 #define S21_DECIMAL_H
 
+#include <math.h>
+
 #define SIZE_DECIMAL 4
 #define SIZE_BIG_DECIMAL 8
 
@@ -12,7 +14,7 @@ typedef struct {
 }s21_decimal;
 
 typedef struct {
-    int bits[SIZE_BIG_DECIMAL];
+    unsigned int bits[SIZE_BIG_DECIMAL];
 }big_decimal;
 
 
@@ -33,7 +35,7 @@ void nullify_big_decimal(big_decimal *dst);
  * @param dst Адрес на структуры
  */
 void nullify_mantissa_decimal(s21_decimal *dst);
-void nulligy_mantissa_big_decimal(big_decimal *dst);
+void nullify_mantissa_big_decimal(big_decimal *dst);
 
 /**
  * Проверка на 0 массивов->структур s21_decimal и big_decimal
@@ -43,6 +45,26 @@ void nulligy_mantissa_big_decimal(big_decimal *dst);
 */
 int check_decimal_zero(s21_decimal value);
 int check_big_decimal_zero(big_decimal value);
+
+/**
+ * (get) bit для структур
+ * 
+ * @param value просмотреть значение из массива
+ * @param bit_index индекс где смотреть бит
+ * @return 1:0 - найденный бит
+*/
+int get_bit_decimal(s21_decimal value, int bit_index);
+int get_bit_big_decimal(big_decimal value, int bit_index);
+
+/**
+ * (set) bit для структур
+ * 
+ * @param dst адрес массива
+ * @param bit_index индекс куда ставить бит
+ * @param bit_value значение бита 
+*/
+void set_bit_decimal(s21_decimal *dst, int bit_index, int bit_value);
+void set_bit_big_decimal(big_decimal *dst, int bit_index, int bit_value);
 
 /**
  * Проверка на overflow big_decomal

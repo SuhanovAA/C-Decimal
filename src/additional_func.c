@@ -21,7 +21,7 @@ void nullify_mantissa_decimal(s21_decimal *dst){
     }
 }
 
-void nulligy_mantissa_big_decimal(big_decimal *dst){
+void nullify_mantissa_big_decimal(big_decimal *dst){
     int i;
     for (i = 0; i <= SIZE_BIG_DECIMAL_MANTISSA; i++){
         dst->bits[i] = 0;
@@ -50,8 +50,55 @@ int check_big_decimal_zero(big_decimal value){
     return check_zero;
 }
 
+int get_bit_decimal(s21_decimal value, int bit_index){
+    unsigned int result = 0, bits_index = 0, flag = 0;
+    const unsigned int step = 32;
+    int i = 32;
+    for (i = step; bits_index <= SIZE_DECIMAL && flag != 1; i+=step, bits_index++){
+        if (i > bit_index){
+            result = value.bits[bits_index] & 1 << bit_index;
+            flag = 1;
+        }
+    }
+    return (int)result ? 1 : 0;
+}
 
+int get_bit_big_decimal(big_decimal value, int bit_index){
+    unsigned int result = 0, bits_index = 0, flag = 0;
+    const unsigned int step = 32;
+    int i = 32;
+    for (i = step; bits_index <= SIZE_BIG_DECIMAL && flag != 1; i+=step, bits_index++){
+        if (i > bit_index){
+            result = value.bits[bits_index] & 1 << bit_index;
+            flag = 1;
+        }
+    }
+    return (int)result ? 1 : 0;
+}
 
+void set_bit_decimal(s21_decimal *dst, int bit_index, int bit_value){
+    unsigned int bits_index = 0, flag = 0;
+    const unsigned int step = 32;
+    int i = 32;
+    for (i = step; bits_index <= SIZE_DECIMAL && flag != 1; i+=step, bits_index++){
+        if (i > bit_index){
+            dst->bits[bits_index] = (dst->bits[bits_index] & ~(1 << bit_index)) | (bit_value << bit_index);
+            flag = 1;
+        }
+    }
+}
+
+void set_bit_big_decimal(big_decimal *dst, int bit_index, int bit_value){
+    unsigned int bits_index = 0, flag = 0;
+    const unsigned int step = 32;
+    int i = 32;
+    for (i = step; bits_index <= SIZE_BIG_DECIMAL && flag != 1; i+=step, bits_index++){
+        if (i > bit_index){
+            dst->bits[bits_index] = (dst->bits[bits_index] & ~(1 << bit_index)) | (bit_value << bit_index);
+            flag = 1;
+        }
+    }
+}
 
 int check_overflow(big_decimal value){
     int i;
