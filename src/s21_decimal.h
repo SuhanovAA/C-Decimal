@@ -4,6 +4,9 @@
 #define SIZE_DECIMAL 4
 #define SIZE_BIG_DECIMAL 8
 
+#define SIZE_DECIMAL_MANTISSA 2
+#define SIZE_BIG_DECIMAL_MANTISSA 6
+
 typedef struct {
     int bits[SIZE_DECIMAL];
 }s21_decimal;
@@ -17,13 +20,21 @@ typedef struct {
 // --- additional_func --- //
 
 /**
- * Зануление структур s21_decimal и big_decimal
+ * Зануление массивов->структур s21_decimal и big_decimal
  * 
  * @param dst Адрес на структуры
  */
 void nullify_decimal(s21_decimal *dst);
 void nullify_big_decimal(big_decimal *dst);
 
+/**
+ * Проверка на 0 массивов->структур s21_decimal и big_decimal
+ * 
+ * @param value значение в структуре
+ * @return результат проверки(1 - нулевая / 0 - не нулевая)
+*/
+int check_decimal_zero(s21_decimal value);
+int check_big_decimal_zero(big_decimal value);
 
 // --- arithmetic functions --- //
 int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
