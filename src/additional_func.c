@@ -100,6 +100,26 @@ void set_bit_big_decimal(big_decimal *dst, int bit_index, int bit_value){
     }
 }
 
+int get_sign_decimal(s21_decimal value){
+    int value_sign;
+    value_sign = get_bit_decimal(value, 127);
+    return value_sign;
+}
+
+int get_sign_big_decimal(big_decimal value){
+    int value_sign;
+    value_sign = get_bit_big_decimal(value, 255);
+    return value_sign;
+}
+
+void invert_sign_decimal(s21_decimal *dst){
+    set_bit_decimal(dst, 127, ((get_sign_decimal(*dst)+1)%2));
+}
+
+void invert_sign_big_decimal(big_decimal *dst){
+    set_bit_big_decimal(dst, 255, ((get_sign_big_decimal(*dst)+1)%2));
+}
+
 int check_overflow(big_decimal value){
     int i;
     int check_overflow = 1;

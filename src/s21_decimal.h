@@ -67,6 +67,23 @@ void set_bit_decimal(s21_decimal *dst, int bit_index, int bit_value);
 void set_bit_big_decimal(big_decimal *dst, int bit_index, int bit_value);
 
 /**
+ * (get) Считать знак
+ * 
+ * @param value просмотреть значение (знака) из массива
+ * @return 1:0 - найденный бит (знак)
+*/
+int get_sign_decimal(s21_decimal value);
+int get_sign_big_decimal(big_decimal value);
+
+/**
+ * (set) Поменять знак на противоположный
+ * 
+ * @param dst адрес массива
+*/
+void invert_sign_decimal(s21_decimal *dst);
+void invert_sign_big_decimal(big_decimal *dst);
+
+/**
  * Проверка на overflow big_decomal
  * 
  * @param value значение в структуре big_decimal
