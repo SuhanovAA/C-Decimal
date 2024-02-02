@@ -10,7 +10,7 @@
 #define SIZE_BIG_DECIMAL_MANTISSA 6
 
 typedef struct {
-    int bits[SIZE_DECIMAL];
+    int bits[4];
 }s21_decimal;
 
 typedef struct {
@@ -83,13 +83,17 @@ int get_sign_big_decimal(big_decimal value);
 void invert_sign_decimal(s21_decimal *dst);
 void invert_sign_big_decimal(big_decimal *dst);
 
+
+void convert_decimal_to_big_decimal(s21_decimal value, big_decimal *dst);
+int convert_big_decimal_to_decimal(big_decimal value, s21_decimal *dst);
+
 /**
  * Проверка на overflow big_decomal
  * 
  * @param value значение в структуре big_decimal
  * @return (1 - ОК / 0 - overflow)
 */
-int check_overflow(big_decimal value);
+int check_overflow_big_decimal(big_decimal value);
 
 
 // --- arithmetic functions --- //
