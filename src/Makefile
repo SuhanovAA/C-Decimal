@@ -1,8 +1,12 @@
 FLAGS=-Wall -Werror -Wextra -std=c11
 CC=gcc $(FLAGS)
-
 FILE=s21_decimal
+FILETEST=tests/*
+FILEREPORT=s21_test_report
+FILETESTO=s21_test
+DIRREPORT=report
 LIB=$(FILE).a
+COVFLAG=-fprofile-arcs -ftest-coverage
 
 OS = $(shell uname)
 
@@ -14,13 +18,30 @@ else
 	OPEN_CMD=xdg-open
 endif
 
-all: clean $(FILE).a
+
+all: clean $(FILE).a gcov_report
 
 o_files:
 	$(CC) -c *.c
 
-lcov:
-	brew install lcov
+$(FILE).a: o_files
+	ar rcs $(LIB) *.o
+
+test: $(FILE).a
+	$(CC) $(FILETEST).c $(FILE).a -o $(FILETESTO) $(TESTFLAGS)
+	./$(FILETESTO)
+
+gcov_report: $(FILE).a
+	$(CC) $(COVFLAG) $(FILETEST).c *.c -o $(FILEREPORT) $(TESTFLAGS)
+	./$(FILEREPORT)
+	lcov -t "$(FILE)" -o test.info -c -d .  
+	genhtml -o $(DIRREPORT) test.info
+	$(OPEN_CMD) $(DIRREPORT)/index.html
+
+rep: gcov_report
+
+clean:
+	rm -rf *.o *.a *.gcno *.gcda *.info $(DIRREPORT) $(FILETESTO) $(FILEREPORT)
 
 #style
 cpp:
@@ -28,6 +49,7 @@ cpp:
 
 clang:
 	cp ../materials/linters/.clang-format .clang-format
+	clang-format -n *.c *.h
 	clang-format -i *.c *.h 
 	rm -rf .clang-format
 

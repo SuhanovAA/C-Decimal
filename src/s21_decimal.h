@@ -2,6 +2,7 @@
 #define S21_DECIMAL_H
 
 #include <math.h>
+#include <stdio.h>
 
 #define NULL_NUMB ((void *)0)
 
