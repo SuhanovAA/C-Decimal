@@ -43,9 +43,32 @@ int s21_from_int_to_decimal(int src, s21_decimal *dst) {
   return error;
 }
 
-// int s21_from_decimal_to_int(s21_decimal src, int *dst) {
-//   int error = OK;
-//   big_decimal src_big_decimal;
-//   // написать truncate -> отброс дробной части
-//   s21_truncate(src, &src);
-// }
+// часть тестов не проходит
+int s21_from_decimal_to_int(s21_decimal src, int *dst) {
+  int error = check_decimal(src);
+  if (!error) {
+    int data = 0;
+    int scale = get_scale_decimal(src);
+
+    if (scale + 31 < 95) {
+      for (int i = scale + 31; i <= 95; ++i) {
+        if (get_bit_decimal(src, i)) {
+          error = 1;
+        }
+      }
+    }
+
+    if (!error) {
+      for (int i = scale + 30; i >= scale; --i) {
+        data <<= 1;
+        data |= get_bit_decimal(src, i);
+      }
+      if (get_sign_decimal(src)) {
+        data = -data;
+      }
+      *dst = data;
+    }
+  }
+
+  return error;
+}

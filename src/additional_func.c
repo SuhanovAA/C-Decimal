@@ -122,7 +122,7 @@ int get_scale_decimal(s21_decimal value) {
   return (value.bits[SIZE_DECIMAL - 1] &= SCALE_BITS) >> 16;
 }
 
-int get_scale_big_decimal(s21_decimal value) {
+int get_scale_big_decimal(big_decimal value) {
   return (value.bits[SIZE_BIG_DECIMAL - 1] &= SCALE_BITS) >> 16;
 }
 
@@ -179,4 +179,10 @@ int check_overflow_big_decimal(big_decimal value) {
     }
   }
   return check_overflow;
+}
+
+int check_decimal(s21_decimal value) {
+  int error = OK;
+  if ((value.bits[3] &= SCALE_ERROR_MASK) != 0) error = ERROR_OVERFLOW;
+  return error;
 }

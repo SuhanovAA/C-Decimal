@@ -24,7 +24,7 @@
 
 Suite* suite_from_int_to_decimal(void);
 // Suite* suite_from_decimal_to_float(void);
-// Suite* suite_from_decimal_to_int(void);
+Suite* suite_from_decimal_to_int(void);
 // Suite* suite_float_to_decimal(void);
 
 // Suite* suite_truncate(void);

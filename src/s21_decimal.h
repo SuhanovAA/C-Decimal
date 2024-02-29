@@ -16,6 +16,7 @@
 #define SIZE_BIG_DECIMAL_MANTISSA 6
 
 #define SCALE_BITS 0xff0000  // 111111110000000000000000
+#define SCALE_ERROR_MASK 0b01111111100000000111111111111111
 // #define SCALE_MIN_DECIMAL 96 + 16
 // #define SCALE_MIN_BIG_DECIMAL 224 + 16
 // #define SCALE_MAX_DECIMAL 96 + 23
@@ -96,7 +97,7 @@ int get_sign_decimal(s21_decimal value);
 int get_sign_big_decimal(big_decimal value);
 
 int get_scale_decimal(s21_decimal value);
-int get_scale_big_decimal(s21_decimal value);
+int get_scale_big_decimal(big_decimal value);
 
 /**
  * (set) Поменять знак на противоположный
@@ -122,6 +123,7 @@ int convert_big_decimal_to_decimal(big_decimal value, s21_decimal *dst);
  * @return (1 - ОК / 0 - overflow)
  */
 int check_overflow_big_decimal(big_decimal value);
+int check_decimal(s21_decimal value);
 
 // --- arithmetic functions --- //
 int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
