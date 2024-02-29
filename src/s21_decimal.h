@@ -15,6 +15,12 @@
 #define SIZE_DECIMAL_MANTISSA 2
 #define SIZE_BIG_DECIMAL_MANTISSA 6
 
+#define SCALE_BITS 0xff0000  // 111111110000000000000000
+// #define SCALE_MIN_DECIMAL 96 + 16
+// #define SCALE_MIN_BIG_DECIMAL 224 + 16
+// #define SCALE_MAX_DECIMAL 96 + 23
+// #define SCALE_MAX_BIG_DECIMAL 224 + 23
+
 #define OK 0
 #define ERROR 1
 #define ERROR_CONVERSION 1
@@ -22,8 +28,8 @@
 #define ERROR_NEG_OVERFLOW 2
 #define ERROR_DIVISION_BY_ZERO 3
 
-#define SIGN_POS 0
-#define SIGN_NEG 1
+#define SIGN_POS 0  // +
+#define SIGN_NEG 1  // -
 
 typedef struct {
   int bits[4];
@@ -88,6 +94,9 @@ void set_bit_big_decimal(big_decimal *dst, int bit_index, int bit_value);
  */
 int get_sign_decimal(s21_decimal value);
 int get_sign_big_decimal(big_decimal value);
+
+int get_scale_decimal(s21_decimal value);
+int get_scale_big_decimal(s21_decimal value);
 
 /**
  * (set) Поменять знак на противоположный

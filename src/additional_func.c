@@ -118,6 +118,14 @@ int get_sign_big_decimal(big_decimal value) {
   return value_sign;
 }
 
+int get_scale_decimal(s21_decimal value) {
+  return (value.bits[SIZE_DECIMAL - 1] &= SCALE_BITS) >> 16;
+}
+
+int get_scale_big_decimal(s21_decimal value) {
+  return (value.bits[SIZE_BIG_DECIMAL - 1] &= SCALE_BITS) >> 16;
+}
+
 void invert_sign_decimal(s21_decimal *dst) {
   set_bit_decimal(dst, 127, ((get_sign_decimal(*dst) + 1) % 2));
 }
@@ -142,9 +150,9 @@ void convert_decimal_to_big_decimal(s21_decimal value, big_decimal *dst) {
 }
 
 int convert_big_decimal_to_decimal(big_decimal value, s21_decimal *dst) {
-  int error_convert = 1;
-  if (check_overflow_big_decimal(value) != 1) {
-    error_convert = 0;
+  int error_convert = OK;
+  if (check_overflow_big_decimal(value) != OK) {
+    error_convert = ERROR_OVERFLOW;
   } else {
     int i, j;
     nullify_decimal(dst);
