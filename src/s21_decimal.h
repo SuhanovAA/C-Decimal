@@ -6,6 +6,9 @@
 
 #define NULL_NUMB ((void *)0)
 
+#define MAX_INT 2147483647
+#define MIN_INT -2147483647 - 1
+
 #define SIZE_DECIMAL 4
 #define SIZE_BIG_DECIMAL 8
 

@@ -29,7 +29,7 @@
 int s21_from_int_to_decimal(int src, s21_decimal *dst) {
   int error = OK;
   int sign = SIGN_POS;
-  if (dst == NULL_NUMB || src > __INT_MAX__) {
+  if (dst == NULL_NUMB || src > MAX_INT || src < MIN_INT) {
     error = ERROR_CONVERSION;
   } else {
     nullify_decimal(dst);
