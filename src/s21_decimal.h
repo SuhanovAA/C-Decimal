@@ -3,27 +3,37 @@
 
 #include <math.h>
 
+#define NULL_NUMB ((void *)0)
+
 #define SIZE_DECIMAL 4
 #define SIZE_BIG_DECIMAL 8
 
 #define SIZE_DECIMAL_MANTISSA 2
 #define SIZE_BIG_DECIMAL_MANTISSA 6
 
-typedef struct {
-    int bits[4];
-}s21_decimal;
+#define OK 0
+#define ERROR 1
+#define ERROR_CONVERSION 1
+#define ERROR_OVERFLOW 1
+#define ERROR_NEG_OVERFLOW 2
+#define ERROR_DIVISION_BY_ZERO 3
+
+#define SIGN_POS 0
+#define SIGN_NEG 1
 
 typedef struct {
-    unsigned int bits[SIZE_BIG_DECIMAL];
-}big_decimal;
+  int bits[4];
+} s21_decimal;
 
-
+typedef struct {
+  unsigned int bits[SIZE_BIG_DECIMAL];
+} big_decimal;
 
 // --- additional_func --- //
 
 /**
  * Зануление массивов->структур s21_decimal и big_decimal
- * 
+ *
  * @param dst Адрес на структуры
  */
 void nullify_decimal(s21_decimal *dst);
@@ -31,7 +41,7 @@ void nullify_big_decimal(big_decimal *dst);
 
 /**
  * Зануление мантиссы массивов->структур s21_decimal и big_decimal
- * 
+ *
  * @param dst Адрес на структуры
  */
 void nullify_mantissa_decimal(s21_decimal *dst);
@@ -39,62 +49,66 @@ void nullify_mantissa_big_decimal(big_decimal *dst);
 
 /**
  * Проверка на 0 массивов->структур s21_decimal и big_decimal
- * 
+ *
  * @param value значение в структуре
  * @return (1 - нулевая / 0 - не нулевая)
-*/
+ */
 int check_decimal_zero(s21_decimal value);
 int check_big_decimal_zero(big_decimal value);
 
 /**
  * (get) bit для структур
- * 
+ *
  * @param value просмотреть значение из массива
  * @param bit_index индекс где смотреть бит
  * @return 1:0 - найденный бит
-*/
+ */
 int get_bit_decimal(s21_decimal value, int bit_index);
 int get_bit_big_decimal(big_decimal value, int bit_index);
 
 /**
  * (set) bit для структур
- * 
+ *
  * @param dst адрес массива
  * @param bit_index индекс куда ставить бит
- * @param bit_value значение бита 
-*/
+ * @param bit_value значение бита
+ */
 void set_bit_decimal(s21_decimal *dst, int bit_index, int bit_value);
 void set_bit_big_decimal(big_decimal *dst, int bit_index, int bit_value);
 
 /**
  * (get) Считать знак
- * 
+ *
  * @param value просмотреть значение (знака) из массива
  * @return 1:0 - найденный бит (знак)
-*/
+ */
 int get_sign_decimal(s21_decimal value);
 int get_sign_big_decimal(big_decimal value);
 
 /**
  * (set) Поменять знак на противоположный
- * 
+ *
  * @param dst адрес массива
-*/
+ */
 void invert_sign_decimal(s21_decimal *dst);
 void invert_sign_big_decimal(big_decimal *dst);
 
-
+/**
+ * Конвертация
+ *
+ * @param value значение массива
+ * @param dst куда конвертировать
+ */
 void convert_decimal_to_big_decimal(s21_decimal value, big_decimal *dst);
 int convert_big_decimal_to_decimal(big_decimal value, s21_decimal *dst);
 
 /**
  * Проверка на overflow big_decomal
- * 
+ *
  * @param value значение в структуре big_decimal
  * @return (1 - ОК / 0 - overflow)
-*/
+ */
 int check_overflow_big_decimal(big_decimal value);
-
 
 // --- arithmetic functions --- //
 int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
@@ -122,4 +136,4 @@ int s21_is_less_or_equal(s21_decimal value_1, s21_decimal value_2);
 int s21_is_equal(s21_decimal value_1, s21_decimal value_2);
 int s21_is_not_equal(s21_decimal value_1, s21_decimal value_2);
 
-#endif // S21_DECIMAL_H
+#endif  // S21_DECIMAL_H

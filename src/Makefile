@@ -28,7 +28,6 @@ cpp:
 
 clang:
 	cp ../materials/linters/.clang-format .clang-format
-	clang-format -n *.c *.h
 	clang-format -i *.c *.h 
 	rm -rf .clang-format
 
