@@ -60,7 +60,7 @@ int big_decimal_check_equal_bits(big_decimal value_1, big_decimal value_2);
  * @param value массив
  * @return 0 - если найден ноль и 1 - если не найден 0
  */
-int decimal_is_equal_zero(s21_decimal value);
+int decimal_bits_is_equal_zero(s21_decimal value);
 
 /**
  * Проверка на ноль big_decimal
@@ -68,7 +68,7 @@ int decimal_is_equal_zero(s21_decimal value);
  * @param value массив
  * @return 0 - если найден ноль и 1 - если не найден 0
  */
-int big_decimal_is_equal_zero(big_decimal value);
+int big_decimal_bits_is_equal_zero(big_decimal value);
 
 void big_decimal_normalization(big_decimal *dst, int diff);
 void big_decimal_shift_left(big_decimal *value, int shift);

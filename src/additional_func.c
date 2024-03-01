@@ -20,7 +20,7 @@ int big_decimal_check_equal_bits(big_decimal value_1, big_decimal value_2) {
   return result;
 }
 
-int decimal_is_equal_zero(s21_decimal value) {
+int decimal_bits_is_equal_zero(s21_decimal value) {
   int result = 1;
   for (int i = 0; i < 96 && result == 1; i++) {
     if (!get_bit_decimal(value, i)) {
@@ -30,7 +30,7 @@ int decimal_is_equal_zero(s21_decimal value) {
   return result;
 }
 
-int big_decimal_is_equal_zero(big_decimal value) {
+int big_decimal_bits_is_equal_zero(big_decimal value) {
   int result = 1;
   for (int i = 0; i < 224 && result == 1; i++) {
     if (!get_bit_big_decimal(value, i)) {
