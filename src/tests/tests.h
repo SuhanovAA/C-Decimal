@@ -19,8 +19,8 @@
 // Suite* suite_is_less_or_equal(void);
 // Suite* suite_is_greater(void);
 // Suite* suite_is_greater_or_equal(void);
-// Suite* suite_is_equal(void);
-// Suite* suite_is_not_equal(void);
+Suite* suite_is_equal(void);
+Suite* suite_is_not_equal(void);
 
 Suite* suite_from_int_to_decimal(void);
 // Suite* suite_from_decimal_to_float(void);

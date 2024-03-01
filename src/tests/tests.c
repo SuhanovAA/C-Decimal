@@ -19,8 +19,8 @@ int main(void) {
   // run_testcase(suite_is_greater_or_equal());
   // run_testcase(suite_is_less());
   // run_testcase(suite_is_less_or_equal());
-  // run_testcase(suite_is_equal());
-  // run_testcase(suite_is_not_equal());
+  run_testcase(suite_is_equal());
+  run_testcase(suite_is_not_equal());
   // run_testcase(suite_truncate());
   // run_testcase(suite_floor());
   // run_testcase(suite_round());

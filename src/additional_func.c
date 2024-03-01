@@ -1,5 +1,93 @@
 #include "s21_decimal.h"
 
+void copy_decimal(s21_decimal *new__decimal_array, s21_decimal src) {
+  for (int i = 0; i < SIZE_DECIMAL; i++) {
+    new__decimal_array->bits[i] = src.bits[i];
+  }
+}
+
+void copy_big_decimal(s21_decimal *new_big_decimal_array, s21_decimal src) {
+  for (int i = 0; i < SIZE_BIG_DECIMAL; i++) {
+    new_big_decimal_array->bits[i] = src.bits[i];
+  }
+}
+
+int big_decimal_check_equal_bits(big_decimal value_1, big_decimal value_2) {
+  int result = 0;
+  for (int i = 223; i >= 0 && !result; i--) {
+    result = get_bit_big_decimal(value_1, i) - get_bit_big_decimal(value_2, i);
+  }
+  return result;
+}
+
+int decimal_is_equal_zero(s21_decimal value) {
+  int result = 1;
+  for (int i = 0; i < 96 && result == 1; i++) {
+    if (!get_bit_decimal(value, i)) {
+      result = 0;
+    }
+  }
+  return result;
+}
+
+int big_decimal_is_equal_zero(big_decimal value) {
+  int result = 1;
+  for (int i = 0; i < 224 && result == 1; i++) {
+    if (!get_bit_big_decimal(value, i)) {
+      result = 0;
+    }
+  }
+  return result;
+}
+
+void big_decimal_normalization(big_decimal *dst, int diff) {
+  int scale = get_scale_big_decimal(*dst);
+  for (int i = 0; i < diff; i++) {
+    big_decimal temp_1 = *dst;
+    big_decimal temp_2 = *dst;
+    big_decimal_shift_left(&temp_1, 1);
+    big_decimal_shift_left(&temp_2, 3);
+    big_decimal_summ(temp_1, temp_2, dst);
+  }
+  set_scale_big_decimal(dst, scale + diff);
+}
+
+void big_decimal_shift_left(big_decimal *value, int shift) {
+  if (shift) {
+    unsigned memory = 0;
+    for (int i = 0; i < 7; ++i) {
+      unsigned temp = value->bits[i];
+      value->bits[i] <<= shift;
+      value->bits[i] |= memory;
+      memory = temp >> (32 - shift);
+    }
+  }
+}
+
+void big_decimal_summ(big_decimal value_1, big_decimal value_2,
+                      big_decimal *result) {
+  int memory = 0;
+  unsigned tmp = 0;
+  for (int i = 0; i < 224; i++) {
+    tmp = get_bit_big_decimal(value_1, i) + get_bit_big_decimal(value_2, i) + memory;
+    memory = tmp / 2;
+    tmp %= 2;
+    set_bit_big_decimal(result, i, tmp);
+  }
+}
+
+void big_decimal_diff(big_decimal value_1, big_decimal value_2,
+                      big_decimal *result) {
+  int memory = 0;
+  int tmp = 0;
+  for (int i = 0; i < 224; i++) {
+    tmp = get_bit_big_decimal(value_1, i) - get_bit_big_decimal(value_2, i) - memory;
+    memory = tmp < 0 ? 1 : 0;
+    tmp %= 2;
+    set_bit_big_decimal(result, i, tmp);
+  }
+}
+
 void nullify_decimal(s21_decimal *dst) {
   int i;
   for (i = 0; i < SIZE_DECIMAL; i++) {
@@ -124,6 +212,28 @@ int get_scale_decimal(s21_decimal value) {
 
 int get_scale_big_decimal(big_decimal value) {
   return (value.bits[SIZE_BIG_DECIMAL - 1] &= SCALE_BITS) >> 16;
+}
+
+void set_scale_decimal(s21_decimal *value, int scale) {
+  int sign = get_sign_decimal(*value);
+  value->bits[3] = 0;
+  value->bits[3] >>= 16;
+  value->bits[3] |= scale;
+  value->bits[3] <<= 16;
+  if (sign) {
+    invert_sign_decimal(value);
+  }
+}
+
+void set_scale_big_decimal(big_decimal *value, int scale) {
+  int sign = get_sign_big_decimal(*value);
+  value->bits[3] = 0;
+  value->bits[3] >>= 16;
+  value->bits[3] |= scale;
+  value->bits[3] <<= 16;
+  if (sign) {
+    invert_sign_big_decimal(value);
+  }
 }
 
 void invert_sign_decimal(s21_decimal *dst) {

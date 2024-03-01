@@ -1,35 +1,79 @@
 #include "tests.h"
 
-// int a, add, equal;
-// START_TEST(from_int_to_decimal_0) {
-//   s21_decimal val = {{0, 0, 0, 0}};
-//   int res = 0;
-//   int tmp = -2147483648;
-//   s21_from_int_to_decimal(tmp, &val);
-//   s21_from_decimal_to_int(val, &res);
-//   ck_assert_int_eq(res, tmp);
-// }
-// END_TEST
+int a, add, equal;
+START_TEST(from_int_to_decimal_0) {
+  s21_decimal val = {{0, 0, 0, 0}};
+  int res = 0;
+  int tmp = -2147483648;
+  s21_from_int_to_decimal(tmp, &val);
+  s21_from_decimal_to_int(val, &res);
+  ck_assert_int_eq(res, tmp);
+}
+END_TEST
 
-// START_TEST(from_int_to_decimal_1) {
-//   s21_decimal val = {{0, 0, 0, 0}};
-//   int res = 0;
-//   int tmp = -123456789;
-//   s21_from_int_to_decimal(tmp, &val);
-//   s21_from_decimal_to_int(val, &res);
-//   ck_assert_int_eq(res, tmp);
-// }
-// END_TEST
+static int value_int_to_dec[] = {
+    1,            //                             1
+    2,            //                             2
+    10000,        //                         10000
+    2147483647,   //                    2147483647
+    -2147483648,  //                   -2147483648
+    0,            //                             0
+    222222222,    //                     222222222
+    1000000000,   //                    1000000000
+    -1000000000,  //                   -1000000000
+};
 
-// START_TEST(from_int_to_decimal_2) {
-//   s21_decimal val = {{0, 0, 0, 0}};
-//   int res = 0;
-//   int tmp = 2147483647;
-//   s21_from_int_to_decimal(tmp, &val);
-//   s21_from_decimal_to_int(val, &res);
-//   ck_assert_int_eq(res, tmp);
-// }
-// END_TEST
+static s21_decimal expected_result_int_to_dec[] = {
+    {{0x00000001, 0x00000000, 0x00000000,
+      0x00000000}},  //                              1
+    {{0x00000002, 0x00000000, 0x00000000,
+      0x00000000}},  //                              2
+    {{0x00002710, 0x00000000, 0x00000000,
+      0x00000000}},  //                          10000
+    {{0x7FFFFFFF, 0x00000000, 0x00000000,
+      0x00000000}},  //                     2147483647
+    {{0x80000000, 0x00000000, 0x00000000,
+      0x80000000}},  //                    -2147483648
+    {{0x00000000, 0x00000000, 0x00000000,
+      0x00000000}},  //                              0
+    {{0x0D3ED78E, 0x00000000, 0x00000000,
+      0x00000000}},  //                      222222222
+    {{0x3B9ACA00, 0x00000000, 0x00000000,
+      0x00000000}},  //                     1000000000
+    {{0x3B9ACA00, 0x00000000, 0x00000000,
+      0x80000000}},  //                    -1000000000
+};
+
+START_TEST(test_int_to_dec) {
+  for (size_t i = 0; i < sizeof(value_int_to_dec) / sizeof(int); ++i) {
+    s21_decimal tmp;
+    int ret = s21_from_int_to_decimal(value_int_to_dec[i], &tmp);
+    int result_equal = s21_is_equal(tmp, expected_result_int_to_dec[i]);
+    ck_assert_int_eq(result_equal, 1);
+    ck_assert_int_eq(ret, 0);
+  }
+}
+END_TEST
+
+START_TEST(from_int_to_decimal_1) {
+  s21_decimal val = {{0, 0, 0, 0}};
+  int res = 0;
+  int tmp = -123456789;
+  s21_from_int_to_decimal(tmp, &val);
+  s21_from_decimal_to_int(val, &res);
+  ck_assert_int_eq(res, tmp);
+}
+END_TEST
+
+START_TEST(from_int_to_decimal_2) {
+  s21_decimal val = {{0, 0, 0, 0}};
+  int res = 0;
+  int tmp = 2147483647;
+  s21_from_int_to_decimal(tmp, &val);
+  s21_from_decimal_to_int(val, &res);
+  ck_assert_int_eq(res, tmp);
+}
+END_TEST
 
 START_TEST(s21_from_int_to_decimal_1) {
   s21_decimal val = {0};
@@ -70,96 +114,96 @@ START_TEST(s21_from_int_to_decimal_1) {
 }
 END_TEST
 
-// START_TEST(s21_test_from_int_to_decimal_0) {
-//   a = 100;
-//   s21_decimal b = {{0, 0, 0, 0}};
-//   s21_decimal *ptr_b = &b;
+START_TEST(s21_test_from_int_to_decimal_0) {
+  a = 100;
+  s21_decimal b = {{0, 0, 0, 0}};
+  s21_decimal *ptr_b = &b;
 
-//   add = s21_from_int_to_decimal(a, ptr_b);  // a записываем в b
-//   s21_decimal etalon = {{100, 0, 0, 0}};
-//   ck_assert_int_eq(add, 0);
-//   // выходное значение s21_from_int_to_decimal - 0 TRUE и 1 FALSE
-//   // s21_is_equal Возвращаемое значение: 0 - FALSE 1 - TRUE
-//   equal = s21_is_equal(b, etalon);
-//   ck_assert_int_eq(equal, 1);
-// }
-// END_TEST
+  add = s21_from_int_to_decimal(a, ptr_b);  // a записываем в b
+  s21_decimal etalon = {{100, 0, 0, 0}};
+  ck_assert_int_eq(add, 0);
+  // выходное значение s21_from_int_to_decimal - 0 TRUE и 1 FALSE
+  // s21_is_equal Возвращаемое значение: 0 - FALSE 1 - TRUE
+  equal = s21_is_equal(b, etalon);
+  ck_assert_int_eq(equal, 1);
+}
+END_TEST
 
-// START_TEST(s21_test_from_int_to_decimal_1) {
-//   a = 100;
-//   s21_decimal b = {{0, 0, 0, 0}};
-//   s21_decimal *ptr_b = &b;
+START_TEST(s21_test_from_int_to_decimal_1) {
+  a = 100;
+  s21_decimal b = {{0, 0, 0, 0}};
+  s21_decimal *ptr_b = &b;
 
-//   add = s21_from_int_to_decimal(a, ptr_b);  // a записываем в b
-//   s21_decimal etalon = {{1000, 0, 0, 0}};
-//   ck_assert_int_eq(add, 0);
-//   // выходное значение s21_from_int_to_decimal -
-//   // 0 TRUE и 1 FALSE
-//   // s21_is_equal Возвращаемое значение: 0 - FALSE 1 - TRUE
-//   equal = s21_is_equal(b, etalon);
-//   ck_assert_int_eq(equal, 0);
-// }
-// END_TEST
+  add = s21_from_int_to_decimal(a, ptr_b);  // a записываем в b
+  s21_decimal etalon = {{1000, 0, 0, 0}};
+  ck_assert_int_eq(add, 0);
+  // выходное значение s21_from_int_to_decimal -
+  // 0 TRUE и 1 FALSE
+  // s21_is_equal Возвращаемое значение: 0 - FALSE 1 - TRUE
+  equal = s21_is_equal(b, etalon);
+  ck_assert_int_eq(equal, 0);
+}
+END_TEST
 
-// START_TEST(s21_test_from_int_to_decimal_2) {
-//   a = INT_MAX;
-//   s21_decimal b = {{0, 0, 0, 0}};
-//   s21_decimal *ptr_b = &b;
+START_TEST(s21_test_from_int_to_decimal_2) {
+  a = INT_MAX;
+  s21_decimal b = {{0, 0, 0, 0}};
+  s21_decimal *ptr_b = &b;
 
-//   add = s21_from_int_to_decimal(a, ptr_b);  // a записываем в b
-//   s21_decimal etalon = {{INT_MAX, 0, 0, 0}};
-//   ck_assert_int_eq(add, 0);  // выходное значение s21_from_int_to_decimal -
-//                              // 0 TRUE и 1 FALSE
-//   // s21_is_equal Возвращаемое значение: 0 - FALSE 1 - TRUE
-//   equal = s21_is_equal(b, etalon);
-//   ck_assert_int_eq(equal, 1);
-// }
-// END_TEST
+  add = s21_from_int_to_decimal(a, ptr_b);  // a записываем в b
+  s21_decimal etalon = {{INT_MAX, 0, 0, 0}};
+  ck_assert_int_eq(add, 0);  // выходное значение s21_from_int_to_decimal -
+                             // 0 TRUE и 1 FALSE
+  // s21_is_equal Возвращаемое значение: 0 - FALSE 1 - TRUE
+  equal = s21_is_equal(b, etalon);
+  ck_assert_int_eq(equal, 1);
+}
+END_TEST
 
-// START_TEST(s21_test_from_int_to_decimal_3) {
-//   a = -INT_MAX;
-//   s21_decimal b = {{0, 0, 0, 0}};
-//   s21_decimal *ptr_b = &b;
+START_TEST(s21_test_from_int_to_decimal_3) {
+  a = -INT_MAX;
+  s21_decimal b = {{0, 0, 0, 0}};
+  s21_decimal *ptr_b = &b;
 
-//   add = s21_from_int_to_decimal(a, ptr_b);  // a записываем в b
-//   s21_decimal etalon = {{INT_MAX, 0, 0, 0}};
-//   ck_assert_int_eq(add, 0);  // выходное значение s21_from_int_to_decimal -
-//                              // 0 TRUE и 1 FALSE
-//   // s21_is_equal Возвращаемое значение: 0 - FALSE 1 - TRUE
-//   equal = s21_is_equal(b, etalon);
-//   ck_assert_int_eq(equal, 0);
-// }
-// END_TEST
+  add = s21_from_int_to_decimal(a, ptr_b);  // a записываем в b
+  s21_decimal etalon = {{INT_MAX, 0, 0, 0}};
+  ck_assert_int_eq(add, 0);  // выходное значение s21_from_int_to_decimal -
+                             // 0 TRUE и 1 FALSE
+  // s21_is_equal Возвращаемое значение: 0 - FALSE 1 - TRUE
+  equal = s21_is_equal(b, etalon);
+  ck_assert_int_eq(equal, 0);
+}
+END_TEST
 
-// START_TEST(s21_test_from_int_to_decimal_4) {
-//   a = -INT_MAX;
-//   s21_decimal b = {{0, 0, 0, 0}};
-//   s21_decimal *ptr_b = &b;
+START_TEST(s21_test_from_int_to_decimal_4) {
+  a = -INT_MAX;
+  s21_decimal b = {{0, 0, 0, 0}};
+  s21_decimal *ptr_b = &b;
 
-//   add = s21_from_int_to_decimal(a, ptr_b);  // a записываем в b
-//   s21_decimal etalon = {{INT_MAX, 0, 0, ~(INT_MAX)}};
-//   ck_assert_int_eq(add, 0);  // выходное значение s21_from_int_to_decimal -
-//                              // 0 TRUE и 1 FALSE
-//   // s21_is_equal Возвращаемое значение: 0 - FALSE 1 - TRUE
-//   equal = s21_is_equal(b, etalon);
-//   ck_assert_int_eq(equal, 1);
-// }
-// END_TEST
+  add = s21_from_int_to_decimal(a, ptr_b);  // a записываем в b
+  s21_decimal etalon = {{INT_MAX, 0, 0, ~(INT_MAX)}};
+  ck_assert_int_eq(add, 0);  // выходное значение s21_from_int_to_decimal -
+                             // 0 TRUE и 1 FALSE
+  // s21_is_equal Возвращаемое значение: 0 - FALSE 1 - TRUE
+  equal = s21_is_equal(b, etalon);
+  ck_assert_int_eq(equal, 1);
+}
+END_TEST
 
-// START_TEST(s21_test_from_int_to_decimal_5) {
-//   a = 0;  // ERROR of NAN
-//   s21_decimal b = {{0, 0, 0, 0}};
-//   s21_decimal *ptr_b = &b;
+START_TEST(s21_test_from_int_to_decimal_5) {
+  a = 0;  // ERROR of NAN
+  s21_decimal b = {{0, 0, 0, 0}};
+  s21_decimal *ptr_b = &b;
 
-//   add = s21_from_int_to_decimal(a, ptr_b);  // a записываем в b
-//   s21_decimal etalon = {{INT_MAX, 0, 0, ~(INT_MAX)}};
-//   ck_assert_int_eq(add, 0);  // выходное значение s21_from_int_to_decimal -
-//                              // 0 TRUE и 1 FALSE
-//   // s21_is_equal Возвращаемое значение: 0 - FALSE 1 - TRUE
-//   equal = s21_is_equal(b, etalon);
-//   ck_assert_int_eq(equal, 0);
-// }
-// END_TEST
+  add = s21_from_int_to_decimal(a, ptr_b);  // a записываем в b
+  s21_decimal etalon = {{INT_MAX, 0, 0, ~(INT_MAX)}};
+  ck_assert_int_eq(add, 0);  // выходное значение s21_from_int_to_decimal -
+                             // 0 TRUE и 1 FALSE
+  // s21_is_equal Возвращаемое значение: 0 - FALSE 1 - TRUE
+  equal = s21_is_equal(b, etalon);
+  ck_assert_int_eq(equal, 0);
+}
+END_TEST
 
 START_TEST(s21_from_int_to_decimalTest1) {
   // 6412
@@ -326,16 +370,17 @@ Suite *suite_from_int_to_decimal(void) {
   Suite *s = suite_create("\033[46m---FROM INT TO DECIMAL TESTS---\033[0m");
   TCase *tc = tcase_create("\nfrom_int_to_decimal_tc");
 
-  // tcase_add_test(tc, from_int_to_decimal_0);
-  // tcase_add_test(tc, from_int_to_decimal_1);
-  // tcase_add_test(tc, from_int_to_decimal_2);
+  tcase_add_test(tc, from_int_to_decimal_0);
+  tcase_add_test(tc, test_int_to_dec);
+  tcase_add_test(tc, from_int_to_decimal_1);
+  tcase_add_test(tc, from_int_to_decimal_2);
   tcase_add_test(tc, s21_from_int_to_decimal_1);
-  // tcase_add_test(tc, s21_test_from_int_to_decimal_0);
-  // tcase_add_test(tc, s21_test_from_int_to_decimal_1);
-  // tcase_add_test(tc, s21_test_from_int_to_decimal_2);
-  // tcase_add_test(tc, s21_test_from_int_to_decimal_3);
-  // tcase_add_test(tc, s21_test_from_int_to_decimal_4);
-  // tcase_add_test(tc, s21_test_from_int_to_decimal_5);
+  tcase_add_test(tc, s21_test_from_int_to_decimal_0);
+  tcase_add_test(tc, s21_test_from_int_to_decimal_1);
+  tcase_add_test(tc, s21_test_from_int_to_decimal_2);
+  tcase_add_test(tc, s21_test_from_int_to_decimal_3);
+  tcase_add_test(tc, s21_test_from_int_to_decimal_4);
+  tcase_add_test(tc, s21_test_from_int_to_decimal_5);
   tcase_add_test(tc, s21_from_int_to_decimalTest1);
   tcase_add_test(tc, s21_from_int_to_decimalTest2);
   tcase_add_test(tc, s21_from_int_to_decimalTest3);

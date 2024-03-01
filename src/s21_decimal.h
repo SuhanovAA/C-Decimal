@@ -42,6 +42,42 @@ typedef struct {
 
 // --- additional_func --- //
 
+void copy_decimal(s21_decimal *new__decimal_array, s21_decimal src);
+void copy_bit_decimal(s21_decimal *new_big_decimal_array, s21_decimal src);
+
+/**
+ * Сравнивает два больших десятичных числа  value_1  и  value_2. Проходит через
+ * каждый бит чисел, начиная с самого старшего бита и вычисляет разницу между
+ * битами на каждой позиции.
+ *
+ * @return 0 - различия не найдены иначе - вернуть различие
+ */
+int big_decimal_check_equal_bits(big_decimal value_1, big_decimal value_2);
+
+/**
+ * Проверка на ноль s21_decimal
+ *
+ * @param value массив
+ * @return 0 - если найден ноль и 1 - если не найден 0
+ */
+int decimal_is_equal_zero(s21_decimal value);
+
+/**
+ * Проверка на ноль big_decimal
+ *
+ * @param value массив
+ * @return 0 - если найден ноль и 1 - если не найден 0
+ */
+int big_decimal_is_equal_zero(big_decimal value);
+
+void big_decimal_normalization(big_decimal *dst, int diff);
+void big_decimal_shift_left(big_decimal *value, int shift);
+
+void big_decimal_summ(big_decimal value_1, big_decimal value_2,
+                      big_decimal *result);
+void big_decimal_diff(big_decimal value_1, big_decimal value_2,
+                      big_decimal *result);
+
 /**
  * Зануление массивов->структур s21_decimal и big_decimal
  *
@@ -98,6 +134,9 @@ int get_sign_big_decimal(big_decimal value);
 
 int get_scale_decimal(s21_decimal value);
 int get_scale_big_decimal(big_decimal value);
+
+void set_scale_decimal(s21_decimal *value, int scale);
+void set_scale_big_decimal(big_decimal *value, int scale);
 
 /**
  * (set) Поменять знак на противоположный

@@ -3,8 +3,8 @@
 START_TEST(is_not_equal_0) {
   s21_decimal val1 = {{0}};
   s21_decimal val2 = {{0}};
-  set_bit(&val1, 127, 1);
-  set_bit(&val2, 127, 0);
+  set_bit_decimal(&val1, 127, 1);
+  set_bit_decimal(&val2, 127, 0);
   ck_assert_int_eq(0, s21_is_not_equal(val1, val2));
 }
 END_TEST
@@ -12,7 +12,7 @@ END_TEST
 START_TEST(is_not_equal_1) {
   s21_decimal val1 = {{0}};
   s21_decimal val2 = {{0}};
-  set_bit(&val2, 3, 1);
+  set_bit_decimal(&val2, 3, 1);
   ck_assert_int_eq(1, s21_is_not_equal(val1, val2));
 }
 END_TEST
@@ -20,9 +20,9 @@ END_TEST
 START_TEST(is_not_equal_2) {
   s21_decimal val1 = {{0}};
   s21_decimal val2 = {{0}};
-  set_bit(&val2, 127, 1);
-  set_bit(&val1, 33, 1);
-  set_bit(&val2, 33, 1);
+  set_bit_decimal(&val2, 127, 1);
+  set_bit_decimal(&val1, 33, 1);
+  set_bit_decimal(&val2, 33, 1);
   ck_assert_int_eq(1, s21_is_not_equal(val1, val2));
 }
 END_TEST
@@ -30,8 +30,8 @@ END_TEST
 START_TEST(is_not_equal_3) {
   s21_decimal val1 = {{0}};
   s21_decimal val2 = {{0}};
-  set_bit(&val1, 3, 1);
-  set_bit(&val2, 3, 1);
+  set_bit_decimal(&val1, 3, 1);
+  set_bit_decimal(&val2, 3, 1);
   ck_assert_int_eq(0, s21_is_not_equal(val1, val2));
 }
 END_TEST
@@ -39,8 +39,8 @@ END_TEST
 START_TEST(is_not_equal_4) {
   s21_decimal val1 = {{0}};
   s21_decimal val2 = {{0}};
-  set_bit(&val1, 3, 1);
-  set_bit(&val2, 4, 1);
+  set_bit_decimal(&val1, 3, 1);
+  set_bit_decimal(&val2, 4, 1);
   ck_assert_int_eq(1, s21_is_not_equal(val1, val2));
 }
 END_TEST
@@ -48,8 +48,8 @@ END_TEST
 START_TEST(is_not_equal_5) {
   s21_decimal val1 = {{0}};
   s21_decimal val2 = {{0}};
-  set_scale(&val1, 3);
-  set_scale(&val2, 3);
+  set_scale_decimal(&val1, 3);
+  set_scale_decimal(&val2, 3);
   ck_assert_int_eq(0, s21_is_not_equal(val1, val2));
 }
 END_TEST
@@ -57,10 +57,10 @@ END_TEST
 START_TEST(is_not_equal_6) {
   s21_decimal val1 = {{0}};
   s21_decimal val2 = {{0}};
-  set_bit(&val1, 3, 1);
-  set_bit(&val2, 4, 1);
-  set_scale(&val1, 3);
-  set_scale(&val2, 3);
+  set_bit_decimal(&val1, 3, 1);
+  set_bit_decimal(&val2, 4, 1);
+  set_scale_decimal(&val1, 3);
+  set_scale_decimal(&val2, 3);
   ck_assert_int_eq(1, s21_is_not_equal(val1, val2));
 }
 END_TEST
@@ -68,8 +68,8 @@ END_TEST
 START_TEST(is_not_equal_7) {
   s21_decimal val1 = {{0}};
   s21_decimal val2 = {{0}};
-  set_scale(&val1, 3);
-  set_scale(&val2, 2);
+  set_scale_decimal(&val1, 3);
+  set_scale_decimal(&val2, 2);
   ck_assert_int_eq(0, s21_is_not_equal(val1, val2));
 }
 END_TEST
