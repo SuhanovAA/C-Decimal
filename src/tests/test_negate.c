@@ -15,9 +15,9 @@
 START_TEST(negate_0) {
   s21_decimal val = {{2, 0, 0, 0}};
   s21_decimal res = {{0}};
-  int sign_before = get_sign(val);
+  int sign_before = get_sign_decimal(val);
   s21_negate(val, &res);
-  int sign_after = get_sign(res);
+  int sign_after = get_sign_decimal(res);
 
   ck_assert_int_ne(sign_before, sign_after);
 }
@@ -26,9 +26,9 @@ END_TEST
 START_TEST(negate_1) {
   s21_decimal val = {{2, 0, 0, ~(UINT_MAX / 2)}};
   s21_decimal res;
-  int sign_before = get_sign(val);
+  int sign_before = get_sign_decimal(val);
   s21_negate(val, &res);
-  int sign_after = get_sign(res);
+  int sign_after = get_sign_decimal(res);
   ck_assert_int_ne(sign_before, sign_after);
 }
 END_TEST
@@ -36,9 +36,9 @@ END_TEST
 START_TEST(negate_2) {
   s21_decimal val = {{0, 0, 0, ~(UINT_MAX / 2)}};
   s21_decimal res = {{0}};
-  int sign_before = get_sign(val);
+  int sign_before = get_sign_decimal(val);
   s21_negate(val, &res);
-  int sign_after = get_sign(res);
+  int sign_after = get_sign_decimal(res);
   ck_assert_int_ne(sign_before, sign_after);
 }
 END_TEST
@@ -46,9 +46,9 @@ END_TEST
 START_TEST(negate_3) {
   s21_decimal val = {{0}};
   s21_decimal res = {{0}};
-  int sign_before = get_sign(val);
+  int sign_before = get_sign_decimal(val);
   s21_negate(val, &res);
-  int sign_after = get_sign(res);
+  int sign_after = get_sign_decimal(res);
   ck_assert_int_ne(sign_before, sign_after);
 }
 END_TEST
@@ -61,7 +61,7 @@ END_TEST
 
 START_TEST(negate_5) {
   s21_decimal value_1 = {{5, 0xFFFFFFFF, 0, 0}};
-  invert_sign(&value_1);
+  invert_sign_decimal(&value_1);
   s21_decimal check = {{5, 0xFFFFFFFF, 0, 0}};
   s21_decimal result = {0};
   int return_value = s21_negate(value_1, &result);
