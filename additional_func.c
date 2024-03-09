@@ -209,33 +209,21 @@ int get_sign_big_decimal(big_decimal value) {
 }
 
 int get_scale_decimal(s21_decimal value) {
-  return (value.bits[SIZE_DECIMAL - 1] &= SCALE_BITS) >> 16;
+  return (int)((unsigned int)(value.bits[3] & ~(1 << 31)) >> 16);
 }
 
 int get_scale_big_decimal(big_decimal value) {
-  return (value.bits[SIZE_BIG_DECIMAL - 1] &= SCALE_BITS) >> 16;
+  return (int)((unsigned int)(value.bits[7] & ~(1 << 31)) >> 16);
 }
 
 void set_scale_decimal(s21_decimal *value, int scale) {
-  int sign = get_sign_decimal(*value);
-  value->bits[3] = 0;
-  value->bits[3] >>= 16;
-  value->bits[3] |= scale;
-  value->bits[3] <<= 16;
-  if (sign) {
-    invert_sign_decimal(value);
-  }
+  value->bits[3] &= ~(127 << 16);
+  value->bits[3] |= scale << 16;
 }
 
 void set_scale_big_decimal(big_decimal *value, int scale) {
-  int sign = get_sign_big_decimal(*value);
-  value->bits[3] = 0;
-  value->bits[3] >>= 16;
-  value->bits[3] |= scale;
-  value->bits[3] <<= 16;
-  if (sign) {
-    invert_sign_big_decimal(value);
-  }
+  value->bits[7] &= ~(255 << 16);
+  value->bits[7] |= scale << 16;
 }
 
 void invert_sign_decimal(s21_decimal *dst) {
@@ -249,13 +237,11 @@ void invert_sign_big_decimal(big_decimal *dst) {
 void convert_decimal_to_big_decimal(s21_decimal value, big_decimal *dst) {
   nullify_big_decimal(dst);
   int i, j;
-  // convert mantissa
   for (i = 0; i <= SIZE_DECIMAL_MANTISSA; i++) {
     for (j = 31; j >= 0; j--) {
       dst->bits[i] |= value.bits[i] & (1 << j);
     }
   }
-  // convert scale
   for (j = 31; j >= 0; j--) {
     dst->bits[SIZE_BIG_DECIMAL - 1] |= value.bits[SIZE_DECIMAL - 1] & (1 << j);
   }
@@ -278,6 +264,15 @@ int convert_big_decimal_to_decimal(big_decimal value, s21_decimal *dst) {
     }
   }
   return error_convert;
+}
+
+int s21_get_exponent(big_decimal dec) {
+  return (int)((unsigned int)(dec.bits[7] & ~(1 << 31)) >> 16);
+}
+
+void s21_set_exponent(big_decimal *dec, int value) {
+  dec->bits[7] &= ~(255 << 16);
+  dec->bits[7] |= value << 16;
 }
 
 // errors

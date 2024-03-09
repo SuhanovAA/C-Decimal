@@ -41,29 +41,46 @@ typedef struct {
 } big_decimal;
 
 // --- additional_func --- //
-
+/**
+ * Функция проходит по каждому индексу массива (4 байт / индексы от 0 до 3
+ * включительно) src и копирует индексы в новый массив new_decimal_array.
+ *
+ * @param new_decimal_array куда копируется
+ * @param src откуда копируется
+ */
 void copy_decimal(s21_decimal *new__decimal_array, s21_decimal src);
-void copy_bit_decimal(s21_decimal *new_big_decimal_array, s21_decimal src);
 
 /**
- * Сравнивает два больших десятичных числа  value_1  и  value_2. Проходит через
- * каждый бит чисел, начиная с самого старшего бита и вычисляет разницу между
- * битами на каждой позиции.
+ * Функция проходит по каждому индексу массива (8 байт / индексы от 0 до 7
+ * включительно) src и копирует индексы в новый массив new_big_decimal_array.
  *
- * @return 0 - различия не найдены иначе - вернуть различие
+ * @param new_big_decimal_array куда копируется
+ * @param src откуда копируется
+ */
+void copy_big_decimal(s21_decimal *new_big_decimal_array, s21_decimal src);
+
+/**
+ * Сравнивает два больших децимал числа (массив value_1 и массив value_2).
+ * Проходит через каждый бит этих чисел, начиная с самого старшего бита (223 до
+ * 0 включительно) и вычисляет разницу между битами двух массивов на каждой
+ * позиции.
+ *
+ * @return (различия не найдены 0 / различие )
  */
 int big_decimal_check_equal_bits(big_decimal value_1, big_decimal value_2);
 
 /**
- * Проверка на ноль s21_decimal
+ * Проверка на ноль децимал числа по индексу с 0 до 95 (вкл) бита ( 3 байта из
+ * 4).
  *
  * @param value массив
- * @return 0 - если найден ноль и 1 - если не найден 0
+ * @return 0 - ноль найден / 1 - нули не найдены
  */
 int decimal_bits_is_equal_zero(s21_decimal value);
 
 /**
- * Проверка на ноль big_decimal
+ * Проверка на ноль большого децимал числа по индексу с 0 до 223 (вкл) бита ( 3
+ * байта из 4).
  *
  * @param value массив
  * @return 0 - если найден ноль и 1 - если не найден 0
@@ -132,27 +149,67 @@ void set_bit_big_decimal(big_decimal *dst, int bit_index, int bit_value);
 int get_sign_decimal(s21_decimal value);
 int get_sign_big_decimal(big_decimal value);
 
+/**
+ * Взятие экспоненты из decimal числа. Проход с 23 по 16 бит 4 байта.
+ * 
+ * @param value decimal число 
+ * @return значение экспоненты (степени) decimal числа
+*/
 int get_scale_decimal(s21_decimal value);
+
+/**
+ * Взятие экспоненты из big_decimal числа. Проход с 23 по 16 бит 8 байта.
+ * 
+ * @param value big_decimal число 
+ * @return значение экспоненты (степени) big_decimal числа
+*/
 int get_scale_big_decimal(big_decimal value);
 
+/**
+ * Установка экспоненты decimal числа (4 байт). 
+ * 
+ * @param value массив decimal числа.
+ * @param scale новая экспонента.
+*/
 void set_scale_decimal(s21_decimal *value, int scale);
+
+/**
+ * Установка экспоненты big_decimal числа (8 байт). 
+ * 
+ * @param value массив big_decimal числа.
+ * @param scale новая экспонента.
+*/
 void set_scale_big_decimal(big_decimal *value, int scale);
 
 /**
- * (set) Поменять знак на противоположный
+ * Поменять знак (позиция 127 бита) децимал числа на противоположный.
  *
  * @param dst адрес массива
  */
 void invert_sign_decimal(s21_decimal *dst);
+
+/**
+ * Поменять знак (позиция 255 бита) биг децимал числа на противоположный.
+ *
+ * @param dst адрес массива
+ */
 void invert_sign_big_decimal(big_decimal *dst);
 
 /**
- * Конвертация
+ * Конвертация из decimal в big_decimal. Проверки 4 байта decimal нет.
  *
  * @param value значение массива
  * @param dst куда конвертировать
  */
 void convert_decimal_to_big_decimal(s21_decimal value, big_decimal *dst);
+
+/**
+ * Конвертация из big_decimal в decimal. Есть проверка на overflow big_decimal
+ * числа.
+ *
+ * @param value значение массива
+ * @param dst куда конвертировать
+ */
 int convert_big_decimal_to_decimal(big_decimal value, s21_decimal *dst);
 
 /**
