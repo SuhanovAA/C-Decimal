@@ -48,8 +48,6 @@ cpp:
 	cppcheck --enable=all --suppress=missingIncludeSystem *.c *.h
 
 clang:
-	cp ../materials/linters/.clang-format .clang-format
-	clang-format -i *.c *.h 
-	rm -rf .clang-format
+	clang-format -style=Google -i *.c *.h
 
 check: cpp clang

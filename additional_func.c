@@ -69,7 +69,8 @@ void big_decimal_summ(big_decimal value_1, big_decimal value_2,
   int memory = 0;
   unsigned tmp = 0;
   for (int i = 0; i < 224; i++) {
-    tmp = get_bit_big_decimal(value_1, i) + get_bit_big_decimal(value_2, i) + memory;
+    tmp = get_bit_big_decimal(value_1, i) + get_bit_big_decimal(value_2, i) +
+          memory;
     memory = tmp / 2;
     tmp %= 2;
     set_bit_big_decimal(result, i, tmp);
@@ -81,7 +82,8 @@ void big_decimal_diff(big_decimal value_1, big_decimal value_2,
   int memory = 0;
   int tmp = 0;
   for (int i = 0; i < 224; i++) {
-    tmp = get_bit_big_decimal(value_1, i) - get_bit_big_decimal(value_2, i) - memory;
+    tmp = get_bit_big_decimal(value_1, i) - get_bit_big_decimal(value_2, i) -
+          memory;
     memory = tmp < 0 ? 1 : 0;
     tmp %= 2;
     set_bit_big_decimal(result, i, tmp);

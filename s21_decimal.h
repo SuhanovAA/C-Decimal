@@ -164,13 +164,13 @@ int convert_big_decimal_to_decimal(big_decimal value, s21_decimal *dst);
 int check_overflow_big_decimal(big_decimal value);
 
 /**
- * Проверка последнего байта. 
+ * Проверка последнего байта.
  * - Биты от 0 до 15, младшее слово, не используются и должны быть равны нулю.
  * - Биты с 24 по 30 не используются и должны быть равны нулю.
- * 
+ *
  * @param value значение массива
  * @return (0 - OK / 1 - OVERFLOW)
-*/
+ */
 int check_decimal(s21_decimal value);
 
 // --- arithmetic functions --- //
