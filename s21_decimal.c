@@ -112,9 +112,9 @@ int is_greater(s21_decimal value_1, s21_decimal value_2) {
  * @param value_1
  * @param value_2
  *
- * @return - -1
- * @return - 0
- * @return - 1
+ * @return - -1 - при value_1 < value_2
+ * @return - 0 - при value_1 == value_2
+ * @return - 1 - при value_1 > value_2
  */
 int compare(s21_decimal value_1, s21_decimal value_2) {
   int result_compare = 0;
