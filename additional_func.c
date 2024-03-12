@@ -52,10 +52,34 @@ void big_decimal_normalization(big_decimal *dst, int diff) {
   set_scale_big_decimal(dst, scale + diff);
 }
 
+void decimal_normalization(s21_decimal *dst, int diff) {
+  int scale = get_scale_decimal(*dst);
+  for (int i = 0; i < diff; i++) {
+    s21_decimal temp_1 = *dst;
+    s21_decimal temp_2 = *dst;
+    decimal_shift_left(&temp_1, 1);
+    decimal_shift_left(&temp_2, 3);
+    decimal_summ(temp_1, temp_2, dst);
+  }
+  set_scale_decimal(dst, scale + diff);
+}
+
 void big_decimal_shift_left(big_decimal *value, int shift) {
   if (shift) {
     unsigned memory = 0;
     for (int i = 0; i < 7; ++i) {
+      unsigned temp = value->bits[i];
+      value->bits[i] <<= shift;
+      value->bits[i] |= memory;
+      memory = temp >> (32 - shift);
+    }
+  }
+}
+
+void decimal_shift_left(s21_decimal *value, int shift) {
+  if (shift) {
+    unsigned memory = 0;
+    for (int i = 0; i < 3; ++i) {
       unsigned temp = value->bits[i];
       value->bits[i] <<= shift;
       value->bits[i] |= memory;
@@ -74,6 +98,19 @@ void big_decimal_summ(big_decimal value_1, big_decimal value_2,
     memory = tmp / 2;
     tmp %= 2;
     set_bit_big_decimal(result, i, tmp);
+  }
+}
+
+void decimal_summ(s21_decimal value_1, s21_decimal value_2,
+                      s21_decimal *result) {
+  int memory = 0;
+  unsigned tmp = 0;
+  for (int i = 0; i < 96; i++) {
+    tmp = get_bit_decimal(value_1, i) + get_bit_decimal(value_2, i) +
+          memory;
+    memory = tmp / 2;
+    tmp %= 2;
+    set_bit_decimal(result, i, tmp);
   }
 }
 

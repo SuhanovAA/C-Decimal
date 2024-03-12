@@ -11,14 +11,19 @@ int big_is_greater(big_decimal value_1, big_decimal value_2) {
   return result;
 }
 
+int is_greater(s21_decimal value_1, s21_decimal value_2) {
+  int result = 0;
+  for (int i = 7 * 32 - 1; i >= 0; i--) {
+    result = get_bit_decimal(value_1, i) - get_bit_decimal(value_2, i);
+    if (result) break;
+  }
+  return result;
+}
+
 int compare_generate_result(s21_decimal value_1, s21_decimal value_2) {
   int result_compare = 0;
   int sign_1 = get_sign_decimal(value_1);
   int sign_2 = get_sign_decimal(value_2);
-  big_decimal big_decimal_1, big_decimal_2;
-   
-  convert_decimal_to_big_decimal(value_1, &big_decimal_1);
-  convert_decimal_to_big_decimal(value_2, &big_decimal_2);
   
   if (!check_decimal_zero(value_1) || !check_decimal_zero(value_2)) {
     if (!sign_1 && sign_2) {
@@ -30,11 +35,11 @@ int compare_generate_result(s21_decimal value_1, s21_decimal value_2) {
       int scale_2 = get_scale_decimal(value_2);
 
       if (scale_1 > scale_2)
-        big_decimal_normalization(&big_decimal_2, scale_1 - scale_2);
+        decimal_normalization(&value_2, scale_1 - scale_2);
       else if (scale_1 < scale_2)
-        big_decimal_normalization(&big_decimal_1, scale_2 - scale_1);
+        decimal_normalization(&value_1, scale_2 - scale_1);
 
-      result_compare = big_is_greater(big_decimal_1, big_decimal_2);
+      result_compare = is_greater(value_1, value_2);
       if (sign_1) result_compare *= -1;
     }
   }

@@ -96,6 +96,12 @@ void big_decimal_summ(big_decimal value_1, big_decimal value_2,
 void big_decimal_diff(big_decimal value_1, big_decimal value_2,
                       big_decimal *result);
 
+void decimal_normalization(s21_decimal *dst, int diff);
+void decimal_shift_left(s21_decimal *value, int shift);
+
+void decimal_summ(s21_decimal value_1, s21_decimal value_2,
+                      s21_decimal *result);
+
 /**
  * Зануление массивов->структур s21_decimal и big_decimal
  *
@@ -260,5 +266,6 @@ int s21_is_not_equal(s21_decimal value_1, s21_decimal value_2);
 
 int big_is_greater(big_decimal value_1, big_decimal value_2);
 int compare(s21_decimal value_1, s21_decimal value_2);
+int is_greater(s21_decimal value_1, s21_decimal value_2);
 
 #endif  // S21_DECIMAL_H
