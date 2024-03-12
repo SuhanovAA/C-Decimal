@@ -2,8 +2,8 @@
 #define S21_DECIMAL_H
 
 #include <math.h>
-#include <stdio.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 #define NULL_NUMB ((void *)0)
 
@@ -88,11 +88,11 @@ int decimal_bits_is_equal_zero(s21_decimal value);
  */
 int big_decimal_bits_is_equal_zero(big_decimal value);
 
-void big_decimal_normalization(big_decimal *dst, int diff);
-void big_decimal_shift_left(big_decimal *value, int shift);
+// void big_decimal_normalization(big_decimal *dst, int diff);
+// void big_decimal_shift_left(big_decimal *value, int shift);
 
-void big_decimal_summ(big_decimal value_1, big_decimal value_2,
-                      big_decimal *result);
+// void big_decimal_summ(big_decimal value_1, big_decimal value_2,
+//                       big_decimal *result);
 void big_decimal_diff(big_decimal value_1, big_decimal value_2,
                       big_decimal *result);
 
@@ -100,7 +100,7 @@ void decimal_normalization(s21_decimal *dst, int diff);
 void decimal_shift_left(s21_decimal *value, int shift);
 
 void decimal_summ(s21_decimal value_1, s21_decimal value_2,
-                      s21_decimal *result);
+                  s21_decimal *result);
 
 /**
  * Зануление массивов->структур s21_decimal и big_decimal
@@ -158,34 +158,34 @@ int get_sign_big_decimal(big_decimal value);
 
 /**
  * Взятие экспоненты из decimal числа. Проход с 23 по 16 бит 4 байта.
- * 
- * @param value decimal число 
+ *
+ * @param value decimal число
  * @return значение экспоненты (степени) decimal числа
-*/
+ */
 int get_scale_decimal(s21_decimal value);
 
 /**
  * Взятие экспоненты из big_decimal числа. Проход с 23 по 16 бит 8 байта.
- * 
- * @param value big_decimal число 
+ *
+ * @param value big_decimal число
  * @return значение экспоненты (степени) big_decimal числа
-*/
+ */
 int get_scale_big_decimal(big_decimal value);
 
 /**
- * Установка экспоненты decimal числа (4 байт). 
- * 
+ * Установка экспоненты decimal числа (4 байт).
+ *
  * @param value массив decimal числа.
  * @param scale новая экспонента.
-*/
+ */
 void set_scale_decimal(s21_decimal *value, int scale);
 
 /**
- * Установка экспоненты big_decimal числа (8 байт). 
- * 
+ * Установка экспоненты big_decimal числа (8 байт).
+ *
  * @param value массив big_decimal числа.
  * @param scale новая экспонента.
-*/
+ */
 void set_scale_big_decimal(big_decimal *value, int scale);
 
 /**
@@ -238,34 +238,36 @@ int check_overflow_big_decimal(big_decimal value);
 int check_decimal(s21_decimal value);
 
 // --- arithmetic functions --- //
+
 int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
 int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
 int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
 int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
 
 // --- transform functions --- //
+
 int s21_from_float_to_decimal(float src, s21_decimal *dst);
 int s21_from_decimal_to_float(s21_decimal src, float *dst);
 int s21_from_int_to_decimal(int src, s21_decimal *dst);
 int s21_from_decimal_to_int(s21_decimal src, int *dst);
 
 // --- another functions --- /
+
 int s21_floor(s21_decimal value, s21_decimal *result);
 int s21_round(s21_decimal value, s21_decimal *result);
 int s21_truncate(s21_decimal value, s21_decimal *result);
 int s21_negate(s21_decimal value, s21_decimal *result);
 
 // --- compare functions --- //
+
+int is_greater(s21_decimal value_1, s21_decimal value_2);
+int compare(s21_decimal value_1, s21_decimal value_2);
+
 int s21_is_greater(s21_decimal value_1, s21_decimal value_2);
 int s21_is_greater_or_equal(s21_decimal value_1, s21_decimal value_2);
 int s21_is_less(s21_decimal value_1, s21_decimal value_2);
 int s21_is_less_or_equal(s21_decimal value_1, s21_decimal value_2);
 int s21_is_equal(s21_decimal value_1, s21_decimal value_2);
 int s21_is_not_equal(s21_decimal value_1, s21_decimal value_2);
-
-
-int big_is_greater(big_decimal value_1, big_decimal value_2);
-int compare(s21_decimal value_1, s21_decimal value_2);
-int is_greater(s21_decimal value_1, s21_decimal value_2);
 
 #endif  // S21_DECIMAL_H
