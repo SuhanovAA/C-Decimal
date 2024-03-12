@@ -30,6 +30,7 @@ $(FILE).a: o_files
 test: $(FILE).a
 	$(CC) $(FILETEST).c $(FILE).a -o $(FILETESTO) $(TESTFLAGS)
 	./$(FILETESTO)
+	make clean
 
 gcov_report: $(FILE).a
 	$(CC) $(COVFLAG) $(FILETEST).c *.c -o $(FILEREPORT) $(TESTFLAGS)

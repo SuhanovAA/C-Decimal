@@ -3,6 +3,7 @@
 
 #include <math.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 #define NULL_NUMB ((void *)0)
 
@@ -255,5 +256,9 @@ int s21_is_less(s21_decimal value_1, s21_decimal value_2);
 int s21_is_less_or_equal(s21_decimal value_1, s21_decimal value_2);
 int s21_is_equal(s21_decimal value_1, s21_decimal value_2);
 int s21_is_not_equal(s21_decimal value_1, s21_decimal value_2);
+
+
+int big_is_greater(big_decimal value_1, big_decimal value_2);
+int compare(s21_decimal value_1, s21_decimal value_2);
 
 #endif  // S21_DECIMAL_H

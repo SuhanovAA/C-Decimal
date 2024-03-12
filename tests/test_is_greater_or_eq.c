@@ -37,7 +37,7 @@ END_TEST
 START_TEST(is_greater_or_equal_4) {
   s21_decimal val1 = {{0}};
   s21_decimal val2 = {{0}};
-  set_bit(&val1, 127, 1);
+  set_bit_decimal(&val1, 127, 1);
   ck_assert_int_eq(1, s21_is_greater_or_equal(val1, val2));
 }
 END_TEST
@@ -49,8 +49,8 @@ START_TEST(is_greater_or_equal_5) {
   val2.bits[0] = 257;
   val1.bits[2] = 256;
   val2.bits[2] = 257;
-  set_scale(&val1, 11);
-  set_scale(&val2, 10);
+  set_scale_decimal(&val1, 11);
+  set_scale_decimal(&val2, 10);
   ck_assert_int_eq(0, s21_is_greater_or_equal(val1, val2));
 }
 END_TEST
@@ -62,8 +62,8 @@ START_TEST(is_greater_or_equal_6) {
   val2.bits[0] = 257;
   val1.bits[2] = 256;
   val2.bits[2] = 257;
-  set_scale(&val1, 10);
-  set_scale(&val2, 11);
+  set_scale_decimal(&val1, 10);
+  set_scale_decimal(&val2, 11);
   ck_assert_int_eq(1, s21_is_greater_or_equal(val1, val2));
 }
 END_TEST
@@ -72,8 +72,8 @@ START_TEST(is_greater_or_equal_7) {
   s21_decimal val1 = {{0}};
   s21_decimal val2 = {{0}};
   val2.bits[2] = 257;
-  set_bit(&val1, 127, 1);
-  set_bit(&val2, 127, 1);
+  set_bit_decimal(&val1, 127, 1);
+  set_bit_decimal(&val2, 127, 1);
   ck_assert_int_eq(1, s21_is_greater_or_equal(val1, val2));
 }
 END_TEST
@@ -124,7 +124,7 @@ END_TEST
 START_TEST(is_greater_or_equal_12) {
   s21_decimal value_1 = {{123457u, 654u, 0xFFFFFFFF, 0}};
   s21_decimal value_2 = {{123456u, 654u, 0xFFFFFFFF, 0}};
-  invert_sign(&value_1);
+  invert_sign_decimal(&value_1);
   int return_value = s21_is_greater_or_equal(value_1, value_2);
   ck_assert_int_eq(return_value, 0);
 }
@@ -133,7 +133,7 @@ END_TEST
 START_TEST(is_greater_or_equal_13) {
   s21_decimal value_1 = {{123456u, 654u, 0xFFFFFFFF, 0}};
   s21_decimal value_2 = {{123457u, 654u, 0xFFFFFFFF, 0}};
-  invert_sign(&value_2);
+  invert_sign_decimal(&value_2);
   int return_value = s21_is_greater_or_equal(value_1, value_2);
   ck_assert_int_eq(return_value, 1);
 }
@@ -142,7 +142,7 @@ END_TEST
 START_TEST(is_greater_or_equal_14) {
   s21_decimal value_1 = {{0, 0, 0, 0}};
   s21_decimal value_2 = {{0, 0, 0, 0}};
-  invert_sign(&value_2);
+  invert_sign_decimal(&value_2);
   int return_value = s21_is_greater_or_equal(value_1, value_2);
   ck_assert_int_eq(return_value, 1);
 }
@@ -151,8 +151,8 @@ END_TEST
 START_TEST(is_greater_or_equal_15) {
   s21_decimal value_1 = {{123456u, 654u, 0xFFFFFFFF, 0}};
   s21_decimal value_2 = {{123457u, 654u, 0xFFFFFFFF, 0}};
-  invert_sign(&value_1);
-  invert_sign(&value_2);
+  invert_sign_decimal(&value_1);
+  invert_sign_decimal(&value_2);
   int return_value = s21_is_greater_or_equal(value_1, value_2);
   ck_assert_int_eq(return_value, 1);
 }
@@ -168,9 +168,9 @@ END_TEST
 
 START_TEST(is_greater_or_equal_18) {
   s21_decimal value_1 = {{12345, 0, 0, 0}};
-  set_scale(&value_1, 4);
+  set_scale_decimal(&value_1, 4);
   s21_decimal value_2 = {{12u, 0, 0, 0}};
-  set_scale(&value_1, 1);
+  set_scale_decimal(&value_1, 1);
   int return_value = s21_is_greater_or_equal(value_1, value_2);
   ck_assert_int_eq(return_value, 1);
 }

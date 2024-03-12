@@ -15,10 +15,10 @@
 // Suite* suite_mul(void);
 // Suite* suite_div(void);
 
-// Suite* suite_is_less(void);
-// Suite* suite_is_less_or_equal(void);
-// Suite* suite_is_greater(void);
-// Suite* suite_is_greater_or_equal(void);
+Suite* suite_is_less(void);
+Suite* suite_is_less_or_equal(void);
+Suite* suite_is_greater(void);
+Suite* suite_is_greater_or_equal(void);
 Suite* suite_is_equal(void);
 Suite* suite_is_not_equal(void);
 

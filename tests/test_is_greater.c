@@ -33,9 +33,9 @@ END_TEST
 START_TEST(is_greater_4) {
   s21_decimal val1 = {{1256, 0, 0, 0}};
   s21_decimal val2 = {{12557, 0, 0, 0}};
-  set_bit(&val1, 96 + 16, 1);
-  set_bit(&val1, 96 + 17, 1);
-  set_bit(&val2, 96 + 18, 1);
+  set_bit_decimal(&val1, 96 + 16, 1);
+  set_bit_decimal(&val1, 96 + 17, 1);
+  set_bit_decimal(&val2, 96 + 18, 1);
   ck_assert_int_eq(1, s21_is_greater(val1, val2));
 }
 END_TEST
