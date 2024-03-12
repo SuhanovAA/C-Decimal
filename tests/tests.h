@@ -10,7 +10,7 @@
 #define EXPONENT_PLUS_2 196608
 #define S21_MAX_UINT -1
 
-// Suite* suite_add(void);
+Suite* suite_add(void);
 // Suite* suite_sub(void);
 // Suite* suite_mul(void);
 // Suite* suite_div(void);

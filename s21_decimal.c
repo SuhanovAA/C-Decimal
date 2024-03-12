@@ -80,11 +80,6 @@ int s21_is_not_equal(s21_decimal value_1, s21_decimal value_2) {
   return compare(value_1, value_2) ? 1 : 0;
 }
 
-
-
-
-
-
 /**
  * Вычисление разницы между value_1 и value_2 по битам от старшего (95) до
  * младшего (0).

@@ -88,11 +88,11 @@ int decimal_bits_is_equal_zero(s21_decimal value);
  */
 int big_decimal_bits_is_equal_zero(big_decimal value);
 
-// void big_decimal_normalization(big_decimal *dst, int diff);
-// void big_decimal_shift_left(big_decimal *value, int shift);
+void big_decimal_normalization(big_decimal *dst, int diff);
+void big_decimal_shift_left(big_decimal *value, int shift);
 
-// void big_decimal_summ(big_decimal value_1, big_decimal value_2,
-//                       big_decimal *result);
+void big_decimal_summ(big_decimal value_1, big_decimal value_2,
+                      big_decimal *result);
 void big_decimal_diff(big_decimal value_1, big_decimal value_2,
                       big_decimal *result);
 
@@ -236,6 +236,9 @@ int check_overflow_big_decimal(big_decimal value);
  * @return (0 - OK / 1 - OVERFLOW)
  */
 int check_decimal(s21_decimal value);
+
+void bitwise_addition(big_decimal value_1, big_decimal value_2,
+                      big_decimal *result);
 
 // --- arithmetic functions --- //
 

@@ -24,30 +24,30 @@
 */
 
 // int s21_from_float_to_decimal(float src, s21_decimal *dst);
-int s21_from_decimal_to_float(s21_decimal src, float *dst){
+int s21_from_decimal_to_float(s21_decimal src, float *dst) {
   int error = check_decimal(src);
-  if (!error){
-  int scale = get_scale_decimal(src);
-  int sign = get_sign_decimal(src);
+  if (!error) {
+    int scale = get_scale_decimal(src);
+    int sign = get_sign_decimal(src);
 
-  *dst = 0.0;
-  
-  for ( int i = 0; i < 96; i++){
-    if (get_bit_decimal(src, i)){
-      *dst += pow(2, i);
+    *dst = 0.0;
+
+    for (int i = 0; i < 96; i++) {
+      if (get_bit_decimal(src, i)) {
+        *dst += pow(2, i);
+      }
+    }
+
+    while (scale) {
+      *dst /= 10;
+      scale--;
+    }
+
+    if (sign) {
+      *dst *= -1;
     }
   }
-
-  while (scale){
-    *dst /= 10;
-    scale--;
-  }
-
-  if (sign){
-    *dst *= -1;
-  }
-  }
-return error;
+  return error;
 }
 
 int s21_from_int_to_decimal(int src, s21_decimal *dst) {
