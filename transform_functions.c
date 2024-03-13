@@ -24,25 +24,23 @@
 */
 
 // int s21_from_float_to_decimal(float src, s21_decimal *dst);
+
 int s21_from_decimal_to_float(s21_decimal src, float *dst) {
   int error = check_decimal(src);
   if (!error) {
     int scale = get_scale_decimal(src);
     int sign = get_sign_decimal(src);
+    double temp = (double)0.0;
 
-    *dst = 0.0;
-
-    for (int i = 0; i < 96; i++) {
-      if (get_bit_decimal(src, i)) {
-        *dst += pow(2, i);
-      }
-    }
+    for (int i = 0; i < 96; i++) 
+      if (get_bit_decimal(src, i))
+        temp += pow(2, i);
 
     while (scale) {
-      *dst /= 10;
+      temp /= 10;
       scale--;
     }
-
+    *dst = (float)temp;
     if (sign) {
       *dst *= -1;
     }
@@ -51,21 +49,38 @@ int s21_from_decimal_to_float(s21_decimal src, float *dst) {
 }
 
 int s21_from_int_to_decimal(int src, s21_decimal *dst) {
-  int error = OK;
-  int sign = SIGN_POS;
-  if (dst == NULL_NUMB || src > MAX_INT || src < MIN_INT) {
-    error = ERROR_CONVERSION;
-  } else {
-    nullify_decimal(dst);
-    if (src < 0) {
-      sign = SIGN_NEG;
-      src = -src;
-    }
+//   int error = OK;
+//   int sign = SIGN_POS;
+//   if (dst){
+//     nullify_decimal(dst);
+//     if (src < 0) {
+//       sign = SIGN_NEG;
+//       src *= -1;
+//     }
+//     if (src > __INT_MAX__) error = 1;
+//     if (!error){
+//       dst->bits[0] = src;
+//       if (sign) invert_sign_decimal(dst);
+//     }
+//   } else{
+//     error = 1;
+//   }
+//   return error;
+// }  
+  int error = 0, sign = 0;
+  nullify_decimal(dst);
+  if (src < 0) {
+    src = -src;
+    sign = 1;
+  }
+  if (src > __INT_MAX__) error = 1;
+  if (!error) {
     dst->bits[0] = src;
     if (sign) invert_sign_decimal(dst);
   }
   return error;
 }
+
 
 // часть тестов не проходит
 int s21_from_decimal_to_int(s21_decimal src, int *dst) {
