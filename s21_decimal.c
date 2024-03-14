@@ -1,43 +1,9 @@
 #include "s21_decimal.h"
 
 int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) ;
-// {
-  // int error = (check_decimal(value_1) && check_decimal(value_2));
-
-  // if (!error) {
-  //   big_decimal big_value_1, big_value_2, big_result;
-  //   int sign_1 = get_sign_decimal(value_1);
-  //   int sign_2 = get_sign_decimal(value_2);
-  //   int scale_1 = get_scale_decimal(value_1);
-  //   int scale_2 = get_scale_decimal(value_2);
-
-  //   if (scale_1 > scale_2)
-  //     decimal_normalization(&value_2, scale_1 - scale_2);
-  //   else if (scale_1 < scale_2)
-  //     decimal_normalization(&value_1, scale_2 - scale_1);
-
-  //   convert_decimal_to_big_decimal(value_1, &big_value_1);
-  //   convert_decimal_to_big_decimal(value_2, &big_value_2);
-
-  //   bitwise_addition(big_value_1, big_value_2, &big_result);
-
-  //   if (!check_overflow_big_decimal(big_result)){
-  //       error = 1;
-  //   }else{
-  //   if (sign_1 + sign_2) {
-  //     invert_sign_big_decimal(&big_result);
-  //   }
-  //   convert_big_decimal_to_decimal(big_result, result);
-  //   }
-  // }
-
-  // return error;
-// }
 int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
 int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
 int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
-
-/*  <-----  Comparison Operators    ----->  */
 
 int s21_is_greater(s21_decimal value_1, s21_decimal value_2) {
   return compare(value_1, value_2) == 1 ? 1 : 0;
@@ -62,8 +28,6 @@ int s21_is_equal(s21_decimal value_1, s21_decimal value_2) {
 int s21_is_not_equal(s21_decimal value_1, s21_decimal value_2) {
   return compare(value_1, value_2) ? 1 : 0;
 }
-
-/*  <-----  Transform Functions    ----->  */
 
 int s21_from_float_to_decimal(float src, s21_decimal *dst) {
   int error = 0;
@@ -160,8 +124,6 @@ int s21_from_decimal_to_int(s21_decimal src, int *dst) {
   return error;
 }
 
-// --- another functions --- /
-
 int s21_floor(s21_decimal value, s21_decimal *result);
 int s21_round(s21_decimal value, s21_decimal *result);
 int s21_truncate(s21_decimal value, s21_decimal *result);
@@ -221,16 +183,6 @@ void set_bit_decimal(s21_decimal *dst, int bit_index, int bit_value) {
   }
 }
 
-/**
- * Вычисление разницы между value_1 и value_2 по битам от старшего (95) до
- * младшего (0).
- *
- * @param value_1 децимал число (4 байта)
- * @param value_2 децимал число (4 байта)
- *
- * @return - 0 - Все биты равны
- * @return - Разница между битами
- */
 int is_greater(s21_decimal value_1, s21_decimal value_2) {
   int result = 0;
   for (int i = 95; i >= 0; i--) {
@@ -332,49 +284,6 @@ void set_scale_decimal(s21_decimal *value, int scale) {
 void invert_sign_decimal(s21_decimal *dst) {
   set_bit_decimal(dst, 127, ((get_sign_decimal(*dst) + 1) % 2));
 }
-
-// void convert_decimal_to_big_decimal(s21_decimal value, big_decimal *dst) {
-//   nullify_big_decimal(dst);
-//   int i, j;
-//   for (i = 0; i <= SIZE_DECIMAL_MANTISSA; i++) {
-//     for (j = 31; j >= 0; j--) {
-//       dst->bits[i] |= value.bits[i] & (1 << j);
-//     }
-//   }
-//   for (j = 31; j >= 0; j--) {
-//     dst->bits[SIZE_BIG_DECIMAL - 1] |= value.bits[SIZE_DECIMAL - 1] & (1 << j);
-//   }
-// }
-
-// int convert_big_decimal_to_decimal(big_decimal value, s21_decimal *dst) {
-//   int error_convert = OK;
-//   nullify_decimal(dst);
-//   if (!check_overflow_big_decimal(value) || get_scale_big_decimal(value) > 28) {
-//     error_convert = ERROR_OVERFLOW;
-//   } else {
-//     for (int i = 0; i < 3; ++i) {
-//       for (int j = 31; j >= 0; --j) {
-//         dst->bits[i] = dst->bits[i] | (value.bits[i] & (1 << j));
-//       }
-//     }
-//     for (int j = 31; j >= 0; --j) {
-//       dst->bits[3] = dst->bits[3] | (value.bits[7] & (1 << j));
-//     }
-//   }
-//   return error_convert;
-// }
-
-// void bitwise_addition(big_decimal value_1, big_decimal value_2,
-//                       big_decimal *result) {
-//   unsigned memo = 0;
-//   for (int i = 0; i < 32 * 7 - 1; ++i) {
-//     unsigned result_bit = get_bit_big_decimal(value_1, i) +
-//                           get_bit_big_decimal(value_2, i) + memo;
-//     memo = result_bit / 2;
-//     result_bit %= 2;
-//     set_bit_big_decimal(result, i, result_bit);
-//   }
-// }
 
 int check_decimal(s21_decimal value) {
   int error = OK;
