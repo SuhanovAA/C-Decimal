@@ -4,6 +4,7 @@
 #include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #define NULL_NUMB ((void *)0)
 
@@ -273,4 +274,8 @@ int s21_is_less_or_equal(s21_decimal value_1, s21_decimal value_2);
 int s21_is_equal(s21_decimal value_1, s21_decimal value_2);
 int s21_is_not_equal(s21_decimal value_1, s21_decimal value_2);
 
+int s21_divide_by_10(s21_decimal *decimal);
+s21_decimal *s21_set_scale(s21_decimal *decimal, int scale);
+long double s21_fmod(double x, double y);
+int float_get_bit(double number, int index);
 #endif  // S21_DECIMAL_H

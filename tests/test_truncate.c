@@ -77,7 +77,7 @@
 START_TEST(truncate_6) {
   s21_decimal value_1 = {{35, 0, 0, 0}};
   s21_decimal check = {{3, 0, 0, 0}};
-  set_scale(&value_1, 1);
+  set_scale_decimal(&value_1, 1);
   s21_truncate(value_1, &value_1);
   ck_assert_int_eq(s21_is_equal(value_1, check), 1);
 }
