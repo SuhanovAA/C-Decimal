@@ -263,60 +263,8 @@ int s21_round(s21_decimal value, s21_decimal *result);
  * @return 0 - OK \
  * @return 1 - ошибка вычисления
  */
-// int s21_truncate(s21_decimal value, s21_decimal *result) {
-//   int error = check_decimal(value);
-//   if (!error) {
-//     unsigned int scale = get_scale_decimal(value);
-//     if (!scale) {
-//       copy_decimal(result, value);
-//     } else {
-//       s21_decimal ten;
-//       s21_decimal valueBuff;
-//       nullify_decimal(&valueBuff);
-//       s21_from_int_to_decimal(10, &ten);
-//       int error = 0;
-//       int sign_op = get_sign_decimal(value);
-//       value.bits[3] = 0;
+int s21_truncate(s21_decimal value, s21_decimal *result) ;
 
-//       while (scale > 0) {
-//         s21_div(value, ten, result);
-//         copy_decimal(&value, *result);
-//         scale--;
-//       }
-//       if (sign_op == 1) {
-//         result->bits[3] = (unsigned long)1 << 31;
-//       }
-//     }
-//   }
-//   return error;
-// }
-
-// деление на 10 децимала
-int s21_divide_by_10(s21_decimal *decimal) {
-  int remainder = 0;
-  for (int i = 2; i >= 0; i--) {
-    long int_rewriting = (remainder * 0x100000000) + (long)decimal->bits[i];
-    decimal->bits[i] = int_rewriting / 10;
-    remainder = int_rewriting - (10 * decimal->bits[i]);
-  }
-  return remainder;
-}
-
-int s21_truncate(s21_decimal value, s21_decimal *result) {
-  if (result) {
-    int exponent = get_scale_decimal(value);
-    nullify_decimal(result);  // занулим result
-    if (exponent > 0) {
-      while (exponent > 0) {
-        s21_divide_by_10(&value);
-        exponent--;
-      }
-    }
-    s21_set_scale(&value, 0);
-    for (int i = 0; i <= 3; i++) result->bits[i] = value.bits[i];
-  }
-  return OK;
-}
 /**
  * Возвращает результат умножения указанного Decimal на -1.
  * Массив value проверяется на overflov. Если проверка пройдена, то копируется
@@ -753,4 +701,15 @@ int check_decimal(s21_decimal value) {
   int error = OK;
   if ((value.bits[3] &= SCALE_ERROR_MASK) != 0) error = ERROR_OVERFLOW;
   return error;
+}
+
+// деление на 10 децимала
+int s21_divide_by_10(s21_decimal *decimal) {
+  int remainder = 0;
+  for (int i = 2; i >= 0; i--) {
+    long int_rewriting = (remainder * 0x100000000) + (long)decimal->bits[i];
+    decimal->bits[i] = int_rewriting / 10;
+    remainder = int_rewriting - (10 * decimal->bits[i]);
+  }
+  return remainder;
 }
