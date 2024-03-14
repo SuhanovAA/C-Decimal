@@ -3,7 +3,7 @@
 START_TEST(is_equal_0) {
   s21_decimal val1 = {{0, 0, 0, 0}};
   s21_decimal val2 = {{0, 0, 0, 0}};
-  invert_sign_decimal(&val2);
+  decimal_invert_sign(&val2);
   ck_assert_int_eq(1, s21_is_equal(val1, val2));
 }
 END_TEST

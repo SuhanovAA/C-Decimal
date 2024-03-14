@@ -124,7 +124,7 @@ END_TEST
 START_TEST(is_greater_or_equal_12) {
   s21_decimal value_1 = {{123457u, 654u, 0xFFFFFFFF, 0}};
   s21_decimal value_2 = {{123456u, 654u, 0xFFFFFFFF, 0}};
-  invert_sign_decimal(&value_1);
+  decimal_invert_sign(&value_1);
   int return_value = s21_is_greater_or_equal(value_1, value_2);
   ck_assert_int_eq(return_value, 0);
 }
@@ -133,7 +133,7 @@ END_TEST
 START_TEST(is_greater_or_equal_13) {
   s21_decimal value_1 = {{123456u, 654u, 0xFFFFFFFF, 0}};
   s21_decimal value_2 = {{123457u, 654u, 0xFFFFFFFF, 0}};
-  invert_sign_decimal(&value_2);
+  decimal_invert_sign(&value_2);
   int return_value = s21_is_greater_or_equal(value_1, value_2);
   ck_assert_int_eq(return_value, 1);
 }
@@ -142,7 +142,7 @@ END_TEST
 START_TEST(is_greater_or_equal_14) {
   s21_decimal value_1 = {{0, 0, 0, 0}};
   s21_decimal value_2 = {{0, 0, 0, 0}};
-  invert_sign_decimal(&value_2);
+  decimal_invert_sign(&value_2);
   int return_value = s21_is_greater_or_equal(value_1, value_2);
   ck_assert_int_eq(return_value, 1);
 }
@@ -151,8 +151,8 @@ END_TEST
 START_TEST(is_greater_or_equal_15) {
   s21_decimal value_1 = {{123456u, 654u, 0xFFFFFFFF, 0}};
   s21_decimal value_2 = {{123457u, 654u, 0xFFFFFFFF, 0}};
-  invert_sign_decimal(&value_1);
-  invert_sign_decimal(&value_2);
+  decimal_invert_sign(&value_1);
+  decimal_invert_sign(&value_2);
   int return_value = s21_is_greater_or_equal(value_1, value_2);
   ck_assert_int_eq(return_value, 1);
 }

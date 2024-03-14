@@ -1,6 +1,6 @@
 #include "s21_decimal.h"
 
-int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result) ;
+int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
 int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
 int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
 int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
@@ -31,13 +31,13 @@ int s21_is_not_equal(s21_decimal value_1, s21_decimal value_2) {
 
 int s21_from_float_to_decimal(float src, s21_decimal *dst) {
   int error = 0;
-  nullify_decimal(dst);
+  decimal_nullify(dst);
   if ((fabs(src) < powl(10.0, -28.0)) || (fabs(src) >= powl(2.0, 96.0)))
     error = 1;
   else {
     int scale = 0;
     if (src < 0) {
-      invert_sign_decimal(dst);
+      decimal_invert_sign(dst);
       src = -src;
     }
     double number = (double)src;
@@ -73,7 +73,7 @@ int s21_from_float_to_decimal(float src, s21_decimal *dst) {
 }
 
 int s21_from_decimal_to_float(s21_decimal src, float *dst) {
-  int error = check_decimal(src);
+  int error = decimal_check_overflow(src);
   if (!error) {
     int scale = get_scale_decimal(src);
     int sign = get_sign_decimal(src);
@@ -95,9 +95,9 @@ int s21_from_decimal_to_float(s21_decimal src, float *dst) {
 }
 
 int s21_from_int_to_decimal(int src, s21_decimal *dst) {
-  nullify_decimal(dst);
+  decimal_nullify(dst);
   dst->bits[0] = abs(src);
-  if (src < 0) invert_sign_decimal(dst);
+  if (src < 0) decimal_invert_sign(dst);
   return 0;
 }
 
@@ -129,10 +129,10 @@ int s21_round(s21_decimal value, s21_decimal *result);
 int s21_truncate(s21_decimal value, s21_decimal *result);
 
 int s21_negate(s21_decimal value, s21_decimal *result) {
-  int error = check_decimal(value);
+  int error = decimal_check_overflow(value);
   if (!error) {
-    copy_decimal(result, value);
-    invert_sign_decimal(result);
+    *result = value;
+    decimal_invert_sign(result);
   }
   return error;
 }
@@ -141,7 +141,7 @@ int compare(s21_decimal value_1, s21_decimal value_2) {
   int result_compare = 0;
   int sign_1 = get_sign_decimal(value_1);
   int sign_2 = get_sign_decimal(value_2);
-  if (!check_decimal_zero(value_1) || !check_decimal_zero(value_2)) {
+  if (!decimal_mantissa_equal_zero(value_1) || !decimal_mantissa_equal_zero(value_2)) {
     if (!sign_1 && sign_2) {
       result_compare = 1;
     } else if (sign_1 && !sign_2) {
@@ -155,7 +155,7 @@ int compare(s21_decimal value_1, s21_decimal value_2) {
       else if (scale_1 < scale_2)
         decimal_normalization(&value_1, scale_2 - scale_1);
 
-      result_compare = is_greater(value_1, value_2);
+      result_compare = decimal_is_greater(value_1, value_2);
       if (sign_1) result_compare *= -1;
     }
   }
@@ -183,19 +183,13 @@ void set_bit_decimal(s21_decimal *dst, int bit_index, int bit_value) {
   }
 }
 
-int is_greater(s21_decimal value_1, s21_decimal value_2) {
+int decimal_is_greater(s21_decimal value_1, s21_decimal value_2) {
   int result = 0;
   for (int i = 95; i >= 0; i--) {
     result = get_bit_decimal(value_1, i) - get_bit_decimal(value_2, i);
     if (result) break;
   }
   return result;
-}
-
-void copy_decimal(s21_decimal *new__decimal_array, s21_decimal src) {
-  for (int i = 0; i < SIZE_DECIMAL; i++) {
-    new__decimal_array->bits[i] = src.bits[i];
-  }
 }
 
 void decimal_normalization(s21_decimal *dst, int diff) {
@@ -234,17 +228,16 @@ void decimal_summ(s21_decimal value_1, s21_decimal value_2,
   }
 }
 
-void nullify_decimal(s21_decimal *dst) {
-  int i;
-  for (i = 0; i < SIZE_DECIMAL; i++) {
+void decimal_nullify(s21_decimal *dst) {
+  for (int i = 0; i <= 3; i++) {
     dst->bits[i] = 0;
   }
 }
 
-int check_decimal_zero(s21_decimal value) {
+int decimal_mantissa_equal_zero(s21_decimal value) {
   int i;
   int check_zero = 1;
-  for (i = 0; i <= SIZE_DECIMAL_MANTISSA && check_zero != 0; i++) {
+  for (i = 0; i <= 2 && check_zero != 0; i++) {
     if (value.bits[i] != 0) {
       check_zero = 0;
     }
@@ -281,11 +274,17 @@ void set_scale_decimal(s21_decimal *value, int scale) {
   value->bits[3] |= scale << 16;
 }
 
-void invert_sign_decimal(s21_decimal *dst) {
+void decimal_invert_sign(s21_decimal *dst) {
   set_bit_decimal(dst, 127, ((get_sign_decimal(*dst) + 1) % 2));
 }
 
-int check_decimal(s21_decimal value) {
+float float_generate_random(float a, float b) {
+  float m = (float)rand() / RAND_MAX;
+  float num = a + m * (b - a);
+  return num;
+}
+
+int decimal_check_overflow(s21_decimal value) {
   int error = OK;
   if ((value.bits[3] &= SCALE_ERROR_MASK) != 0) error = ERROR_OVERFLOW;
   return error;

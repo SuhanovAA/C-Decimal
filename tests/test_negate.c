@@ -61,7 +61,7 @@ END_TEST
 
 START_TEST(negate_5) {
   s21_decimal value_1 = {{5, 0xFFFFFFFF, 0, 0}};
-  invert_sign_decimal(&value_1);
+  decimal_invert_sign(&value_1);
   s21_decimal check = {{5, 0xFFFFFFFF, 0, 0}};
   s21_decimal result = {0};
   int return_value = s21_negate(value_1, &result);

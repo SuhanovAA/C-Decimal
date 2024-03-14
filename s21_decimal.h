@@ -84,6 +84,18 @@ int s21_is_not_equal(s21_decimal value_1, s21_decimal value_2);
  */
 int compare(s21_decimal value_1, s21_decimal value_2);
 
+/**
+ * Получение бита из числа double по индексу. Использует цикл for для сдвига
+ * числа на индекс бита вправо путем деления на 2 и округления в меньшую сторону
+ * с помощью функции floor(). Затем берется остаток от деления на 2 для
+ * получения значения бита.
+ *
+ * @param number - число double типа
+ * @param index - требуемый индекс поиска по number
+ *
+ * @return - 0 - бит по индексу отсутствует
+ * @return - 1 - если есть бит
+ */
 int float_get_bit(double number, int index);
 
 void set_bit_decimal(s21_decimal *dst, int bit_index, int bit_value);
@@ -98,20 +110,38 @@ void set_bit_decimal(s21_decimal *dst, int bit_index, int bit_value);
  * @return - 0 - Все биты равны
  * @return - Разница между битами
  */
-int is_greater(s21_decimal value_1, s21_decimal value_2);
-
-void copy_decimal(s21_decimal *new__decimal_array, s21_decimal src);
+int decimal_is_greater(s21_decimal value_1, s21_decimal value_2);
 
 void decimal_normalization(s21_decimal *dst, int diff);
 
 void decimal_shift_left(s21_decimal *value, int shift);
 
+/**
+ * Суммирование битов двух decimal-числе в одно результирующее число.
+ * 
+ * @param value_1 первое decimal-число
+ * @param value_2 второе decimal-число
+ * @param *result результат суммирования
+*/
 void decimal_summ(s21_decimal value_1, s21_decimal value_2,
                   s21_decimal *result);
 
-void nullify_decimal(s21_decimal *dst);
+/**
+ * Зануление всех байт (4 байта / 0..3 индекса) decimal-числа.
+ * 
+ * @param *dst decimal-число
+*/
+void decimal_nullify(s21_decimal *dst);
 
-int check_decimal_zero(s21_decimal value);
+/**
+ * Проверка decimal-числа (мантиссы) на 0.
+ * 
+ * @param value decimal-число
+ * 
+ * @return - 1 - если мантисса содержит нули
+ * @return - 0 - если в мантиссе есть 1
+*/
+int decimal_mantissa_equal_zero(s21_decimal value);
 
 int get_bit_decimal(s21_decimal value, int bit_index);
 
@@ -121,12 +151,18 @@ int get_scale_decimal(s21_decimal value);
 
 void set_scale_decimal(s21_decimal *value, int scale);
 
-void invert_sign_decimal(s21_decimal *dst);
+void decimal_invert_sign(s21_decimal *dst);
 
-// void convert_decimal_to_big_decimal(s21_decimal value, big_decimal *dst);
+float float_generate_random(float a, float b);
 
-// int convert_big_decimal_to_decimal(big_decimal value, s21_decimal *dst);
-
-int check_decimal(s21_decimal value);
+/**
+ * Проверка 4 байта или 3 индекса decimal-числа на лишние биты, кроме порядка и знака.
+ * 
+ * @param value decimal-число
+ * 
+ * @return - 0 - OK
+ * @return - 1 - OVERFLOW
+*/
+int decimal_check_overflow(s21_decimal value);
 
 #endif  // S21_DECIMAL_H
