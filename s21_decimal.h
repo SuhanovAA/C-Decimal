@@ -38,6 +38,8 @@ typedef struct {
   unsigned int bits[SIZE_BIG_DECIMAL];
 } big_decimal;
 
+int decimal_div_by_ten(s21_decimal *result);
+
 // --- arithmetic functions --- //
 
 int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
@@ -74,10 +76,8 @@ int s21_is_not_equal(s21_decimal value_1, s21_decimal value_2);
  * Сравнение value_1 и value_2. Если порядок не равен 0, то проводится
  * нормализация порядка определенного массива. После чего вызывается функция
  * is_greater, которая проверяет разницу между битами.
- *
  * @param value_1
  * @param value_2
- *
  * @return - -1 - при value_1 < value_2
  * @return - 0 - при value_1 == value_2
  * @return - 1 - при value_1 > value_2
@@ -89,10 +89,8 @@ int compare(s21_decimal value_1, s21_decimal value_2);
  * числа на индекс бита вправо путем деления на 2 и округления в меньшую сторону
  * с помощью функции floor(). Затем берется остаток от деления на 2 для
  * получения значения бита.
- *
  * @param number - число double типа
  * @param index - требуемый индекс поиска по number
- *
  * @return - 0 - бит по индексу отсутствует
  * @return - 1 - если есть бит
  */
@@ -103,10 +101,8 @@ void set_bit_decimal(s21_decimal *dst, int bit_index, int bit_value);
 /**
  * Вычисление разницы между value_1 и value_2 по битам от старшего (95) до
  * младшего (0).
- *
  * @param value_1 децимал число (4 байта)
  * @param value_2 децимал число (4 байта)
- *
  * @return - 0 - Все биты равны
  * @return - Разница между битами
  */
@@ -118,29 +114,25 @@ void decimal_shift_left(s21_decimal *value, int shift);
 
 /**
  * Суммирование битов двух decimal-числе в одно результирующее число.
- * 
  * @param value_1 первое decimal-число
  * @param value_2 второе decimal-число
  * @param *result результат суммирования
-*/
+ */
 void decimal_summ(s21_decimal value_1, s21_decimal value_2,
                   s21_decimal *result);
 
 /**
  * Зануление всех байт (4 байта / 0..3 индекса) decimal-числа.
- * 
  * @param *dst decimal-число
-*/
+ */
 void decimal_nullify(s21_decimal *dst);
 
 /**
  * Проверка decimal-числа (мантиссы) на 0.
- * 
  * @param value decimal-число
- * 
  * @return - 1 - если мантисса содержит нули
  * @return - 0 - если в мантиссе есть 1
-*/
+ */
 int decimal_mantissa_equal_zero(s21_decimal value);
 
 int get_bit_decimal(s21_decimal value, int bit_index);
@@ -156,13 +148,20 @@ void decimal_invert_sign(s21_decimal *dst);
 float float_generate_random(float a, float b);
 
 /**
- * Проверка 4 байта или 3 индекса decimal-числа на лишние биты, кроме порядка и знака.
- * 
+ * Деление decimal-числа на 10. Проход от старшего бита мантиссы (95) до
+ * младшего (0).
+ * @param *result decimal-число
+ * @return - остаток от деления числа на 10
+ */
+int decimal_div_by_ten(s21_decimal *result);
+
+/**
+ * Проверка 4 байта или 3 индекса decimal-числа на лишние биты, кроме
+ * порядка и знака.
  * @param value decimal-число
- * 
  * @return - 0 - OK
  * @return - 1 - OVERFLOW
-*/
+ */
 int decimal_check_overflow(s21_decimal value);
 
 #endif  // S21_DECIMAL_H

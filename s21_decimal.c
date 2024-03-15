@@ -126,7 +126,16 @@ int s21_from_decimal_to_int(s21_decimal src, int *dst) {
 
 int s21_floor(s21_decimal value, s21_decimal *result);
 int s21_round(s21_decimal value, s21_decimal *result);
-int s21_truncate(s21_decimal value, s21_decimal *result);
+int s21_truncate(s21_decimal value, s21_decimal *result) {
+  int scale = get_scale_decimal(value);
+  while (scale > 0) {
+    decimal_div_by_ten(&value);
+    scale--;
+  }
+  set_scale_decimal(&value, 0);
+  *result = value;
+  return 0;
+}
 
 int s21_negate(s21_decimal value, s21_decimal *result) {
   int error = decimal_check_overflow(value);
@@ -141,7 +150,8 @@ int compare(s21_decimal value_1, s21_decimal value_2) {
   int result_compare = 0;
   int sign_1 = get_sign_decimal(value_1);
   int sign_2 = get_sign_decimal(value_2);
-  if (!decimal_mantissa_equal_zero(value_1) || !decimal_mantissa_equal_zero(value_2)) {
+  if (!decimal_mantissa_equal_zero(value_1) ||
+      !decimal_mantissa_equal_zero(value_2)) {
     if (!sign_1 && sign_2) {
       result_compare = 1;
     } else if (sign_1 && !sign_2) {
@@ -219,9 +229,10 @@ void decimal_shift_left(s21_decimal *value, int shift) {
 void decimal_summ(s21_decimal value_1, s21_decimal value_2,
                   s21_decimal *result) {
   int memory = 0;
-  unsigned tmp = 0;
+  // unsigned tmp = 0;
   for (int i = 0; i < 96; i++) {
-    tmp = get_bit_decimal(value_1, i) + get_bit_decimal(value_2, i) + memory;
+    unsigned tmp =
+        get_bit_decimal(value_1, i) + get_bit_decimal(value_2, i) + memory;
     memory = tmp / 2;
     tmp %= 2;
     set_bit_decimal(result, i, tmp);
@@ -282,6 +293,17 @@ float float_generate_random(float a, float b) {
   float m = (float)rand() / RAND_MAX;
   float num = a + m * (b - a);
   return num;
+}
+
+int decimal_div_by_ten(s21_decimal *result) {
+  int remainder_by_ten = 0;
+  for (int i = 95; i >= 0; --i) {
+    int get_bit = get_bit_decimal(*result, i);
+    int result_by_ten = (get_bit + remainder_by_ten * 2) / 10;
+    remainder_by_ten = (get_bit + remainder_by_ten * 2) % 10;
+    set_bit_decimal(result, i, result_by_ten);
+  }
+  return remainder_by_ten;
 }
 
 int decimal_check_overflow(s21_decimal value) {

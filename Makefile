@@ -27,7 +27,7 @@ o_files:
 $(FILE).a: o_files
 	ar rcs $(LIB) *.o
 
-test: $(FILE).a
+test: clang $(FILE).a
 	$(CC) $(FILETEST).c $(FILE).a -o $(FILETESTO) $(TESTFLAGS)
 	./$(FILETESTO)
 	make clean

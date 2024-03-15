@@ -1,78 +1,73 @@
 #include "tests.h"
 
-// void truncate_test_function(float n, float accuracy) {
-//   float value0 = 0.0;
-//   s21_decimal var1 = {{0}}, var2 = {{0}};
+void truncate_test_function(float n, float accuracy) {
+  float value0 = 0.0;
+  s21_decimal var1 = {{0}}, var2 = {{0}};
 
-//   int value1 = 0, value2 = 0;
-//   s21_from_float_to_decimal(n, &var1);
-//   s21_truncate(var1, &var2);
-//   s21_from_decimal_to_float(var2, &value0);
-//   value2 = (int)value0;
-//   value1 = truncf(n);
-//   ck_assert_float_eq_tol(value1, value2, accuracy);
-//   return;
-// }
+  int value1 = 0, value2 = 0;
+  s21_from_float_to_decimal(n, &var1);
+  s21_truncate(var1, &var2);
+  s21_from_decimal_to_float(var2, &value0);
+  value2 = (int)value0;
+  value1 = truncf(n);
+  ck_assert_float_eq_tol(value1, value2, accuracy);
+  return;
+}
 
-// START_TEST(truncate_0) {
-//   s21_decimal val = {{7, 7, 7, 0}};
-//   s21_decimal res;
-//   ck_assert_int_eq(0, s21_truncate(val, &res));
-//   float fres = 0;
-//   s21_from_decimal_to_float(res, &fres);
-//   float need = 129127208515966861312.0;
-//   ck_assert_float_eq(need, fres);
-// }
-// END_TEST
+START_TEST(truncate_0) {
+  s21_decimal val = {{7, 7, 7, 0}};
+  s21_decimal res;
+  ck_assert_int_eq(0, s21_truncate(val, &res));
+  float fres = 0;
+  s21_from_decimal_to_float(res, &fres);
+  float need = 129127208515966861312.0;
+  ck_assert_float_eq(need, fres);
+}
+END_TEST
 
-// START_TEST(truncate_1) {
-//   s21_decimal val = {{2, 0, 0, ~(UINT_MAX / 2)}};
-//   s21_decimal res = {{0}};
-//   ck_assert_int_eq(0, s21_truncate(val, &res));
-//   float fres = 0;
-//   s21_from_decimal_to_float(res, &fres);
-//   float need = -2.0;
-//   ck_assert_float_eq(need, fres);
-// }
-// END_TEST
+START_TEST(truncate_1) {
+  s21_decimal val = {{2, 0, 0, ~(UINT_MAX / 2)}};
+  s21_decimal res = {{0}};
+  ck_assert_int_eq(0, s21_truncate(val, &res));
+  float fres = 0;
+  s21_from_decimal_to_float(res, &fres);
+  float need = -2.0;
+  ck_assert_float_eq(need, fres);
+}
+END_TEST
 
-// START_TEST(truncate_2) {
-//   s21_decimal val = {{2, 0, 0, ~(UINT_MAX / 2)}};
-//   s21_decimal res = {{0}};
-//   ck_assert_int_eq(0, s21_truncate(val, &res));
-//   float fres = 0;
-//   s21_from_decimal_to_float(res, &fres);
-//   float need = -2.0;
-//   ck_assert_float_eq(need, fres);
-// }
-// END_TEST
+START_TEST(truncate_2) {
+  s21_decimal val = {{2, 0, 0, ~(UINT_MAX / 2)}};
+  s21_decimal res = {{0}};
+  ck_assert_int_eq(0, s21_truncate(val, &res));
+  float fres = 0;
+  s21_from_decimal_to_float(res, &fres);
+  float need = -2.0;
+  ck_assert_float_eq(need, fres);
+}
+END_TEST
 
-// START_TEST(truncate_3) {
-//   s21_decimal val = {{2, 0, 0, ~(UINT_MAX / 2)}};
-//   s21_decimal res = {{0}};
-//   set_scale(&val, 5);
-//   ck_assert_int_eq(0, s21_truncate(val, &res));
-//   float fres = 0;
-//   s21_from_decimal_to_float(res, &fres);
-//   float need = -0.0;
-//   ck_assert_float_eq(need, fres);
-// }
+START_TEST(truncate_3) {
+  s21_decimal val = {{2, 0, 0, ~(UINT_MAX / 2)}};
+  s21_decimal res = {{0}};
+  set_scale_decimal(&val, 5);
+  ck_assert_int_eq(0, s21_truncate(val, &res));
+  float fres = 0;
+  s21_from_decimal_to_float(res, &fres);
+  float need = -0.0;
+  ck_assert_float_eq(need, fres);
+}
 
-// START_TEST(truncate_4) {
-//   s21_decimal val = {{128, 0, 0, 0}};
-//   s21_decimal res = {{0}};
-//   set_scale(&val, 1);
-//   ck_assert_int_eq(0, s21_truncate(val, &res));
-//   float fres = 0;
-//   s21_from_decimal_to_float(res, &fres);
-//   float need = 12;
-//   ck_assert_float_eq(need, fres);
-// }
-
-// START_TEST(truncate_5) {
-//   float n = s21_rand_r(-8388608, 8388608);
-//   truncate_test_function(n, 10);
-// }
+START_TEST(truncate_4) {
+  s21_decimal val = {{128, 0, 0, 0}};
+  s21_decimal res = {{0}};
+  set_scale_decimal(&val, 1);
+  ck_assert_int_eq(0, s21_truncate(val, &res));
+  float fres = 0;
+  s21_from_decimal_to_float(res, &fres);
+  float need = 12;
+  ck_assert_float_eq(need, fres);
+}
 
 START_TEST(truncate_6) {
   s21_decimal value_1 = {{35, 0, 0, 0}};
@@ -163,27 +158,27 @@ START_TEST(s21_trun_2) {
 }
 END_TEST
 
-// START_TEST(s21_trun_4) {
-//   s21_decimal dec1 = {0};
-//   dec1.bits[0] = 0b10000000000000000000000010100101;  // 214.7483813
-//   dec1.bits[1] = 0b00000000000000000000000000000000;
-//   dec1.bits[2] = 0b00000000000000000000000000000000;
-//   dec1.bits[3] = 0b00000000000001110000000000000000;
-//   float num = 0.0;
-//   s21_from_decimal_to_float(dec1, &num);
-//   s21_decimal result = {0};
-//   result.bits[0] = 0b00000000000000000000000011010110;
-//   result.bits[1] = 0b00000000000000000000000000000000;
-//   result.bits[2] = 0b00000000000000000000000000000000;
-//   result.bits[3] = 0b00000000000000000000000000000000;
-//   s21_decimal res1 = {0};
-//   s21_truncate(dec1, &res1);
-//   ck_assert_int_eq(res1.bits[0], result.bits[0]);
-//   ck_assert_int_eq(res1.bits[1], result.bits[1]);
-//   ck_assert_int_eq(res1.bits[2], result.bits[2]);
-//   ck_assert_int_eq(res1.bits[3], result.bits[3]);
-// }
-// END_TEST
+START_TEST(s21_trun_4) {
+  s21_decimal dec1 = {0};
+  dec1.bits[0] = 0b10000000000000000000000010100101;  // 214.7483813
+  dec1.bits[1] = 0b00000000000000000000000000000000;
+  dec1.bits[2] = 0b00000000000000000000000000000000;
+  dec1.bits[3] = 0b00000000000001110000000000000000;
+  float num = 0.0;
+  s21_from_decimal_to_float(dec1, &num);
+  s21_decimal result = {0};
+  result.bits[0] = 0b00000000000000000000000011010110;
+  result.bits[1] = 0b00000000000000000000000000000000;
+  result.bits[2] = 0b00000000000000000000000000000000;
+  result.bits[3] = 0b00000000000000000000000000000000;
+  s21_decimal res1 = {0};
+  s21_truncate(dec1, &res1);
+  ck_assert_int_eq(res1.bits[0], result.bits[0]);
+  ck_assert_int_eq(res1.bits[1], result.bits[1]);
+  ck_assert_int_eq(res1.bits[2], result.bits[2]);
+  ck_assert_int_eq(res1.bits[3], result.bits[3]);
+}
+END_TEST
 
 START_TEST(s21_truncate_1) {
   s21_decimal dec1 = {0};
@@ -590,19 +585,18 @@ Suite *suite_truncate(void) {
   Suite *s = suite_create("\033[46m---TRUNCATE TESTS---\033[0m");
   TCase *tc = tcase_create("suite_truncate_tc");
 
-  // tcase_add_test(tc, truncate_0);
-  // tcase_add_test(tc, truncate_1);
-  // tcase_add_test(tc, truncate_2);
-  // tcase_add_test(tc, truncate_3);
-  // tcase_add_test(tc, truncate_4);
-  // tcase_add_loop_test(tc, truncate_5, 0, 1000);
+  tcase_add_test(tc, truncate_0);
+  tcase_add_test(tc, truncate_1);
+  tcase_add_test(tc, truncate_2);
+  tcase_add_test(tc, truncate_3);
+  tcase_add_test(tc, truncate_4);
   tcase_add_test(tc, truncate_6);
   tcase_add_test(tc, truncate_8);
   tcase_add_test(tc, truncate_9);
 
   tcase_add_test(tc, s21_trun_1);
   tcase_add_test(tc, s21_trun_2);
-  // tcase_add_test(tc, s21_trun_4);
+  tcase_add_test(tc, s21_trun_4);
   tcase_add_test(tc, s21_truncate_1);
   tcase_add_test(tc, s21_truncate_2);
   tcase_add_test(tc, s21_truncate_3);
