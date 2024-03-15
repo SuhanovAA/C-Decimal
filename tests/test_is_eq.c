@@ -73,38 +73,38 @@ START_TEST(is_equal_7) {
 }
 END_TEST
 
-// START_TEST(equal_1) {
-//   float num1 = 1.375342323523;
-//   float num2 = 1.39;
-//   s21_decimal dec1, dec2;
-//   s21_from_float_to_decimal(num1, &dec1);
-//   s21_from_float_to_decimal(num2, &dec2);
-//   int res = s21_is_equal(dec1, dec2);
-//   ck_assert_int_eq(res, 0);
-// }
-// END_TEST
+START_TEST(equal_1) {
+  float num1 = 1.375342323523;
+  float num2 = 1.39;
+  s21_decimal dec1, dec2;
+  s21_from_float_to_decimal(num1, &dec1);
+  s21_from_float_to_decimal(num2, &dec2);
+  int res = s21_is_equal(dec1, dec2);
+  ck_assert_int_eq(res, 0);
+}
+END_TEST
 
-// START_TEST(equal_2) {
-//   float num1 = 1.39;
-//   float num2 = 1.39;
-//   s21_decimal dec1, dec2;
-//   s21_from_float_to_decimal(num1, &dec1);
-//   s21_from_float_to_decimal(num2, &dec2);
-//   int res = s21_is_equal(dec1, dec2);
-//   ck_assert_int_eq(res, 1);
-// }
-// END_TEST
+START_TEST(equal_2) {
+  float num1 = 1.39;
+  float num2 = 1.39;
+  s21_decimal dec1, dec2;
+  s21_from_float_to_decimal(num1, &dec1);
+  s21_from_float_to_decimal(num2, &dec2);
+  int res = s21_is_equal(dec1, dec2);
+  ck_assert_int_eq(res, 1);
+}
+END_TEST
 
-// START_TEST(equal_3) {
-//   float num1 = 1.39;
-//   float num2 = -1.39;
-//   s21_decimal dec1, dec2;
-//   s21_from_float_to_decimal(num1, &dec1);
-//   s21_from_float_to_decimal(num2, &dec2);
-//   int res = s21_is_equal(dec1, dec2);
-//   ck_assert_int_eq(res, 0);
-// }
-// END_TEST
+START_TEST(equal_3) {
+  float num1 = 1.39;
+  float num2 = -1.39;
+  s21_decimal dec1, dec2;
+  s21_from_float_to_decimal(num1, &dec1);
+  s21_from_float_to_decimal(num2, &dec2);
+  int res = s21_is_equal(dec1, dec2);
+  ck_assert_int_eq(res, 0);
+}
+END_TEST
 
 START_TEST(equal_4) {
   int num1 = 0;
@@ -960,9 +960,9 @@ Suite *suite_is_equal(void) {
   tcase_add_test(tc, is_equal_6);
   tcase_add_test(tc, is_equal_7);
 
-  // tcase_add_test(tc, equal_1);
-  // tcase_add_test(tc, equal_2);
-  // tcase_add_test(tc, equal_3);
+  tcase_add_test(tc, equal_1);
+  tcase_add_test(tc, equal_2);
+  tcase_add_test(tc, equal_3);
   tcase_add_test(tc, equal_4);
   tcase_add_test(tc, equal_5);
   tcase_add_test(tc, equal_6);
