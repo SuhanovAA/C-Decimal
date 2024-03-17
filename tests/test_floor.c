@@ -1,14 +1,14 @@
 #include "tests.h"
 
-// void floor_test_function(float n, float accuracy) {
-//   s21_decimal var1 = {0}, var2 = {0};
-//   float value1 = 0, value2 = 0;
-//   s21_from_float_to_decimal(n, &var1);
-//   s21_floor(var1, &var2);
-//   s21_from_decimal_to_float(var2, &value2);
-//   value1 = floorf(n);
-//   ck_assert_float_eq_tol(value1, value2, accuracy);
-// }
+void floor_test_function(float n, float accuracy) {
+  s21_decimal var1 = {0}, var2 = {0};
+  float value1 = 0, value2 = 0;
+  s21_from_float_to_decimal(n, &var1);
+  s21_floor(var1, &var2);
+  s21_from_decimal_to_float(var2, &value2);
+  value1 = floorf(n);
+  ck_assert_float_eq_tol(value1, value2, accuracy);
+}
 
 START_TEST(floor_0) {
   s21_decimal val = {{2, 0, 0, 0}};
@@ -17,46 +17,41 @@ START_TEST(floor_0) {
 }
 END_TEST
 
-// START_TEST(floor_1) {
-//   s21_decimal val = {{2, 0, 0, ~(UINT_MAX / 2)}};
-//   s21_decimal res = {{0}};
-//   s21_floor(val, &res);
-//   float fres = 0;
-//   s21_from_decimal_to_float(res, &fres);
-//   ck_assert_float_eq(-2, fres);
-// }
-// END_TEST
+START_TEST(floor_1) {
+  s21_decimal val = {{2, 0, 0, ~(UINT_MAX / 2)}};
+  s21_decimal res = {{0}};
+  s21_floor(val, &res);
+  float fres = 0;
+  s21_from_decimal_to_float(res, &fres);
+  ck_assert_float_eq(-2, fres);
+}
+END_TEST
 
-// START_TEST(floor_2) {
-//   s21_decimal val = {{2, 0, 0, ~(UINT_MAX / 2)}};
-//   s21_decimal res = {{0}};
-//   set_scale(&val, 5);
-//   s21_floor(val, &res);
-//   float fres = 0;
-//   s21_from_decimal_to_float(res, &fres);
-//   ck_assert_float_eq(-1, fres);
-// }
-// END_TEST
+START_TEST(floor_2) {
+  s21_decimal val = {{2, 0, 0, ~(UINT_MAX / 2)}};
+  s21_decimal res = {{0}};
+  set_scale_decimal(&val, 5);
+  s21_floor(val, &res);
+  float fres = 0;
+  s21_from_decimal_to_float(res, &fres);
+  ck_assert_float_eq(-1, fres);
+}
+END_TEST
 
-// START_TEST(floor_3) {
-//   s21_decimal val = {{2, 0, 0, 0}};
-//   s21_decimal res = {{0}};
-//   set_scale(&val, 5);
-//   s21_floor(val, &res);
-//   float fres = 0;
-//   s21_from_decimal_to_float(res, &fres);
-//   ck_assert_float_eq(0, fres);
-// }
-// END_TEST
-
-// START_TEST(floor_4) {
-//   float n = s21_rand_r(-8388608, 8388608);
-//   floor_test_function(n, 10);
-// }
+START_TEST(floor_3) {
+  s21_decimal val = {{2, 0, 0, 0}};
+  s21_decimal res = {{0}};
+  set_scale_decimal(&val, 5);
+  s21_floor(val, &res);
+  float fres = 0;
+  s21_from_decimal_to_float(res, &fres);
+  ck_assert_float_eq(0, fres);
+}
+END_TEST
 
 START_TEST(floor_5) {
   s21_decimal value_1 = {{7444923, 0, 0, 0}};
-  set_scale(&value_1, 5);
+  set_scale_decimal(&value_1, 5);
   s21_decimal check = {{74, 0, 0, 0}};
   s21_decimal result = {0};
   int return_value = s21_floor(value_1, &result);
@@ -67,10 +62,10 @@ END_TEST
 
 START_TEST(floor_6) {
   s21_decimal value_1 = {{7444923, 0, 0, 0}};
-  set_scale(&value_1, 5);
-  invert_sign(&value_1);
+  set_scale_decimal(&value_1, 5);
+  decimal_invert_sign(&value_1);
   s21_decimal check = {{75, 0, 0, 0}};
-  invert_sign(&check);
+  decimal_invert_sign(&check);
   s21_decimal result = {0};
   int return_value = s21_floor(value_1, &result);
   ck_assert_int_eq(s21_is_equal(result, check), 1);
@@ -103,10 +98,9 @@ Suite *suite_floor(void) {
   TCase *tc = tcase_create("floor_test");
 
   tcase_add_test(tc, floor_0);
-  // tcase_add_test(tc, floor_1);
-  // tcase_add_test(tc, floor_2);
-  // tcase_add_test(tc, floor_3);
-  // tcase_add_loop_test(tc, floor_4, 0, 1000);
+  tcase_add_test(tc, floor_1);
+  tcase_add_test(tc, floor_2);
+  tcase_add_test(tc, floor_3);
   tcase_add_test(tc, floor_5);
   tcase_add_test(tc, floor_6);
   tcase_add_test(tc, floor_7);

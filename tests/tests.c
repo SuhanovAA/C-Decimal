@@ -24,9 +24,9 @@ int main(void) {
   run_testcase(suite_float_to_decimal());
   
   run_testcase(suite_negate());
-  // run_testcase(suite_floor());
-  // run_testcase(suite_round());
   run_testcase(suite_truncate());
+  run_testcase(suite_floor());
+  // run_testcase(suite_round())
   
   // run_testcase(suite_add());
   // run_testcase(suite_sub());

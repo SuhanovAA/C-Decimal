@@ -17,8 +17,9 @@
 #define SIZE_DECIMAL_MANTISSA 2
 #define SIZE_BIG_DECIMAL_MANTISSA 6
 
-#define SCALE 0x00ff0000                // 00000000 11111111 00000000 00000000
-#define SCALE_ERROR_MASK ~0x80ff0000    // 01111111 00000000 11111111 11111111
+#define SCALE 0x00ff0000              // 00000000 11111111 00000000 00000000
+#define SCALE_ERROR_MASK ~0x80ff0000  // 01111111 00000000 11111111 11111111
+#define SCALE_SIGN_MINUS 0x80000000   // 10000000 00000000 00000000 00000000
 
 #define OK 0
 #define ERROR 1
@@ -167,5 +168,8 @@ int decimal_div_by_ten(s21_decimal *result);
  * @return - 1 - существует лишний бит(-ы)
  */
 int decimal_check_scale_mask(s21_decimal value);
+
+int decimal_binary_add(s21_decimal value_1, s21_decimal value_2,
+                       s21_decimal *result);
 
 #endif  // S21_DECIMAL_H

@@ -1,9 +1,9 @@
 #include "s21_decimal.h"
 
-int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
-int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
-int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
-int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
+// int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
+// int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
+// int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
+// int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
 
 int s21_is_greater(s21_decimal value_1, s21_decimal value_2) {
   return compare(value_1, value_2) == 1 ? 1 : 0;
@@ -124,8 +124,32 @@ int s21_from_decimal_to_int(s21_decimal src, int *dst) {
   return error;
 }
 
-int s21_floor(s21_decimal value, s21_decimal *result);
-int s21_round(s21_decimal value, s21_decimal *result);
+int s21_floor(s21_decimal value, s21_decimal *result) {
+  int error = decimal_check_scale_mask(value);
+  if (!error) {
+    int scale = get_scale_decimal(value);
+    if (!scale) {
+      *result = value;
+    } else {
+      if (!get_sign_decimal(value)) {
+        error = s21_truncate(value, result);
+      } else {
+        s21_decimal valueBuffer;
+        s21_decimal one = {{1, 0, 0, 0}};
+        decimal_nullify(&valueBuffer);
+        error = s21_truncate(value, result);
+        result->bits[3] = 0;
+        decimal_binary_add(*result, one, &valueBuffer);
+        *result = valueBuffer;
+        result->bits[3] = (unsigned long)1 << 31;
+      }
+    }
+  }
+
+  return error;
+}
+
+// int s21_round(s21_decimal value, s21_decimal *result);
 
 int s21_truncate(s21_decimal value, s21_decimal *result) {
   int scale = get_scale_decimal(value);
@@ -229,7 +253,6 @@ void decimal_shift_left(s21_decimal *value, int shift) {
 void decimal_summ(s21_decimal value_1, s21_decimal value_2,
                   s21_decimal *result) {
   int memory = 0;
-  // unsigned tmp = 0;
   for (int i = 0; i < 96; i++) {
     unsigned tmp =
         get_bit_decimal(value_1, i) + get_bit_decimal(value_2, i) + memory;
@@ -268,11 +291,7 @@ int get_bit_decimal(s21_decimal value, int bit_index) {
   return (int)result ? 1 : 0;
 }
 
-int get_sign_decimal(s21_decimal value) {
-  int value_sign;
-  value_sign = get_bit_decimal(value, 127);
-  return value_sign;
-}
+int get_sign_decimal(s21_decimal value) { return get_bit_decimal(value, 127); }
 
 int get_scale_decimal(s21_decimal value) {
   return (int)((unsigned int)(value.bits[3] & ~(1 << 31)) >> 16);
@@ -288,9 +307,7 @@ void decimal_invert_sign(s21_decimal *dst) {
 }
 
 float float_generate_random(float a, float b) {
-  float m = (float)rand() / RAND_MAX;
-  float num = a + m * (b - a);
-  return num;
+  return (float)(a + (float)rand() / RAND_MAX * (b - a));
 }
 
 int decimal_div_by_ten(s21_decimal *result) {
@@ -306,6 +323,35 @@ int decimal_div_by_ten(s21_decimal *result) {
 
 int decimal_check_scale_mask(s21_decimal value) {
   int error = 0;
-  if ((value.bits[3] &= SCALE_ERROR_MASK) != 0) error = 1;
+  int scale = get_scale_decimal(value);
+  if (scale > 28 || scale < 0)
+    error = 1;
+  else if ((value.bits[3] &= SCALE_ERROR_MASK) != 0)
+    error = 1;
+  return error;
+}
+
+int decimal_binary_add(s21_decimal value_1, s21_decimal value_2,
+                       s21_decimal *result) {
+  int error = OK;
+  decimal_nullify(result);
+  for (int i = 0; i < 95; i++) {
+    set_bit_decimal(result, i + 1,
+                    (get_bit_decimal(value_1, i) + get_bit_decimal(value_2, i) +
+                     get_bit_decimal(*result, i)) /
+                        2);
+    set_bit_decimal(result, i,
+                    (get_bit_decimal(value_1, i) + get_bit_decimal(value_2, i) +
+                     get_bit_decimal(*result, i)) %
+                        2);
+  }
+  if ((get_bit_decimal(value_1, 95) + get_bit_decimal(value_2, 95) +
+       get_bit_decimal(*result, 95)) /
+      2)
+    error = ERROR_OVERFLOW;
+  set_bit_decimal(result, 95,
+                  (get_bit_decimal(value_1, 95) + get_bit_decimal(value_2, 95) +
+                   get_bit_decimal(*result, 95)) %
+                      2);
   return error;
 }
