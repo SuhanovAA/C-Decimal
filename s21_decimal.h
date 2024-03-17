@@ -17,8 +17,8 @@
 #define SIZE_DECIMAL_MANTISSA 2
 #define SIZE_BIG_DECIMAL_MANTISSA 6
 
-// #define SCALE_BITS 0xff0000  // 111111110000000000000000
-#define SCALE_ERROR_MASK 0b01111111100000000111111111111111
+#define SCALE 0x00ff0000                // 00000000 11111111 00000000 00000000
+#define SCALE_ERROR_MASK ~0x80ff0000    // 01111111 00000000 11111111 11111111
 
 #define OK 0
 #define ERROR 1
@@ -158,10 +158,14 @@ int decimal_div_by_ten(s21_decimal *result);
 /**
  * Проверка 4 байта или 3 индекса decimal-числа на лишние биты, кроме
  * порядка и знака.
+ *
+ * Биты от 0 до 15, младшее слово, не используются и должны быть равны нулю.
+ * Биты с 24 по 30 не используются и должны быть равны нулю.
+ *
  * @param value decimal-число
  * @return - 0 - OK
- * @return - 1 - OVERFLOW
+ * @return - 1 - существует лишний бит(-ы)
  */
-int decimal_check_overflow(s21_decimal value);
+int decimal_check_scale_mask(s21_decimal value);
 
 #endif  // S21_DECIMAL_H
