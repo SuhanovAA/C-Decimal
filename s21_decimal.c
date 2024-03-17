@@ -73,7 +73,7 @@ int s21_from_float_to_decimal(float src, s21_decimal *dst) {
 }
 
 int s21_from_decimal_to_float(s21_decimal src, float *dst) {
-  int error = decimal_check_overflow(src);
+  int error = decimal_check_scale_mask(src);
   if (!error) {
     int scale = get_scale_decimal(src);
     int sign = get_sign_decimal(src);
@@ -126,6 +126,7 @@ int s21_from_decimal_to_int(s21_decimal src, int *dst) {
 
 int s21_floor(s21_decimal value, s21_decimal *result);
 int s21_round(s21_decimal value, s21_decimal *result);
+
 int s21_truncate(s21_decimal value, s21_decimal *result) {
   int scale = get_scale_decimal(value);
   while (scale > 0) {
@@ -138,7 +139,7 @@ int s21_truncate(s21_decimal value, s21_decimal *result) {
 }
 
 int s21_negate(s21_decimal value, s21_decimal *result) {
-  int error = decimal_check_overflow(value);
+  int error = decimal_check_scale_mask(value);
   if (!error) {
     *result = value;
     decimal_invert_sign(result);
@@ -182,8 +183,7 @@ int float_get_bit(double number, int index) {
 void set_bit_decimal(s21_decimal *dst, int bit_index, int bit_value) {
   unsigned int bits_index = 0, flag = 0;
   const unsigned int step = 32;
-  int i = 32;
-  for (i = step; bits_index <= SIZE_DECIMAL && flag != 1;
+  for (int i = step; bits_index <= SIZE_DECIMAL && flag != 1;
        i += step, bits_index++) {
     if (i > bit_index) {
       dst->bits[bits_index] = (dst->bits[bits_index] & ~(1 << bit_index)) |
@@ -246,9 +246,8 @@ void decimal_nullify(s21_decimal *dst) {
 }
 
 int decimal_mantissa_equal_zero(s21_decimal value) {
-  int i;
   int check_zero = 1;
-  for (i = 0; i <= 2 && check_zero != 0; i++) {
+  for (int i = 0; i <= 2 && check_zero != 0; i++) {
     if (value.bits[i] != 0) {
       check_zero = 0;
     }
@@ -259,8 +258,7 @@ int decimal_mantissa_equal_zero(s21_decimal value) {
 int get_bit_decimal(s21_decimal value, int bit_index) {
   unsigned int result = 0, bits_index = 0, flag = 0;
   const unsigned int step = 32;
-  int i = 32;
-  for (i = step; bits_index <= SIZE_DECIMAL && flag != 1;
+  for (int i = step; bits_index <= SIZE_DECIMAL && flag != 1;
        i += step, bits_index++) {
     if (i > bit_index) {
       result = value.bits[bits_index] & 1 << bit_index;
@@ -306,8 +304,8 @@ int decimal_div_by_ten(s21_decimal *result) {
   return remainder_by_ten;
 }
 
-int decimal_check_overflow(s21_decimal value) {
-  int error = OK;
-  if ((value.bits[3] &= SCALE_ERROR_MASK) != 0) error = ERROR_OVERFLOW;
+int decimal_check_scale_mask(s21_decimal value) {
+  int error = 0;
+  if ((value.bits[3] &= SCALE_ERROR_MASK) != 0) error = 1;
   return error;
 }
