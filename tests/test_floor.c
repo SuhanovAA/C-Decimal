@@ -1228,16 +1228,6 @@ END_TEST
 //
 //
 
-void floor_test_function(float n, float accuracy) {
-  s21_decimal var1 = {0}, var2 = {0};
-  float value1 = 0, value2 = 0;
-  s21_from_float_to_decimal(n, &var1);
-  s21_floor(var1, &var2);
-  s21_from_decimal_to_float(var2, &value2);
-  value1 = floorf(n);
-  ck_assert_float_eq_tol(value1, value2, accuracy);
-}
-
 START_TEST(floor_0) {
   s21_decimal val = {{2, 0, 0, 0}};
   s21_decimal res;

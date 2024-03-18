@@ -24,17 +24,17 @@ START_TEST(s21_fromfloat_test_2) {
 }
 END_TEST
 
-// START_TEST(s21_fromfloat_test_3) {
-//   // src = 2,182854E-24
-//   float src = 2.182854E-24;
-//   s21_decimal res = {0};
-//   int code = s21_from_float_to_decimal(src, &res);
-//   ck_assert_int_eq(code, 0);
-//   // standart = 0,0000000000000000000000021829
-//   s21_decimal standart = {{21829, 0, 0, 1835008}};
-//   ck_assert_int_eq(s21_is_equal(res, standart), 1);
-// }
-// END_TEST
+START_TEST(s21_fromfloat_test_3) {
+  // src = 2,182854E-24
+  float src = 2.182854E-24;
+  s21_decimal res = {0};
+  int code = s21_from_float_to_decimal(src, &res);
+  ck_assert_int_eq(code, 0);
+  // standart = 0,0000000000000000000000021829
+  s21_decimal standart = {{21829, 0, 0, 1835008}};
+  ck_assert_int_eq(s21_is_equal(res, standart), 1);
+}
+END_TEST
 
 START_TEST(s21_fromfloat_test_4) {
   // src = 1,226321E-09
@@ -144,17 +144,17 @@ START_TEST(s21_fromfloat_test_12) {
 }
 END_TEST
 
-// START_TEST(s21_fromfloat_test_13) {
-//   // src = -3,6229336E-24
-//   float src = -3.6229336E-24;
-//   s21_decimal res = {0};
-//   int code = s21_from_float_to_decimal(src, &res);
-//   ck_assert_int_eq(code, 0);
-//   // standart = -0,0000000000000000000000036229
-//   s21_decimal standart = {{36229, 0, 0, -2145648640}};
-//   ck_assert_int_eq(s21_is_equal(res, standart), 1);
-// }
-// END_TEST
+START_TEST(s21_fromfloat_test_13) {
+  // src = -3,6229336E-24
+  float src = -3.6229336E-24;
+  s21_decimal res = {0};
+  int code = s21_from_float_to_decimal(src, &res);
+  ck_assert_int_eq(code, 0);
+  // standart = -0,0000000000000000000000036229
+  s21_decimal standart = {{36229, 0, 0, -2145648640}};
+  ck_assert_int_eq(s21_is_equal(res, standart), 1);
+}
+END_TEST
 
 START_TEST(s21_fromfloat_test_14) {
   // src = 1,13204755E-29
@@ -180,17 +180,17 @@ START_TEST(s21_fromfloat_test_15) {
 }
 END_TEST
 
-// START_TEST(s21_fromfloat_test_16) {
-//   // src = 5,5840236E-27
-//   float src = 5.5840236E-27;
-//   s21_decimal res = {0};
-//   int code = s21_from_float_to_decimal(src, &res);
-//   ck_assert_int_eq(code, 0);
-//   // standart = 0,0000000000000000000000000056
-//   s21_decimal standart = {{56, 0, 0, 1835008}};
-//   ck_assert_int_eq(s21_is_equal(res, standart), 1);
-// }
-// END_TEST
+START_TEST(s21_fromfloat_test_16) {
+  // src = 5,5840236E-27
+  float src = 5.5840236E-27;
+  s21_decimal res = {0};
+  int code = s21_from_float_to_decimal(src, &res);
+  ck_assert_int_eq(code, 0);
+  // standart = 0,0000000000000000000000000056
+  s21_decimal standart = {{56, 0, 0, 1835008}};
+  ck_assert_int_eq(s21_is_equal(res, standart), 1);
+}
+END_TEST
 
 START_TEST(s21_fromfloat_test_17) {
   // src = -3,0466877E-19
@@ -384,17 +384,17 @@ START_TEST(s21_fromfloat_test_32) {
 }
 END_TEST
 
-// START_TEST(s21_fromfloat_test_33) {
-//   // src = 3,3517787E-28
-//   float src = 3.3517787E-28;
-//   s21_decimal res = {0};
-//   int code = s21_from_float_to_decimal(src, &res);
-//   ck_assert_int_eq(code, 0);
-//   // standart = 0,0000000000000000000000000003
-//   s21_decimal standart = {{3, 0, 0, 1835008}};
-//   ck_assert_int_eq(s21_is_equal(res, standart), 1);
-// }
-// END_TEST
+START_TEST(s21_fromfloat_test_33) {
+  // src = 3,3517787E-28
+  float src = 3.3517787E-28;
+  s21_decimal res = {0};
+  int code = s21_from_float_to_decimal(src, &res);
+  ck_assert_int_eq(code, 0);
+  // standart = 0,0000000000000000000000000003
+  s21_decimal standart = {{3, 0, 0, 1835008}};
+  ck_assert_int_eq(s21_is_equal(res, standart), 1);
+}
+END_TEST
 
 START_TEST(s21_fromfloat_test_34) {
   // src = -4,093904E-05
@@ -432,17 +432,17 @@ START_TEST(s21_fromfloat_test_36) {
 }
 END_TEST
 
-// START_TEST(s21_fromfloat_test_37) {
-//   // src = -7,1694494E-25
-//   float src = -7.1694494E-25;
-//   s21_decimal res = {0};
-//   int code = s21_from_float_to_decimal(src, &res);
-//   ck_assert_int_eq(code, 0);
-//   // standart = -0,0000000000000000000000007169
-//   s21_decimal standart = {{7169, 0, 0, -2145648640}};
-//   ck_assert_int_eq(s21_is_equal(res, standart), 1);
-// }
-// END_TEST
+START_TEST(s21_fromfloat_test_37) {
+  // src = -7,1694494E-25
+  float src = -7.1694494E-25;
+  s21_decimal res = {0};
+  int code = s21_from_float_to_decimal(src, &res);
+  ck_assert_int_eq(code, 0);
+  // standart = -0,0000000000000000000000007169
+  s21_decimal standart = {{7169, 0, 0, -2145648640}};
+  ck_assert_int_eq(s21_is_equal(res, standart), 1);
+}
+END_TEST
 
 START_TEST(s21_fromfloat_test_38) {
   // src = -7,3409734E-07
@@ -528,17 +528,17 @@ START_TEST(s21_fromfloat_test_44) {
 }
 END_TEST
 
-// START_TEST(s21_fromfloat_test_45) {
-//   // src = 2,418131E-26
-//   float src = 2.418131E-26;
-//   s21_decimal res = {0};
-//   int code = s21_from_float_to_decimal(src, &res);
-//   ck_assert_int_eq(code, 0);
-//   // standart = 0,0000000000000000000000000242
-//   s21_decimal standart = {{242, 0, 0, 1835008}};
-//   ck_assert_int_eq(s21_is_equal(res, standart), 1);
-// }
-// END_TEST
+START_TEST(s21_fromfloat_test_45) {
+  // src = 2,418131E-26
+  float src = 2.418131E-26;
+  s21_decimal res = {0};
+  int code = s21_from_float_to_decimal(src, &res);
+  ck_assert_int_eq(code, 0);
+  // standart = 0,0000000000000000000000000242
+  s21_decimal standart = {{242, 0, 0, 1835008}};
+  ck_assert_int_eq(s21_is_equal(res, standart), 1);
+}
+END_TEST
 
 START_TEST(s21_fromfloat_test_46) {
   // src = -4,9613042E-30
@@ -684,17 +684,17 @@ START_TEST(s21_fromfloat_test_57) {
 }
 END_TEST
 
-// START_TEST(s21_fromfloat_test_58) {
-//   // src = -1,1074363E-24
-//   float src = -1.1074363E-24;
-//   s21_decimal res = {0};
-//   int code = s21_from_float_to_decimal(src, &res);
-//   ck_assert_int_eq(code, 0);
-//   // standart = -0,0000000000000000000000011074
-//   s21_decimal standart = {{11074, 0, 0, -2145648640}};
-//   ck_assert_int_eq(s21_is_equal(res, standart), 1);
-// }
-// END_TEST
+START_TEST(s21_fromfloat_test_58) {
+  // src = -1,1074363E-24
+  float src = -1.1074363E-24;
+  s21_decimal res = {0};
+  int code = s21_from_float_to_decimal(src, &res);
+  ck_assert_int_eq(code, 0);
+  // standart = -0,0000000000000000000000011074
+  s21_decimal standart = {{11074, 0, 0, -2145648640}};
+  ck_assert_int_eq(s21_is_equal(res, standart), 1);
+}
+END_TEST
 
 START_TEST(s21_fromfloat_test_59) {
   // src = 6,0001985E-23
@@ -744,65 +744,65 @@ START_TEST(s21_fromfloat_test_62) {
 }
 END_TEST
 
-// START_TEST(s21_fromfloat_test_63) {
-//   // src = -9,965142E-22
-//   float src = -9.965142E-22;
-//   s21_decimal res = {0};
-//   int code = s21_from_float_to_decimal(src, &res);
-//   ck_assert_int_eq(code, 0);
-//   // standart = -0,0000000000000000000009965142
-//   s21_decimal standart = {{9965142, 0, 0, -2145648640}};
-//   ck_assert_int_eq(s21_is_equal(res, standart), 1);
-// }
-// END_TEST
+START_TEST(s21_fromfloat_test_63) {
+  // src = -9,965142E-22
+  float src = -9.965142E-22;
+  s21_decimal res = {0};
+  int code = s21_from_float_to_decimal(src, &res);
+  ck_assert_int_eq(code, 0);
+  // standart = -0,0000000000000000000009965142
+  s21_decimal standart = {{9965142, 0, 0, -2145648640}};
+  ck_assert_int_eq(s21_is_equal(res, standart), 1);
+}
+END_TEST
 
-// START_TEST(s21_fromfloat_test_64) {
-//   // src = -9,965142E-22
-//   float src = -9.965142E-22;
-//   s21_decimal res = {0};
-//   int code = s21_from_float_to_decimal(src, &res);
-//   ck_assert_int_eq(code, 0);
-//   // standart = -0,0000000000000000000009965142
-//   s21_decimal standart = {{9965142, 0, 0, -2145648640}};
-//   ck_assert_int_eq(s21_is_equal(res, standart), 1);
-// }
-// END_TEST
+START_TEST(s21_fromfloat_test_64) {
+  // src = -9,965142E-22
+  float src = -9.965142E-22;
+  s21_decimal res = {0};
+  int code = s21_from_float_to_decimal(src, &res);
+  ck_assert_int_eq(code, 0);
+  // standart = -0,0000000000000000000009965142
+  s21_decimal standart = {{9965142, 0, 0, -2145648640}};
+  ck_assert_int_eq(s21_is_equal(res, standart), 1);
+}
+END_TEST
 
-// START_TEST(s21_fromfloat_test_65) {
-//   // src = -9,965142E-22
-//   float src = -9.965142E-22;
-//   s21_decimal res = {0};
-//   int code = s21_from_float_to_decimal(src, &res);
-//   ck_assert_int_eq(code, 0);
-//   // standart = -0,0000000000000000000009965142
-//   s21_decimal standart = {{9965142, 0, 0, -2145648640}};
-//   ck_assert_int_eq(s21_is_equal(res, standart), 1);
-// }
-// END_TEST
+START_TEST(s21_fromfloat_test_65) {
+  // src = -9,965142E-22
+  float src = -9.965142E-22;
+  s21_decimal res = {0};
+  int code = s21_from_float_to_decimal(src, &res);
+  ck_assert_int_eq(code, 0);
+  // standart = -0,0000000000000000000009965142
+  s21_decimal standart = {{9965142, 0, 0, -2145648640}};
+  ck_assert_int_eq(s21_is_equal(res, standart), 1);
+}
+END_TEST
 
-// START_TEST(s21_fromfloat_test_66) {
-//   // src = -9,965142E-22
-//   float src = -9.965142E-22;
-//   s21_decimal res = {0};
-//   int code = s21_from_float_to_decimal(src, &res);
-//   ck_assert_int_eq(code, 0);
-//   // standart = -0,0000000000000000000009965142
-//   s21_decimal standart = {{9965142, 0, 0, -2145648640}};
-//   ck_assert_int_eq(s21_is_equal(res, standart), 1);
-// }
-// END_TEST
+START_TEST(s21_fromfloat_test_66) {
+  // src = -9,965142E-22
+  float src = -9.965142E-22;
+  s21_decimal res = {0};
+  int code = s21_from_float_to_decimal(src, &res);
+  ck_assert_int_eq(code, 0);
+  // standart = -0,0000000000000000000009965142
+  s21_decimal standart = {{9965142, 0, 0, -2145648640}};
+  ck_assert_int_eq(s21_is_equal(res, standart), 1);
+}
+END_TEST
 
-// START_TEST(s21_fromfloat_test_67) {
-//   // src = -9,965142E-22
-//   float src = -9.965142E-22;
-//   s21_decimal res = {0};
-//   int code = s21_from_float_to_decimal(src, &res);
-//   ck_assert_int_eq(code, 0);
-//   // standart = -0,0000000000000000000009965142
-//   s21_decimal standart = {{9965142, 0, 0, -2145648640}};
-//   ck_assert_int_eq(s21_is_equal(res, standart), 1);
-// }
-// END_TEST
+START_TEST(s21_fromfloat_test_67) {
+  // src = -9,965142E-22
+  float src = -9.965142E-22;
+  s21_decimal res = {0};
+  int code = s21_from_float_to_decimal(src, &res);
+  ck_assert_int_eq(code, 0);
+  // standart = -0,0000000000000000000009965142
+  s21_decimal standart = {{9965142, 0, 0, -2145648640}};
+  ck_assert_int_eq(s21_is_equal(res, standart), 1);
+}
+END_TEST
 
 START_TEST(s21_fromfloat_test_68) {
   // src = 3,1464293E-11
@@ -1140,17 +1140,17 @@ START_TEST(s21_fromfloat_test_95) {
 }
 END_TEST
 
-// START_TEST(s21_fromfloat_test_96) {
-//   // src = -1,8037249E-28
-//   float src = -1.8037249E-28;
-//   s21_decimal res = {0};
-//   int code = s21_from_float_to_decimal(src, &res);
-//   ck_assert_int_eq(code, 0);
-//   // standart = -0,0000000000000000000000000002
-//   s21_decimal standart = {{2, 0, 0, -2145648640}};
-//   ck_assert_int_eq(s21_is_equal(res, standart), 1);
-// }
-// END_TEST
+START_TEST(s21_fromfloat_test_96) {
+  // src = -1,8037249E-28
+  float src = -1.8037249E-28;
+  s21_decimal res = {0};
+  int code = s21_from_float_to_decimal(src, &res);
+  ck_assert_int_eq(code, 0);
+  // standart = -0,0000000000000000000000000002
+  s21_decimal standart = {{2, 0, 0, -2145648640}};
+  ck_assert_int_eq(s21_is_equal(res, standart), 1);
+}
+END_TEST
 
 START_TEST(s21_fromfloat_test_97) {
   // src = 0,0002073879
@@ -1164,29 +1164,29 @@ START_TEST(s21_fromfloat_test_97) {
 }
 END_TEST
 
-// START_TEST(s21_fromfloat_test_98) {
-//   // src = -1,8037249E-28
-//   float src = -1.8037249E-28;
-//   s21_decimal res = {0};
-//   int code = s21_from_float_to_decimal(src, &res);
-//   ck_assert_int_eq(code, 0);
-//   // standart = -0,0000000000000000000000000002
-//   s21_decimal standart = {{2, 0, 0, -2145648640}};
-//   ck_assert_int_eq(s21_is_equal(res, standart), 1);
-// }
-// END_TEST
+START_TEST(s21_fromfloat_test_98) {
+  // src = -1,8037249E-28
+  float src = -1.8037249E-28;
+  s21_decimal res = {0};
+  int code = s21_from_float_to_decimal(src, &res);
+  ck_assert_int_eq(code, 0);
+  // standart = -0,0000000000000000000000000002
+  s21_decimal standart = {{2, 0, 0, -2145648640}};
+  ck_assert_int_eq(s21_is_equal(res, standart), 1);
+}
+END_TEST
 
-// START_TEST(s21_fromfloat_test_99) {
-//   // src = -3,0978769E-24
-//   float src = -3.0978769E-24;
-//   s21_decimal res = {0};
-//   int code = s21_from_float_to_decimal(src, &res);
-//   ck_assert_int_eq(code, 0);
-//   // standart = -0,0000000000000000000000030979
-//   s21_decimal standart = {{30979, 0, 0, -2145648640}};
-//   ck_assert_int_eq(s21_is_equal(res, standart), 1);
-// }
-// END_TEST
+START_TEST(s21_fromfloat_test_99) {
+  // src = -3,0978769E-24
+  float src = -3.0978769E-24;
+  s21_decimal res = {0};
+  int code = s21_from_float_to_decimal(src, &res);
+  ck_assert_int_eq(code, 0);
+  // standart = -0,0000000000000000000000030979
+  s21_decimal standart = {{30979, 0, 0, -2145648640}};
+  ck_assert_int_eq(s21_is_equal(res, standart), 1);
+}
+END_TEST
 
 START_TEST(s21_fromfloat_test_100) {
   // src = -7607994
@@ -1387,7 +1387,7 @@ Suite* suite_float_to_decimal(void) {
 
   tcase_add_test(tc, s21_fromfloat_test_1);
   tcase_add_test(tc, s21_fromfloat_test_2);
-  // tcase_add_test(tc, s21_fromfloat_test_3);
+  tcase_add_test(tc, s21_fromfloat_test_3);
   tcase_add_test(tc, s21_fromfloat_test_4);
   tcase_add_test(tc, s21_fromfloat_test_5);
   tcase_add_test(tc, s21_fromfloat_test_6);
@@ -1397,10 +1397,10 @@ Suite* suite_float_to_decimal(void) {
   tcase_add_test(tc, s21_fromfloat_test_10);
   tcase_add_test(tc, s21_fromfloat_test_11);
   tcase_add_test(tc, s21_fromfloat_test_12);
-  // tcase_add_test(tc, s21_fromfloat_test_13);
+  tcase_add_test(tc, s21_fromfloat_test_13);
   tcase_add_test(tc, s21_fromfloat_test_14);
   tcase_add_test(tc, s21_fromfloat_test_15);
-  // tcase_add_test(tc, s21_fromfloat_test_16);
+  tcase_add_test(tc, s21_fromfloat_test_16);
   tcase_add_test(tc, s21_fromfloat_test_17);
   tcase_add_test(tc, s21_fromfloat_test_18);
   tcase_add_test(tc, s21_fromfloat_test_19);
@@ -1417,11 +1417,11 @@ Suite* suite_float_to_decimal(void) {
   tcase_add_test(tc, s21_fromfloat_test_30);
   tcase_add_test(tc, s21_fromfloat_test_31);
   tcase_add_test(tc, s21_fromfloat_test_32);
-  // tcase_add_test(tc, s21_fromfloat_test_33);
+  tcase_add_test(tc, s21_fromfloat_test_33);
   tcase_add_test(tc, s21_fromfloat_test_34);
   tcase_add_test(tc, s21_fromfloat_test_35);
   tcase_add_test(tc, s21_fromfloat_test_36);
-  // tcase_add_test(tc, s21_fromfloat_test_37);
+  tcase_add_test(tc, s21_fromfloat_test_37);
   tcase_add_test(tc, s21_fromfloat_test_38);
   tcase_add_test(tc, s21_fromfloat_test_39);
   tcase_add_test(tc, s21_fromfloat_test_40);
@@ -1429,7 +1429,7 @@ Suite* suite_float_to_decimal(void) {
   tcase_add_test(tc, s21_fromfloat_test_42);
   tcase_add_test(tc, s21_fromfloat_test_43);
   tcase_add_test(tc, s21_fromfloat_test_44);
-  // tcase_add_test(tc, s21_fromfloat_test_45);
+  tcase_add_test(tc, s21_fromfloat_test_45);
   tcase_add_test(tc, s21_fromfloat_test_46);
   tcase_add_test(tc, s21_fromfloat_test_47);
   tcase_add_test(tc, s21_fromfloat_test_48);
@@ -1442,16 +1442,16 @@ Suite* suite_float_to_decimal(void) {
   tcase_add_test(tc, s21_fromfloat_test_55);
   tcase_add_test(tc, s21_fromfloat_test_56);
   tcase_add_test(tc, s21_fromfloat_test_57);
-  // tcase_add_test(tc, s21_fromfloat_test_58);
+  tcase_add_test(tc, s21_fromfloat_test_58);
   tcase_add_test(tc, s21_fromfloat_test_59);
   tcase_add_test(tc, s21_fromfloat_test_60);
   tcase_add_test(tc, s21_fromfloat_test_61);
   tcase_add_test(tc, s21_fromfloat_test_62);
-  // tcase_add_test(tc, s21_fromfloat_test_63);
-  // tcase_add_test(tc, s21_fromfloat_test_64);
-  // tcase_add_test(tc, s21_fromfloat_test_65);
-  // tcase_add_test(tc, s21_fromfloat_test_66);
-  // tcase_add_test(tc, s21_fromfloat_test_67);
+  tcase_add_test(tc, s21_fromfloat_test_63);
+  tcase_add_test(tc, s21_fromfloat_test_64);
+  tcase_add_test(tc, s21_fromfloat_test_65);
+  tcase_add_test(tc, s21_fromfloat_test_66);
+  tcase_add_test(tc, s21_fromfloat_test_67);
   tcase_add_test(tc, s21_fromfloat_test_68);
   tcase_add_test(tc, s21_fromfloat_test_69);
   tcase_add_test(tc, s21_fromfloat_test_70);
@@ -1480,10 +1480,10 @@ Suite* suite_float_to_decimal(void) {
   tcase_add_test(tc, s21_fromfloat_test_93);
   tcase_add_test(tc, s21_fromfloat_test_94);
   tcase_add_test(tc, s21_fromfloat_test_95);
-  // tcase_add_test(tc, s21_fromfloat_test_96);
+  tcase_add_test(tc, s21_fromfloat_test_96);
   tcase_add_test(tc, s21_fromfloat_test_97);
-  // tcase_add_test(tc, s21_fromfloat_test_98);
-  // tcase_add_test(tc, s21_fromfloat_test_99);
+  tcase_add_test(tc, s21_fromfloat_test_98);
+  tcase_add_test(tc, s21_fromfloat_test_99);
   tcase_add_test(tc, s21_fromfloat_test_100);
   tcase_add_test(tc, s21_from_float_to_decimal_1);
   tcase_add_test(tc, s21_from_float_to_decimal_2);

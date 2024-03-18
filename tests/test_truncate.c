@@ -1228,20 +1228,6 @@ END_TEST
 //
 //
 
-void truncate_test_function(float n, float accuracy) {
-  float value0 = 0.0;
-  s21_decimal var1 = {{0}}, var2 = {{0}};
-
-  int value1 = 0, value2 = 0;
-  s21_from_float_to_decimal(n, &var1);
-  s21_truncate(var1, &var2);
-  s21_from_decimal_to_float(var2, &value0);
-  value2 = (int)value0;
-  value1 = truncf(n);
-  ck_assert_float_eq_tol(value1, value2, accuracy);
-  return;
-}
-
 START_TEST(truncate_0) {
   s21_decimal val = {{7, 7, 7, 0}};
   s21_decimal res;
