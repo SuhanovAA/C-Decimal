@@ -173,6 +173,25 @@ int decimal_div_by_ten(s21_decimal *result);
  */
 int decimal_check_scale_mask(s21_decimal value);
 
+/**
+ * Сложение битов по индексу трех decimal-чисел.
+ * @param value_1 decimal-число (массив)
+ * @param value_2 decimal-число (массив)
+ * @param value_3 decimal-число (массив)
+ * @param index индекс бита массива, который суммируется
+ * @return - сумму трех битов (value_1[index] + value_2[index] + value_3[index])
+ */
+int decimal_three_add(s21_decimal value_1, s21_decimal value_2,
+                      s21_decimal value_3, int index);
+
+/**
+ * Сложение двух decimal-чисел (value_1 и value_2) по битам в result-массив.
+ * @param value_1 decimal-число (массив)
+ * @param value_2 decimal-число (массив)
+ * @param *result куда записывается сумма value_1 и value_2
+ * @return - 0 -> (OK)
+ * @return - 1 -> Лишние биты (overflow)
+ */
 int decimal_binary_add(s21_decimal value_1, s21_decimal value_2,
                        s21_decimal *result);
 

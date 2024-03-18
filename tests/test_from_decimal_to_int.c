@@ -2814,7 +2814,7 @@ START_TEST(s21_from_decimal_to_intTest15) {
 END_TEST
 
 Suite *suite_from_decimal_to_int(void) {
-  Suite *s = suite_create("\033[42m-=S21_DECIMAL_TO_INT=-\033[0m");
+  Suite *s = suite_create("\033[42m-=S21_FROM_DECIMAL_TO_INT=-\033[0m");
   TCase *tc = tcase_create("case_toint");
 
   tcase_add_test(tc, s21_toint_test_1);

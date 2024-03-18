@@ -2705,7 +2705,7 @@ START_TEST(s21_comp_test_104) {
 END_TEST
 
 Suite* test_comp(void) {
-  Suite* s = suite_create("\033[42m-=S21_DECIMAL_COMP=-\033[0m");
+  Suite* s = suite_create("\033[42m-=S21_DECIMAL_COMPARE=-\033[0m");
   TCase* tc = tcase_create("case_comp");
   // tcase_add_test(tc, s21_comp_test_1);
   tcase_add_test(tc, s21_comp_test_2);

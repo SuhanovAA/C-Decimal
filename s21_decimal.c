@@ -322,36 +322,30 @@ int decimal_div_by_ten(s21_decimal *result) {
 }
 
 int decimal_check_scale_mask(s21_decimal value) {
-  int error = 0;
-  int scale = get_scale_decimal(value);
-  if (scale > 28 || scale < 0)
-    error = 1;
-  else if ((value.bits[3] &= SCALE_ERROR_MASK) != 0)
-    error = 1;
-  return error;
+  return ((value.bits[3] &= SCALE_ERROR_MASK) != 0);
+}
+
+int decimal_three_add(s21_decimal value_1, s21_decimal value_2,
+                      s21_decimal value_3, int index) {
+  return (get_bit_decimal(value_1, index) + get_bit_decimal(value_2, index) +
+          get_bit_decimal(value_3, index));
 }
 
 int decimal_binary_add(s21_decimal value_1, s21_decimal value_2,
                        s21_decimal *result) {
-  int error = OK;
-  decimal_nullify(result);
-  for (int i = 0; i < 95; i++) {
-    set_bit_decimal(result, i + 1,
-                    (get_bit_decimal(value_1, i) + get_bit_decimal(value_2, i) +
-                     get_bit_decimal(*result, i)) /
-                        2);
-    set_bit_decimal(result, i,
-                    (get_bit_decimal(value_1, i) + get_bit_decimal(value_2, i) +
-                     get_bit_decimal(*result, i)) %
-                        2);
+  int error =
+      (decimal_check_scale_mask(value_1) || decimal_check_scale_mask(value_2));
+  if (!error) {
+    unsigned bit_value = 0;
+    decimal_nullify(result);
+    for (int i = 0; i < 95; i++) {
+      bit_value = decimal_three_add(value_1, value_2, *result, i);
+      set_bit_decimal(result, i + 1, bit_value / 2);
+      set_bit_decimal(result, i, bit_value % 2);
+    }
+    bit_value = decimal_three_add(value_1, value_2, *result, 95);
+    if (bit_value / 2) error = ERROR_OVERFLOW;
+    set_bit_decimal(result, 95, bit_value % 2);
   }
-  if ((get_bit_decimal(value_1, 95) + get_bit_decimal(value_2, 95) +
-       get_bit_decimal(*result, 95)) /
-      2)
-    error = ERROR_OVERFLOW;
-  set_bit_decimal(result, 95,
-                  (get_bit_decimal(value_1, 95) + get_bit_decimal(value_2, 95) +
-                   get_bit_decimal(*result, 95)) %
-                      2);
   return error;
 }
