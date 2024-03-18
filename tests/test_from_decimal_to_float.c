@@ -1329,8 +1329,8 @@ START_TEST(s21_from_decimal_to_float_7) {
 END_TEST
 
 Suite *suite_from_decimal_to_float(void) {
-  Suite* s = suite_create("\033[42m-=S21_DECIMAL_FROM_FLOAT=-\033[0m");
-  TCase* tc1_1 = tcase_create("case_fromfloat");
+  Suite *s = suite_create("\033[42m-=S21_DECIMAL_FROM_FLOAT=-\033[0m");
+  TCase *tc1_1 = tcase_create("case_fromfloat");
 
   tcase_add_test(tc1_1, s21_fromfloat_test_1);
   tcase_add_test(tc1_1, s21_fromfloat_test_2);
@@ -1432,8 +1432,6 @@ Suite *suite_from_decimal_to_float(void) {
   // tcase_add_test(tc1_1, s21_fromfloat_test_98);
   // tcase_add_test(tc1_1, s21_fromfloat_test_99);
   tcase_add_test(tc1_1, s21_fromfloat_test_100);
-
-  
 
   tcase_add_test(tc1_1, from_decimal_to_float_0);
   tcase_add_test(tc1_1, from_decimal_to_float_1);

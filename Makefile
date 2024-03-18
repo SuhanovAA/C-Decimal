@@ -49,6 +49,6 @@ cpp:
 	cppcheck --enable=all --suppress=missingIncludeSystem *.c *.h
 
 clang:
-	clang-format -style=Google -i *.c *.h
+	clang-format -style=Google -i *.c *.h */*.c */*.h
 
 check: cpp clang

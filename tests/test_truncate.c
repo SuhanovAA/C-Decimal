@@ -1809,8 +1809,8 @@ START_TEST(s21_truncateTest11) {
 }
 END_TEST
 
-Suite *suite_truncate(void) {
-    Suite* s = suite_create("\033[42m-=S21_DECIMAL_TRUNCATE=-\033[0m");
+Suite* suite_truncate(void) {
+  Suite* s = suite_create("\033[42m-=S21_DECIMAL_TRUNCATE=-\033[0m");
   TCase* tc1_1 = tcase_create("case_truncate");
   tcase_add_test(tc1_1, s21_truncate_test_1);
   tcase_add_test(tc1_1, s21_truncate_test_2);

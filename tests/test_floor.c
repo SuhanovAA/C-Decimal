@@ -1321,8 +1321,8 @@ START_TEST(floor_7) {
 }
 END_TEST
 
-Suite *suite_floor(void) {
-Suite* s = suite_create("\033[42m-=S21_DECIMAL_FLOOR=-\033[0m");
+Suite* suite_floor(void) {
+  Suite* s = suite_create("\033[42m-=S21_DECIMAL_FLOOR=-\033[0m");
   TCase* tc1_1 = tcase_create("case_floor");
   tcase_add_test(tc1_1, s21_floor_test_1);
   tcase_add_test(tc1_1, s21_floor_test_2);
@@ -1426,8 +1426,6 @@ Suite* s = suite_create("\033[42m-=S21_DECIMAL_FLOOR=-\033[0m");
   tcase_add_test(tc1_1, s21_floor_test_100);
   tcase_add_test(tc1_1, s21_floor_test_101);
   tcase_add_test(tc1_1, s21_floor_test_102);
-
-  
 
   tcase_add_test(tc1_1, floor_0);
   tcase_add_test(tc1_1, floor_1);

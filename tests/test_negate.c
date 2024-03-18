@@ -1312,7 +1312,7 @@ START_TEST(negate_7) {
 }
 END_TEST
 
-Suite *suite_negate(void) {
+Suite* suite_negate(void) {
   Suite* s = suite_create("\033[42m-=S21_DECIMAL_NEGATE=-\033[0m");
   TCase* tc1_1 = tcase_create("case_negate");
   tcase_add_test(tc1_1, s21_negate_test_1);
@@ -1418,8 +1418,6 @@ Suite *suite_negate(void) {
   tcase_add_test(tc1_1, s21_negate_test_101);
   tcase_add_test(tc1_1, s21_negate_test_102);
 
-
-
   tcase_add_test(tc1_1, negate_0);
   tcase_add_test(tc1_1, negate_1);
   tcase_add_test(tc1_1, negate_2);
@@ -1427,7 +1425,6 @@ Suite *suite_negate(void) {
   tcase_add_test(tc1_1, negate_5);
   tcase_add_test(tc1_1, negate_6);
   tcase_add_test(tc1_1, negate_7);
-
 
   suite_add_tcase(s, tc1_1);
   return s;
