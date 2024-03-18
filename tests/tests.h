@@ -15,6 +15,7 @@
 // Suite* suite_mul(void);
 // Suite* suite_div(void);
 
+Suite* test_comp(void);
 Suite* suite_is_less(void);
 Suite* suite_is_less_or_equal(void);
 Suite* suite_is_greater(void);

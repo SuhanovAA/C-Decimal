@@ -11,6 +11,7 @@ void run_testcase(Suite* testcase) {
 }
 
 int main(void) {
+  run_testcase(test_comp());
   run_testcase(suite_is_greater());
   run_testcase(suite_is_greater_or_equal());
   run_testcase(suite_is_less());
