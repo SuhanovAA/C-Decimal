@@ -1,30 +1,30 @@
 #include "tests.h"
 
-// START_TEST(s21_comp_test_1) {
-//   // one = -7220469273786297,3791590055060
-//   // two = -18722255582057499,779825980344
-//   s21_decimal one = {{-1785299820, -2139030873, -380743060, -2146631680}};
-//   s21_decimal two = {{1877529528, -881412418, 1014935508, -2146697216}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 0;
-//   int is_less_or_equal_standart = 0;
-//   int is_greater_standart = 1;
-//   int is_greater_or_equal_standart = 1;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_1) {
+  // one = -7220469273786297,3791590055060
+  // two = -18722255582057499,779825980344
+  s21_decimal one = {{-1785299820, -2139030873, -380743060, -2146631680}};
+  s21_decimal two = {{1877529528, -881412418, 1014935508, -2146697216}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 0;
+  int is_less_or_equal_standart = 0;
+  int is_greater_standart = 1;
+  int is_greater_or_equal_standart = 1;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
 START_TEST(s21_comp_test_2) {
   // one = 5936531584124773260299310169,6
@@ -156,31 +156,31 @@ START_TEST(s21_comp_test_6) {
 }
 END_TEST
 
-// START_TEST(s21_comp_test_7) {
-//   // one = 272709,09746316866389808602720
-//   // two = 5233,9201640402197967676097872
-//   s21_decimal one = {{190144096, -1586375561, 1478358979, 1507328}};
-//   s21_decimal two = {{1230488912, 1005224309, -1457653490, 1638400}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 0;
-//   int is_less_or_equal_standart = 0;
-//   int is_greater_standart = 1;
-//   int is_greater_or_equal_standart = 1;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_7) {
+  // one = 272709,09746316866389808602720
+  // two = 5233,9201640402197967676097872
+  s21_decimal one = {{190144096, -1586375561, 1478358979, 1507328}};
+  s21_decimal two = {{1230488912, 1005224309, -1457653490, 1638400}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 0;
+  int is_less_or_equal_standart = 0;
+  int is_greater_standart = 1;
+  int is_greater_or_equal_standart = 1;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
 START_TEST(s21_comp_test_8) {
   // one = 48616354061328189719,146662725
@@ -208,31 +208,31 @@ START_TEST(s21_comp_test_8) {
 }
 END_TEST
 
-// START_TEST(s21_comp_test_9) {
-//   // one = 7415517201383187031362,736973
-//   // two = 723646888713088,40043447052160
-//   s21_decimal one = {{-2071096499, -33655522, 401995992, 393216}};
-//   s21_decimal two = {{424667008, 1183403113, -372069652, 917504}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 0;
-//   int is_less_or_equal_standart = 0;
-//   int is_greater_standart = 1;
-//   int is_greater_or_equal_standart = 1;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_9) {
+  // one = 7415517201383187031362,736973
+  // two = 723646888713088,40043447052160
+  s21_decimal one = {{-2071096499, -33655522, 401995992, 393216}};
+  s21_decimal two = {{424667008, 1183403113, -372069652, 917504}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 0;
+  int is_less_or_equal_standart = 0;
+  int is_greater_standart = 1;
+  int is_greater_or_equal_standart = 1;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
 START_TEST(s21_comp_test_10) {
   // one = -363165,6922870008892297580392
@@ -312,57 +312,57 @@ START_TEST(s21_comp_test_12) {
 }
 END_TEST
 
-// START_TEST(s21_comp_test_13) {
-//   // one = 5785386564696793870177950267,6
-//   // two = 54311779820408873584261046,182
-//   s21_decimal one = {{-1310489004, 242049893, -1158702955, 65536}};
-//   s21_decimal two = {{-266625114, -1537237389, -1350719813, 196608}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 0;
-//   int is_less_or_equal_standart = 0;
-//   int is_greater_standart = 1;
-//   int is_greater_or_equal_standart = 1;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_13) {
+  // one = 5785386564696793870177950267,6
+  // two = 54311779820408873584261046,182
+  s21_decimal one = {{-1310489004, 242049893, -1158702955, 65536}};
+  s21_decimal two = {{-266625114, -1537237389, -1350719813, 196608}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 0;
+  int is_less_or_equal_standart = 0;
+  int is_greater_standart = 1;
+  int is_greater_or_equal_standart = 1;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
-// START_TEST(s21_comp_test_14) {
-//   // one = 2728693,8867470153496868152452
-//   // two = 674656,53588518863524936506542
-//   s21_decimal one = {{1051190404, 126763893, 1479227920, 1441792}};
-//   s21_decimal two = {{-74490706, 1895502223, -637646887, 1507328}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 0;
-//   int is_less_or_equal_standart = 0;
-//   int is_greater_standart = 1;
-//   int is_greater_or_equal_standart = 1;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_14) {
+  // one = 2728693,8867470153496868152452
+  // two = 674656,53588518863524936506542
+  s21_decimal one = {{1051190404, 126763893, 1479227920, 1441792}};
+  s21_decimal two = {{-74490706, 1895502223, -637646887, 1507328}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 0;
+  int is_less_or_equal_standart = 0;
+  int is_greater_standart = 1;
+  int is_greater_or_equal_standart = 1;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
 START_TEST(s21_comp_test_15) {
   // one = -11879473777043075456271,545679
@@ -390,31 +390,31 @@ START_TEST(s21_comp_test_15) {
 }
 END_TEST
 
-// START_TEST(s21_comp_test_16) {
-//   // one = 59688244838941410608,596164221
-//   // two = 650516616531667,27704161941651
-//   s21_decimal one = {{989896317, 1337232718, -1059261060, 589824}};
-//   s21_decimal two = {{1962801299, 1751347438, -768509652, 917504}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 0;
-//   int is_less_or_equal_standart = 0;
-//   int is_greater_standart = 1;
-//   int is_greater_or_equal_standart = 1;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_16) {
+  // one = 59688244838941410608,596164221
+  // two = 650516616531667,27704161941651
+  s21_decimal one = {{989896317, 1337232718, -1059261060, 589824}};
+  s21_decimal two = {{1962801299, 1751347438, -768509652, 917504}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 0;
+  int is_less_or_equal_standart = 0;
+  int is_greater_standart = 1;
+  int is_greater_or_equal_standart = 1;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
 START_TEST(s21_comp_test_17) {
   // one = -751026643472094482852554880,12
@@ -442,31 +442,31 @@ START_TEST(s21_comp_test_17) {
 }
 END_TEST
 
-// START_TEST(s21_comp_test_18) {
-//   // one = 71957020569481352,752066651392
-//   // two = 75079126,648086635824967299127
-//   s21_decimal one = {{-1118116608, 1506634178, -394169395, 786432}};
-//   s21_decimal two = {{-757092297, 36476962, -224919685, 1376256}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 0;
-//   int is_less_or_equal_standart = 0;
-//   int is_greater_standart = 1;
-//   int is_greater_or_equal_standart = 1;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_18) {
+  // one = 71957020569481352,752066651392
+  // two = 75079126,648086635824967299127
+  s21_decimal one = {{-1118116608, 1506634178, -394169395, 786432}};
+  s21_decimal two = {{-757092297, 36476962, -224919685, 1376256}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 0;
+  int is_less_or_equal_standart = 0;
+  int is_greater_standart = 1;
+  int is_greater_or_equal_standart = 1;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
 START_TEST(s21_comp_test_19) {
   // one = -53543856381451660687421965,144
@@ -572,31 +572,31 @@ START_TEST(s21_comp_test_22) {
 }
 END_TEST
 
-// START_TEST(s21_comp_test_23) {
-//   // one = 4740438,6321381243541557003019
-//   // two = 50360557389500815162213329966
-//   s21_decimal one = {{1762575115, -1077247798, -1725170365, 1441792}};
-//   s21_decimal two = {{116321326, 1992372559, -1564916010, 0}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 1;
-//   int is_less_or_equal_standart = 1;
-//   int is_greater_standart = 0;
-//   int is_greater_or_equal_standart = 0;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_23) {
+  // one = 4740438,6321381243541557003019
+  // two = 50360557389500815162213329966
+  s21_decimal one = {{1762575115, -1077247798, -1725170365, 1441792}};
+  s21_decimal two = {{116321326, 1992372559, -1564916010, 0}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 1;
+  int is_less_or_equal_standart = 1;
+  int is_greater_standart = 0;
+  int is_greater_or_equal_standart = 0;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
 START_TEST(s21_comp_test_24) {
   // one = 6321144516910,8846697106246932
@@ -702,31 +702,31 @@ START_TEST(s21_comp_test_27) {
 }
 END_TEST
 
-// START_TEST(s21_comp_test_28) {
-//   // one = -3650743,9575468161047427413383
-//   // two = -24949838307576707428275160,719
-//   s21_decimal one = {{982644103, -84640510, 1979072264, -2146041856}};
-//   s21_decimal two = {{-883456369, -808156643, 1352533444, -2147287040}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 0;
-//   int is_less_or_equal_standart = 0;
-//   int is_greater_standart = 1;
-//   int is_greater_or_equal_standart = 1;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_28) {
+  // one = -3650743,9575468161047427413383
+  // two = -24949838307576707428275160,719
+  s21_decimal one = {{982644103, -84640510, 1979072264, -2146041856}};
+  s21_decimal two = {{-883456369, -808156643, 1352533444, -2147287040}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 0;
+  int is_less_or_equal_standart = 0;
+  int is_greater_standart = 1;
+  int is_greater_or_equal_standart = 1;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
 START_TEST(s21_comp_test_29) {
   // one = -5556145540,6859872124252632747
@@ -754,31 +754,31 @@ START_TEST(s21_comp_test_29) {
 }
 END_TEST
 
-// START_TEST(s21_comp_test_30) {
-//   // one = 5636942132695572835789,4865104
-//   // two = 557622681247,55132906751982308
-//   s21_decimal one = {{-779140912, 952650982, -1239174843, 458752}};
-//   s21_decimal two = {{-283575580, 768522225, -1272088684, 1114112}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 0;
-//   int is_less_or_equal_standart = 0;
-//   int is_greater_standart = 1;
-//   int is_greater_or_equal_standart = 1;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_30) {
+  // one = 5636942132695572835789,4865104
+  // two = 557622681247,55132906751982308
+  s21_decimal one = {{-779140912, 952650982, -1239174843, 458752}};
+  s21_decimal two = {{-283575580, 768522225, -1272088684, 1114112}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 0;
+  int is_less_or_equal_standart = 0;
+  int is_greater_standart = 1;
+  int is_greater_or_equal_standart = 1;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
 START_TEST(s21_comp_test_31) {
   // one = 448,18140910103497204836446672
@@ -858,31 +858,31 @@ START_TEST(s21_comp_test_33) {
 }
 END_TEST
 
-// START_TEST(s21_comp_test_34) {
-//   // one = -406049526170595914956,71636374
-//   // two = -6349,6515262685278787675082085
-//   s21_decimal one = {{-1171758698, 233426724, -2093768404, -2146959360}};
-//   s21_decimal two = {{1806945637, -1489844802, -852814307, -2145845248}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 1;
-//   int is_less_or_equal_standart = 1;
-//   int is_greater_standart = 0;
-//   int is_greater_or_equal_standart = 0;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_34) {
+  // one = -406049526170595914956,71636374
+  // two = -6349,6515262685278787675082085
+  s21_decimal one = {{-1171758698, 233426724, -2093768404, -2146959360}};
+  s21_decimal two = {{1806945637, -1489844802, -852814307, -2145845248}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 1;
+  int is_less_or_equal_standart = 1;
+  int is_greater_standart = 0;
+  int is_greater_or_equal_standart = 0;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
 START_TEST(s21_comp_test_35) {
   // one = -7167782940860065271937956945,6
@@ -936,57 +936,57 @@ START_TEST(s21_comp_test_36) {
 }
 END_TEST
 
-// START_TEST(s21_comp_test_37) {
-//   // one = -408198535124889367497642,14807
-//   // two = -57928325685788032314091,136014
-//   s21_decimal one = {{225738775, -261873986, -2082118604, -2147155968}};
-//   s21_decimal two = {{-1197317106, -648704744, -1154666469, -2147090432}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 1;
-//   int is_less_or_equal_standart = 1;
-//   int is_greater_standart = 0;
-//   int is_greater_or_equal_standart = 0;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_37) {
+  // one = -408198535124889367497642,14807
+  // two = -57928325685788032314091,136014
+  s21_decimal one = {{225738775, -261873986, -2082118604, -2147155968}};
+  s21_decimal two = {{-1197317106, -648704744, -1154666469, -2147090432}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 1;
+  int is_less_or_equal_standart = 1;
+  int is_greater_standart = 0;
+  int is_greater_or_equal_standart = 0;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
-// START_TEST(s21_comp_test_38) {
-//   // one = 4431593634,9590671911175069535
-//   // two = 79022416,872260863961654472223
-//   s21_decimal one = {{1807228767, 1278942775, -1892595573, 1245184}};
-//   s21_decimal two = {{2008919583, 1709484823, -11153494, 1376256}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 0;
-//   int is_less_or_equal_standart = 0;
-//   int is_greater_standart = 1;
-//   int is_greater_or_equal_standart = 1;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_38) {
+  // one = 4431593634,9590671911175069535
+  // two = 79022416,872260863961654472223
+  s21_decimal one = {{1807228767, 1278942775, -1892595573, 1245184}};
+  s21_decimal two = {{2008919583, 1709484823, -11153494, 1376256}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 0;
+  int is_less_or_equal_standart = 0;
+  int is_greater_standart = 1;
+  int is_greater_or_equal_standart = 1;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
 START_TEST(s21_comp_test_39) {
   // one = 44947774,541969694341595854036
@@ -1040,31 +1040,31 @@ START_TEST(s21_comp_test_40) {
 }
 END_TEST
 
-// START_TEST(s21_comp_test_41) {
-//   // one = 55316398939790294735290734,17
-//   // two = 6645111524278372,5036898998769
-//   s21_decimal one = {{-1903522039, -2048796215, 299870799, 131072}};
-//   s21_decimal two = {{2069486065, -2080754222, -692645121, 851968}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 0;
-//   int is_less_or_equal_standart = 0;
-//   int is_greater_standart = 1;
-//   int is_greater_or_equal_standart = 1;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_41) {
+  // one = 55316398939790294735290734,17
+  // two = 6645111524278372,5036898998769
+  s21_decimal one = {{-1903522039, -2048796215, 299870799, 131072}};
+  s21_decimal two = {{2069486065, -2080754222, -692645121, 851968}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 0;
+  int is_less_or_equal_standart = 0;
+  int is_greater_standart = 1;
+  int is_greater_or_equal_standart = 1;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
 START_TEST(s21_comp_test_42) {
   // one = -1746525997,1519787319435008463
@@ -1170,31 +1170,31 @@ START_TEST(s21_comp_test_45) {
 }
 END_TEST
 
-// START_TEST(s21_comp_test_46) {
-//   // one = -4920,2999975735936566441931356
-//   // two = -419189984108675854,90000444591
-//   s21_decimal one = {{775549532, 1395246836, -1627667323, -2145845248}};
-//   s21_decimal two = {{-2018870097, 1176615780, -2022533839, -2146762752}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 0;
-//   int is_less_or_equal_standart = 0;
-//   int is_greater_standart = 1;
-//   int is_greater_or_equal_standart = 1;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_46) {
+  // one = -4920,2999975735936566441931356
+  // two = -419189984108675854,90000444591
+  s21_decimal one = {{775549532, 1395246836, -1627667323, -2145845248}};
+  s21_decimal two = {{-2018870097, 1176615780, -2022533839, -2146762752}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 0;
+  int is_less_or_equal_standart = 0;
+  int is_greater_standart = 1;
+  int is_greater_or_equal_standart = 1;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
 START_TEST(s21_comp_test_47) {
   // one = -3928156061103953,5308983100276
@@ -1456,31 +1456,31 @@ START_TEST(s21_comp_test_56) {
 }
 END_TEST
 
-// START_TEST(s21_comp_test_57) {
-//   // one = 318367,86617161339112741637767
-//   // two = 75,856076218811290722211797275
-//   s21_decimal one = {{1251708551, -1012805385, 1725875660, 1507328}};
-//   s21_decimal two = {{-39249637, -1575993151, -182801165, 1769472}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 0;
-//   int is_less_or_equal_standart = 0;
-//   int is_greater_standart = 1;
-//   int is_greater_or_equal_standart = 1;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_57) {
+  // one = 318367,86617161339112741637767
+  // two = 75,856076218811290722211797275
+  s21_decimal one = {{1251708551, -1012805385, 1725875660, 1507328}};
+  s21_decimal two = {{-39249637, -1575993151, -182801165, 1769472}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 0;
+  int is_less_or_equal_standart = 0;
+  int is_greater_standart = 1;
+  int is_greater_or_equal_standart = 1;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
 START_TEST(s21_comp_test_58) {
   // one = -16616,555570967473963935111160
@@ -1560,31 +1560,31 @@ START_TEST(s21_comp_test_60) {
 }
 END_TEST
 
-// START_TEST(s21_comp_test_61) {
-//   // one = 18,258922572728156878479666031
-//   // two = 549285368032319,22922781991561
-//   s21_decimal one = {{339323759, 128093861, 989818176, 1769472}};
-//   s21_decimal two = {{559735433, -1392850244, -1317285350, 917504}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 1;
-//   int is_less_or_equal_standart = 1;
-//   int is_greater_standart = 0;
-//   int is_greater_or_equal_standart = 0;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_61) {
+  // one = 18,258922572728156878479666031
+  // two = 549285368032319,22922781991561
+  s21_decimal one = {{339323759, 128093861, 989818176, 1769472}};
+  s21_decimal two = {{559735433, -1392850244, -1317285350, 917504}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 1;
+  int is_less_or_equal_standart = 1;
+  int is_greater_standart = 0;
+  int is_greater_or_equal_standart = 0;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
 START_TEST(s21_comp_test_62) {
   // one = -78327,987678640736153435455760
@@ -1638,31 +1638,31 @@ START_TEST(s21_comp_test_63) {
 }
 END_TEST
 
-// START_TEST(s21_comp_test_64) {
-//   // one = -1102215754839645515,9495729852
-//   // two = -74813118151298853328127793,345
-//   s21_decimal one = {{-1622334788, -118339629, 597512357, -2146828288}};
-//   s21_decimal two = {{1975261377, -2136114444, -239340035, -2147287040}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 0;
-//   int is_less_or_equal_standart = 0;
-//   int is_greater_standart = 1;
-//   int is_greater_or_equal_standart = 1;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_64) {
+  // one = -1102215754839645515,9495729852
+  // two = -74813118151298853328127793,345
+  s21_decimal one = {{-1622334788, -118339629, 597512357, -2146828288}};
+  s21_decimal two = {{1975261377, -2136114444, -239340035, -2147287040}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 0;
+  int is_less_or_equal_standart = 0;
+  int is_greater_standart = 1;
+  int is_greater_or_equal_standart = 1;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
 START_TEST(s21_comp_test_65) {
   // one = 331546,01860890692541250012683
@@ -1716,31 +1716,31 @@ START_TEST(s21_comp_test_66) {
 }
 END_TEST
 
-// START_TEST(s21_comp_test_67) {
-//   // one = 6701486474048822,3179864511419
-//   // two = 2926277808568873434725,1647546
-//   s21_decimal one = {{-167799877, 98690163, -662084199, 851968}};
-//   s21_decimal two = {{-1795193798, -1403394221, 1586338378, 458752}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 1;
-//   int is_less_or_equal_standart = 1;
-//   int is_greater_standart = 0;
-//   int is_greater_or_equal_standart = 0;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_67) {
+  // one = 6701486474048822,3179864511419
+  // two = 2926277808568873434725,1647546
+  s21_decimal one = {{-167799877, 98690163, -662084199, 851968}};
+  s21_decimal two = {{-1795193798, -1403394221, 1586338378, 458752}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 1;
+  int is_less_or_equal_standart = 1;
+  int is_greater_standart = 0;
+  int is_greater_or_equal_standart = 0;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
 START_TEST(s21_comp_test_68) {
   // one = -4753383404535913709199912635,0
@@ -2028,31 +2028,31 @@ START_TEST(s21_comp_test_78) {
 }
 END_TEST
 
-// START_TEST(s21_comp_test_79) {
-//   // one = -7893,9128506818055133148370303
-//   // two = -63148882703931386,492469735087
-//   s21_decimal one = {{-1733929601, 258674947, -15668565, -2145845248}};
-//   s21_decimal two = {{1662873263, -507943292, -871659506, -2146697216}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 0;
-//   int is_less_or_equal_standart = 0;
-//   int is_greater_standart = 1;
-//   int is_greater_or_equal_standart = 1;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_79) {
+  // one = -7893,9128506818055133148370303
+  // two = -63148882703931386,492469735087
+  s21_decimal one = {{-1733929601, 258674947, -15668565, -2145845248}};
+  s21_decimal two = {{1662873263, -507943292, -871659506, -2146697216}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 0;
+  int is_less_or_equal_standart = 0;
+  int is_greater_standart = 1;
+  int is_greater_or_equal_standart = 1;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
 START_TEST(s21_comp_test_80) {
   // one = 42166249259165608044757453,9
@@ -2080,31 +2080,31 @@ START_TEST(s21_comp_test_80) {
 }
 END_TEST
 
-// START_TEST(s21_comp_test_81) {
-//   // one = 6013,0553314287244454899067261
-//   // two = 636507423079038918607718268,60
-//   s21_decimal one = {{-1405245059, -836298998, -1035283470, 1638400}};
-//   s21_decimal two = {{-1621627732, -2030572504, -844453642, 131072}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 1;
-//   int is_less_or_equal_standart = 1;
-//   int is_greater_standart = 0;
-//   int is_greater_or_equal_standart = 0;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_81) {
+  // one = 6013,0553314287244454899067261
+  // two = 636507423079038918607718268,60
+  s21_decimal one = {{-1405245059, -836298998, -1035283470, 1638400}};
+  s21_decimal two = {{-1621627732, -2030572504, -844453642, 131072}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 1;
+  int is_less_or_equal_standart = 1;
+  int is_greater_standart = 0;
+  int is_greater_or_equal_standart = 0;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
 START_TEST(s21_comp_test_82) {
   // one = -6464603634094795,3760464545925
@@ -2366,31 +2366,31 @@ START_TEST(s21_comp_test_91) {
 }
 END_TEST
 
-// START_TEST(s21_comp_test_92) {
-//   // one = -5344,5219559822176598652266724
-//   // two = -4364011047,9033924859366679754
-//   s21_decimal one = {{-2071287580, -918268545, -1397696139, -2145845248}};
-//   s21_decimal two = {{746005706, 1906108404, -1929232167, -2146238464}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 0;
-//   int is_less_or_equal_standart = 0;
-//   int is_greater_standart = 1;
-//   int is_greater_or_equal_standart = 1;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_92) {
+  // one = -5344,5219559822176598652266724
+  // two = -4364011047,9033924859366679754
+  s21_decimal one = {{-2071287580, -918268545, -1397696139, -2145845248}};
+  s21_decimal two = {{746005706, 1906108404, -1929232167, -2146238464}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 0;
+  int is_less_or_equal_standart = 0;
+  int is_greater_standart = 1;
+  int is_greater_or_equal_standart = 1;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
 START_TEST(s21_comp_test_93) {
   // one = 331207792675081019,76565566163
@@ -2444,31 +2444,31 @@ START_TEST(s21_comp_test_94) {
 }
 END_TEST
 
-// START_TEST(s21_comp_test_95) {
-//   // one = 7876422,9180748044381329644134
-//   // two = 1265043377884759856704023,2995
-//   s21_decimal one = {{-858695066, -1736628621, -25149877, 1441792}};
-//   s21_decimal two = {{-652726749, 1269286469, 685781389, 262144}};
-//   int is_less = s21_is_less(one, two);
-//   int is_less_or_equal = s21_is_less_or_equal(one, two);
-//   int is_greater = s21_is_greater(one, two);
-//   int is_greater_or_equal = s21_is_greater_or_equal(one, two);
-//   int is_equal = s21_is_equal(one, two);
-//   int is_not_equal = s21_is_not_equal(one, two);
-//   int is_less_standart = 1;
-//   int is_less_or_equal_standart = 1;
-//   int is_greater_standart = 0;
-//   int is_greater_or_equal_standart = 0;
-//   int is_equal_standart = 0;
-//   int is_not_equal_standart = 1;
-//   ck_assert_int_eq(is_less, is_less_standart);
-//   ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
-//   ck_assert_int_eq(is_greater, is_greater_standart);
-//   ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
-//   ck_assert_int_eq(is_equal, is_equal_standart);
-//   ck_assert_int_eq(is_not_equal, is_not_equal_standart);
-// }
-// END_TEST
+START_TEST(s21_comp_test_95) {
+  // one = 7876422,9180748044381329644134
+  // two = 1265043377884759856704023,2995
+  s21_decimal one = {{-858695066, -1736628621, -25149877, 1441792}};
+  s21_decimal two = {{-652726749, 1269286469, 685781389, 262144}};
+  int is_less = s21_is_less(one, two);
+  int is_less_or_equal = s21_is_less_or_equal(one, two);
+  int is_greater = s21_is_greater(one, two);
+  int is_greater_or_equal = s21_is_greater_or_equal(one, two);
+  int is_equal = s21_is_equal(one, two);
+  int is_not_equal = s21_is_not_equal(one, two);
+  int is_less_standart = 1;
+  int is_less_or_equal_standart = 1;
+  int is_greater_standart = 0;
+  int is_greater_or_equal_standart = 0;
+  int is_equal_standart = 0;
+  int is_not_equal_standart = 1;
+  ck_assert_int_eq(is_less, is_less_standart);
+  ck_assert_int_eq(is_less_or_equal, is_less_or_equal_standart);
+  ck_assert_int_eq(is_greater, is_greater_standart);
+  ck_assert_int_eq(is_greater_or_equal, is_greater_or_equal_standart);
+  ck_assert_int_eq(is_equal, is_equal_standart);
+  ck_assert_int_eq(is_not_equal, is_not_equal_standart);
+}
+END_TEST
 
 START_TEST(s21_comp_test_96) {
   // one = -191520201859,36315812579241039
@@ -2707,52 +2707,52 @@ END_TEST
 Suite* test_comp(void) {
   Suite* s = suite_create("\033[42m-=S21_DECIMAL_COMPARE=-\033[0m");
   TCase* tc = tcase_create("case_comp");
-  // tcase_add_test(tc, s21_comp_test_1);
+  tcase_add_test(tc, s21_comp_test_1);
   tcase_add_test(tc, s21_comp_test_2);
   tcase_add_test(tc, s21_comp_test_3);
   tcase_add_test(tc, s21_comp_test_4);
   tcase_add_test(tc, s21_comp_test_5);
   tcase_add_test(tc, s21_comp_test_6);
-  // tcase_add_test(tc, s21_comp_test_7);
+  tcase_add_test(tc, s21_comp_test_7);
   tcase_add_test(tc, s21_comp_test_8);
-  // tcase_add_test(tc, s21_comp_test_9);
+  tcase_add_test(tc, s21_comp_test_9);
   tcase_add_test(tc, s21_comp_test_10);
   tcase_add_test(tc, s21_comp_test_11);
   tcase_add_test(tc, s21_comp_test_12);
-  // tcase_add_test(tc, s21_comp_test_13);
-  // tcase_add_test(tc, s21_comp_test_14);
+  tcase_add_test(tc, s21_comp_test_13);
+  tcase_add_test(tc, s21_comp_test_14);
   tcase_add_test(tc, s21_comp_test_15);
-  // tcase_add_test(tc, s21_comp_test_16);
+  tcase_add_test(tc, s21_comp_test_16);
   tcase_add_test(tc, s21_comp_test_17);
-  // tcase_add_test(tc, s21_comp_test_18);
+  tcase_add_test(tc, s21_comp_test_18);
   tcase_add_test(tc, s21_comp_test_19);
   tcase_add_test(tc, s21_comp_test_20);
   tcase_add_test(tc, s21_comp_test_21);
   tcase_add_test(tc, s21_comp_test_22);
-  // tcase_add_test(tc, s21_comp_test_23);
+  tcase_add_test(tc, s21_comp_test_23);
   tcase_add_test(tc, s21_comp_test_24);
   tcase_add_test(tc, s21_comp_test_25);
   tcase_add_test(tc, s21_comp_test_26);
   tcase_add_test(tc, s21_comp_test_27);
-  // tcase_add_test(tc, s21_comp_test_28);
+  tcase_add_test(tc, s21_comp_test_28);
   tcase_add_test(tc, s21_comp_test_29);
-  // tcase_add_test(tc, s21_comp_test_30);
+  tcase_add_test(tc, s21_comp_test_30);
   tcase_add_test(tc, s21_comp_test_31);
   tcase_add_test(tc, s21_comp_test_32);
   tcase_add_test(tc, s21_comp_test_33);
-  // tcase_add_test(tc, s21_comp_test_34);
+  tcase_add_test(tc, s21_comp_test_34);
   tcase_add_test(tc, s21_comp_test_35);
   tcase_add_test(tc, s21_comp_test_36);
-  // tcase_add_test(tc, s21_comp_test_37);
-  // tcase_add_test(tc, s21_comp_test_38);
+  tcase_add_test(tc, s21_comp_test_37);
+  tcase_add_test(tc, s21_comp_test_38);
   tcase_add_test(tc, s21_comp_test_39);
   tcase_add_test(tc, s21_comp_test_40);
-  // tcase_add_test(tc, s21_comp_test_41);
+  tcase_add_test(tc, s21_comp_test_41);
   tcase_add_test(tc, s21_comp_test_42);
   tcase_add_test(tc, s21_comp_test_43);
   tcase_add_test(tc, s21_comp_test_44);
   tcase_add_test(tc, s21_comp_test_45);
-  // tcase_add_test(tc, s21_comp_test_46);
+  tcase_add_test(tc, s21_comp_test_46);
   tcase_add_test(tc, s21_comp_test_47);
   tcase_add_test(tc, s21_comp_test_48);
   tcase_add_test(tc, s21_comp_test_49);
@@ -2763,17 +2763,17 @@ Suite* test_comp(void) {
   tcase_add_test(tc, s21_comp_test_54);
   tcase_add_test(tc, s21_comp_test_55);
   tcase_add_test(tc, s21_comp_test_56);
-  // tcase_add_test(tc, s21_comp_test_57);
+  tcase_add_test(tc, s21_comp_test_57);
   tcase_add_test(tc, s21_comp_test_58);
   tcase_add_test(tc, s21_comp_test_59);
   tcase_add_test(tc, s21_comp_test_60);
-  // tcase_add_test(tc, s21_comp_test_61);
+  tcase_add_test(tc, s21_comp_test_61);
   tcase_add_test(tc, s21_comp_test_62);
   tcase_add_test(tc, s21_comp_test_63);
-  // tcase_add_test(tc, s21_comp_test_64);
+  tcase_add_test(tc, s21_comp_test_64);
   tcase_add_test(tc, s21_comp_test_65);
   tcase_add_test(tc, s21_comp_test_66);
-  // tcase_add_test(tc, s21_comp_test_67);
+  tcase_add_test(tc, s21_comp_test_67);
   tcase_add_test(tc, s21_comp_test_68);
   tcase_add_test(tc, s21_comp_test_69);
   tcase_add_test(tc, s21_comp_test_70);
@@ -2785,9 +2785,9 @@ Suite* test_comp(void) {
   tcase_add_test(tc, s21_comp_test_76);
   tcase_add_test(tc, s21_comp_test_77);
   tcase_add_test(tc, s21_comp_test_78);
-  // tcase_add_test(tc, s21_comp_test_79);
+  tcase_add_test(tc, s21_comp_test_79);
   tcase_add_test(tc, s21_comp_test_80);
-  // tcase_add_test(tc, s21_comp_test_81);
+  tcase_add_test(tc, s21_comp_test_81);
   tcase_add_test(tc, s21_comp_test_82);
   tcase_add_test(tc, s21_comp_test_83);
   tcase_add_test(tc, s21_comp_test_84);
@@ -2798,10 +2798,10 @@ Suite* test_comp(void) {
   tcase_add_test(tc, s21_comp_test_89);
   tcase_add_test(tc, s21_comp_test_90);
   tcase_add_test(tc, s21_comp_test_91);
-  // tcase_add_test(tc, s21_comp_test_92);
+  tcase_add_test(tc, s21_comp_test_92);
   tcase_add_test(tc, s21_comp_test_93);
   tcase_add_test(tc, s21_comp_test_94);
-  // tcase_add_test(tc, s21_comp_test_95);
+  tcase_add_test(tc, s21_comp_test_95);
   tcase_add_test(tc, s21_comp_test_96);
   tcase_add_test(tc, s21_comp_test_97);
   tcase_add_test(tc, s21_comp_test_98);
