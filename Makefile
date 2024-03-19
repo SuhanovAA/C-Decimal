@@ -52,3 +52,15 @@ clang:
 	clang-format -style=Google -i *.c *.h */*.c */*.h
 
 check: cpp clang
+
+#install for OS
+install_Linux:
+	sudo apt update
+	sudo apt install cppcheck
+	sudo apt install clang-format
+	sudo apt install check
+	sudo apt install lcov
+	sudo apt install gcovr
+	sudo apt install libcppunit-subunit-dev
+	sudo apt install pkg-config
+	
