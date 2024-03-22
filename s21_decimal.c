@@ -1,9 +1,9 @@
 #include "s21_decimal.h"
 
-// int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
-// int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
-// int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
-// int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
+int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
+int s21_sub(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
+int s21_mul(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
+int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
 
 int s21_is_greater(s21_decimal value_1, s21_decimal value_2) {
   return compare(value_1, value_2) == 1 ? 1 : 0;
@@ -31,7 +31,7 @@ int s21_is_not_equal(s21_decimal value_1, s21_decimal value_2) {
 
 int s21_from_float_to_decimal(float src, s21_decimal *dst) {
   int error = 0;
-  decimal_nullify(dst);
+  decimal_null(dst);
   if ((fabs(src) < powl(10.0, -28.0)) || (fabs(src) >= powl(2.0, 96.0)))
     error = 1;
   else {
@@ -95,7 +95,7 @@ int s21_from_decimal_to_float(s21_decimal src, float *dst) {
 }
 
 int s21_from_int_to_decimal(int src, s21_decimal *dst) {
-  decimal_nullify(dst);
+  decimal_null(dst);
   dst->bits[0] = abs(src);
   if (src < 0) decimal_invert_sign(dst);
   return 0;
@@ -136,7 +136,7 @@ int s21_floor(s21_decimal value, s21_decimal *result) {
       } else {
         s21_decimal valueBuffer;
         s21_decimal one = {{1, 0, 0, 0}};
-        decimal_nullify(&valueBuffer);
+        decimal_null(&valueBuffer);
         error = s21_truncate(value, result);
         result->bits[3] = 0;
         decimal_binary_add(*result, one, &valueBuffer);
@@ -152,6 +152,7 @@ int s21_floor(s21_decimal value, s21_decimal *result) {
 // int s21_round(s21_decimal value, s21_decimal *result);
 
 int s21_truncate(s21_decimal value, s21_decimal *result) {
+  decimal_null(result);
   int scale = get_scale_decimal(value);
   while (scale > 0) {
     decimal_div_by_ten(&value);
@@ -163,6 +164,7 @@ int s21_truncate(s21_decimal value, s21_decimal *result) {
 }
 
 int s21_negate(s21_decimal value, s21_decimal *result) {
+  decimal_null(result);
   int error = decimal_check_scale_mask(value);
   if (!error) {
     *result = value;
@@ -172,29 +174,34 @@ int s21_negate(s21_decimal value, s21_decimal *result) {
 }
 
 int compare(s21_decimal value_1, s21_decimal value_2) {
-  int result_compare = 0;
+  int comp = 0;
+  big_decimal bd_value_1, bd_value_2;
+  convert_decimal_to_big_decimal(value_1, &bd_value_1);
+  convert_decimal_to_big_decimal(value_2, &bd_value_2);
+
   int sign_1 = get_sign_decimal(value_1);
   int sign_2 = get_sign_decimal(value_2);
+
   if (!decimal_mantissa_equal_zero(value_1) ||
       !decimal_mantissa_equal_zero(value_2)) {
     if (!sign_1 && sign_2) {
-      result_compare = 1;
+      comp = 1;
     } else if (sign_1 && !sign_2) {
-      result_compare = -1;
+      comp = -1;
     } else {
       int scale_1 = get_scale_decimal(value_1);
       int scale_2 = get_scale_decimal(value_2);
 
       if (scale_1 > scale_2)
-        decimal_normalization(&value_2, scale_1 - scale_2);
+        bd_normalization(&bd_value_2, scale_1 - scale_2);
       else if (scale_1 < scale_2)
-        decimal_normalization(&value_1, scale_2 - scale_1);
+        bd_normalization(&bd_value_1, scale_2 - scale_1);
 
-      result_compare = decimal_is_greater(value_1, value_2);
-      if (sign_1) result_compare *= -1;
+      comp = bd_is_greater(bd_value_1, bd_value_2);
+      if (sign_1) comp *= -1;
     }
   }
-  return result_compare;
+  return comp;
 }
 
 int float_get_bit(double number, int index) {
@@ -252,6 +259,7 @@ void decimal_shift_left(s21_decimal *value, int shift) {
 
 void decimal_summ(s21_decimal value_1, s21_decimal value_2,
                   s21_decimal *result) {
+  decimal_null(result);
   int memory = 0;
   for (int i = 0; i < 96; i++) {
     unsigned tmp =
@@ -259,12 +267,6 @@ void decimal_summ(s21_decimal value_1, s21_decimal value_2,
     memory = tmp / 2;
     tmp %= 2;
     set_bit_decimal(result, i, tmp);
-  }
-}
-
-void decimal_nullify(s21_decimal *dst) {
-  for (int i = 0; i <= 3; i++) {
-    dst->bits[i] = 0;
   }
 }
 
@@ -337,7 +339,7 @@ int decimal_binary_add(s21_decimal value_1, s21_decimal value_2,
       (decimal_check_scale_mask(value_1) || decimal_check_scale_mask(value_2));
   if (!error) {
     unsigned bit_value = 0;
-    decimal_nullify(result);
+    decimal_null(result);
     for (int i = 0; i < 95; i++) {
       bit_value = decimal_three_add(value_1, value_2, *result, i);
       set_bit_decimal(result, i + 1, bit_value / 2);
@@ -348,4 +350,8 @@ int decimal_binary_add(s21_decimal value_1, s21_decimal value_2,
     set_bit_decimal(result, 95, bit_value % 2);
   }
   return error;
+}
+
+void decimal_null(s21_decimal *dst) {
+  for (unsigned int i = 0U; i < 4U; i++) dst->bits[i] = 0;
 }

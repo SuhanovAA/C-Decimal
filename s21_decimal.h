@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define NULL_NUMB ((void *)0)
 
@@ -39,8 +40,6 @@ typedef struct {
   unsigned int bits[SIZE_BIG_DECIMAL];
 } big_decimal;
 
-int decimal_div_by_ten(s21_decimal *result);
-
 // --- arithmetic functions --- //
 
 int s21_add(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
@@ -50,7 +49,6 @@ int s21_div(s21_decimal value_1, s21_decimal value_2, s21_decimal *result);
 
 // --- transform functions --- //
 
-// ПРОВЕРИТЬ ТЕСТЫ
 int s21_from_float_to_decimal(float src, s21_decimal *dst);
 // ПРОВЕРИТЬ ТЕСТЫ
 int s21_from_decimal_to_float(s21_decimal src, float *dst);
@@ -152,6 +150,8 @@ void decimal_invert_sign(s21_decimal *dst);
 
 float float_generate_random(float a, float b);
 
+int decimal_div_by_ten(s21_decimal *result);
+
 /**
  * Деление decimal-числа на 10. Проход от старшего бита мантиссы (95) до
  * младшего (0).
@@ -194,5 +194,55 @@ int decimal_three_add(s21_decimal value_1, s21_decimal value_2,
  */
 int decimal_binary_add(s21_decimal value_1, s21_decimal value_2,
                        s21_decimal *result);
+
+void decimal_null(s21_decimal *dst);
+
+// bd
+int bd_is_greater(big_decimal value_1, big_decimal value_2);
+
+int bd_check_equal_bits(big_decimal value_1, big_decimal value_2);
+
+int bd_bits_is_equal_zero(big_decimal value);
+
+void bd_normalization(big_decimal *dst, int diff);
+
+void bd_shift_left(big_decimal *value, int shift);
+
+void bd_summ(big_decimal value_1, big_decimal value_2, big_decimal *result);
+
+void bd_diff(big_decimal value_1, big_decimal value_2, big_decimal *result);
+
+void bd_nullify_mantissa(big_decimal *dst);
+
+int bd_check_zero(big_decimal value);
+
+int bd_get_bit(big_decimal value, int bit_index);
+
+void bd_set_bit(big_decimal *dst, int bit_index, int bit_value);
+
+int bd_get_sign(big_decimal value);
+
+int bd_get_scale(big_decimal value);
+
+void bd_set_scale(big_decimal *value, int scale);
+
+void bd_invert_sign(big_decimal *dst);
+
+void convert_decimal_to_big_decimal(s21_decimal value, big_decimal *dst);
+
+big_decimal from_decimal_to_big_decimal(s21_decimal value);
+
+int convert_big_decimal_to_decimal(big_decimal value, s21_decimal *dst);
+
+int bd_get_exponent(big_decimal dec);
+
+void bd_set_exponent(big_decimal *dec, int value);
+
+void bd_bitwise_addition(big_decimal value_1, big_decimal value_2,
+                         big_decimal *result);
+
+int bd_check_overflow(big_decimal value);
+
+void bd_null(big_decimal *dst);
 
 #endif  // S21_DECIMAL_H
