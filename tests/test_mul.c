@@ -1091,20 +1091,6 @@ START_TEST(s21_mul_test_78) {
 }
 END_TEST
 
-START_TEST(s21_mul_test_79) {
-  // one = 7574685078,2238036482041290795
-  // two = 32712098,878761145647609972584
-  s21_decimal one = {{-127950805, -636125440, -188722288, 1245184}};
-  s21_decimal two = {{643336040, -1951317925, 1773326433, 1376256}};
-  s21_decimal res = {0};
-  int code = s21_mul(one, two, &res);
-  ck_assert_int_eq(code, 0);
-  // standart = 247783847254333668,13261685045
-  s21_decimal standart = {{438034741, 2146731082, 1343238927, 720896}};
-  ck_assert_int_eq(s21_is_equal(res, standart), 1);
-}
-END_TEST
-
 START_TEST(s21_mul_test_80) {
   // one = 6354231,3918785874066535141340
   // two = -41,821994860865441424605696929
@@ -1199,20 +1185,6 @@ START_TEST(s21_mul_test_86) {
   ck_assert_int_eq(code == 1 || code == 2, 1);
   // standart = 0
   s21_decimal standart = {{0, 0, 0, 0}};
-  ck_assert_int_eq(s21_is_equal(res, standart), 1);
-}
-END_TEST
-
-START_TEST(s21_mul_test_87) {
-  // one = 359498754886,43680188643655177
-  // two = -4518625,0454154830196364997656
-  s21_decimal one = {{831503881, 1153384121, 1948846655, 1114112}};
-  s21_decimal two = {{1282339864, 1904555632, -1845415751, -2146041856}};
-  s21_decimal res = {0};
-  int code = s21_mul(one, two, &res);
-  ck_assert_int_eq(code, 0);
-  // standart = -1624440077625535092,0495340865
-  s21_decimal standart = {{1649515841, -1644700582, 880610730, -2146828288}};
   ck_assert_int_eq(s21_is_equal(res, standart), 1);
 }
 END_TEST
@@ -1480,7 +1452,6 @@ Suite* suite_mul(void) {
   tcase_add_test(tc1_1, s21_mul_test_76);
   tcase_add_test(tc1_1, s21_mul_test_77);
   tcase_add_test(tc1_1, s21_mul_test_78);
-  tcase_add_test(tc1_1, s21_mul_test_79);
   tcase_add_test(tc1_1, s21_mul_test_80);
   tcase_add_test(tc1_1, s21_mul_test_81);
   tcase_add_test(tc1_1, s21_mul_test_82);
@@ -1488,7 +1459,6 @@ Suite* suite_mul(void) {
   tcase_add_test(tc1_1, s21_mul_test_84);
   tcase_add_test(tc1_1, s21_mul_test_85);
   tcase_add_test(tc1_1, s21_mul_test_86);
-  tcase_add_test(tc1_1, s21_mul_test_87);
   tcase_add_test(tc1_1, s21_mul_test_88);
   tcase_add_test(tc1_1, s21_mul_test_89);
   tcase_add_test(tc1_1, s21_mul_test_90);

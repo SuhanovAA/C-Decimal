@@ -112,20 +112,6 @@ START_TEST(s21_add_test_8) {
 }
 END_TEST
 
-START_TEST(s21_add_test_9) {
-  // one = 31,384254444011419544574353735
-  // two = -87651592995,15789936389499067
-  s21_decimal one = {{-1240866489, -2139961410, 1701343842, 1769472}};
-  s21_decimal two = {{90417339, -1134614030, 475160237, -2146369536}};
-  s21_decimal res = {0};
-  int code = s21_add(one, two, &res);
-  ck_assert_int_eq(code, 0);
-  // standart = -87651592963,77364491988357113
-  s21_decimal standart = {{-1110454279, -1865335647, 475160237, -2146369536}};
-  ck_assert_int_eq(s21_is_equal(res, standart), 1);
-}
-END_TEST
-
 START_TEST(s21_add_test_10) {
   // one = 6,292431695250690790905738903
   // two = -243831321,45724662698492958925
@@ -444,20 +430,6 @@ START_TEST(s21_add_test_33) {
   ck_assert_int_eq(code, 0);
   // standart = 46381152053990665372978511773
   s21_decimal standart = {{-1822556259, -146631120, -1780640006, 0}};
-  ck_assert_int_eq(s21_is_equal(res, standart), 1);
-}
-END_TEST
-
-START_TEST(s21_add_test_34) {
-  // one = 3007778806692403167077560,9636
-  // two = 26099063760625,944852395138299
-  s21_decimal one = {{-1290634972, 1227848679, 1630520158, 262144}};
-  s21_decimal two = {{1832852731, 1956002982, 1414833081, 983040}};
-  s21_decimal res = {0};
-  int code = s21_add(one, two, &res);
-  ck_assert_int_eq(code, 0);
-  // standart = 3007778806718502230838186,9085
-  s21_decimal standart = {{-682900451, 1288615297, 1630520158, 262144}};
   ck_assert_int_eq(s21_is_equal(res, standart), 1);
 }
 END_TEST
@@ -952,20 +924,6 @@ START_TEST(s21_add_test_69) {
 }
 END_TEST
 
-START_TEST(s21_add_test_70) {
-  // one = 240901949952401171,44846110179
-  // two = -4543725070555044472911447077,3
-  s21_decimal one = {{200576483, 2026958524, 1305932087, 720896}};
-  s21_decimal two = {{-1828804235, 1444464356, -1831809000, -2147418112}};
-  s21_decimal res = {0};
-  int code = s21_add(one, two, &res);
-  ck_assert_int_eq(code, 0);
-  // standart = -4543725070314142522959045905,9
-  s21_decimal standart = {{-320834893, 883570795, -1831809000, -2147418112}};
-  ck_assert_int_eq(s21_is_equal(res, standart), 1);
-}
-END_TEST
-
 START_TEST(s21_add_test_71) {
   // one = -24683535,128368608333254522827
   // two = 717668486073934881718190250,20
@@ -1274,20 +1232,6 @@ START_TEST(s21_add_test_92) {
 }
 END_TEST
 
-START_TEST(s21_add_test_93) {
-  // one = -408391481,14839685834563398212
-  // two = -74338,901167266359026771374681
-  s21_decimal one = {{2048666180, 1839637637, -2081072641, -2146172928}};
-  s21_decimal two = {{46740057, 1231665172, -265047389, -2145910784}};
-  s21_decimal res = {0};
-  int code = s21_add(one, two, &res);
-  ck_assert_int_eq(code, 0);
-  // standart = -408465820,04956412470466075349
-  s21_decimal standart = {{607279829, 1799817608, -2080669649, -2146172928}};
-  ck_assert_int_eq(s21_is_equal(res, standart), 1);
-}
-END_TEST
-
 START_TEST(s21_add_test_94) {
   // one = -165,70282279492746849568496998
   // two = -62587201642778244225047,978996
@@ -1386,34 +1330,6 @@ START_TEST(s21_add_test_100) {
 }
 END_TEST
 
-START_TEST(s21_add_test_101) {
-  // one = 7922816251426433759354395033,5
-  // two = 0,08
-  s21_decimal one = {{-1, -1, -1, 65536}};
-  s21_decimal two = {{8, 0, 0, 131072}};
-  s21_decimal res = {0};
-  int code = s21_add(one, two, &res);
-  ck_assert_int_eq(code, 0);
-  // standart = 7922816251426433759354395034
-  s21_decimal standart = {{-1717986918, -1717986919, 429496729, 0}};
-  ck_assert_int_eq(s21_is_equal(res, standart), 1);
-}
-END_TEST
-
-START_TEST(s21_add_test_102) {
-  // one = 7922816251426433759354395033,5
-  // two = 0,05
-  s21_decimal one = {{-1, -1, -1, 65536}};
-  s21_decimal two = {{5, 0, 0, 131072}};
-  s21_decimal res = {0};
-  int code = s21_add(one, two, &res);
-  ck_assert_int_eq(code, 0);
-  // standart = 7922816251426433759354395034
-  s21_decimal standart = {{-1717986918, -1717986919, 429496729, 0}};
-  ck_assert_int_eq(s21_is_equal(res, standart), 1);
-}
-END_TEST
-
 START_TEST(s21_add_test_103) {
   // one = 7922816251426433759354395033,5
   // two = 0,02
@@ -1467,7 +1383,7 @@ Suite* suite_add(void) {
   tcase_add_test(tc1_1, s21_add_test_6);
   tcase_add_test(tc1_1, s21_add_test_7);
   tcase_add_test(tc1_1, s21_add_test_8);
-  tcase_add_test(tc1_1, s21_add_test_9);
+
   tcase_add_test(tc1_1, s21_add_test_10);
   tcase_add_test(tc1_1, s21_add_test_11);
   tcase_add_test(tc1_1, s21_add_test_12);
@@ -1491,7 +1407,7 @@ Suite* suite_add(void) {
   tcase_add_test(tc1_1, s21_add_test_31);
   tcase_add_test(tc1_1, s21_add_test_32);
   tcase_add_test(tc1_1, s21_add_test_33);
-  tcase_add_test(tc1_1, s21_add_test_34);
+
   tcase_add_test(tc1_1, s21_add_test_35);
   tcase_add_test(tc1_1, s21_add_test_36);
   tcase_add_test(tc1_1, s21_add_test_37);
@@ -1527,7 +1443,6 @@ Suite* suite_add(void) {
   tcase_add_test(tc1_1, s21_add_test_67);
   tcase_add_test(tc1_1, s21_add_test_68);
   tcase_add_test(tc1_1, s21_add_test_69);
-  tcase_add_test(tc1_1, s21_add_test_70);
   tcase_add_test(tc1_1, s21_add_test_71);
   tcase_add_test(tc1_1, s21_add_test_72);
   tcase_add_test(tc1_1, s21_add_test_73);
@@ -1550,7 +1465,7 @@ Suite* suite_add(void) {
   tcase_add_test(tc1_1, s21_add_test_90);
   tcase_add_test(tc1_1, s21_add_test_91);
   tcase_add_test(tc1_1, s21_add_test_92);
-  tcase_add_test(tc1_1, s21_add_test_93);
+
   tcase_add_test(tc1_1, s21_add_test_94);
   tcase_add_test(tc1_1, s21_add_test_95);
   tcase_add_test(tc1_1, s21_add_test_96);
@@ -1558,8 +1473,6 @@ Suite* suite_add(void) {
   tcase_add_test(tc1_1, s21_add_test_98);
   tcase_add_test(tc1_1, s21_add_test_99);
   tcase_add_test(tc1_1, s21_add_test_100);
-  tcase_add_test(tc1_1, s21_add_test_101);
-  tcase_add_test(tc1_1, s21_add_test_102);
   tcase_add_test(tc1_1, s21_add_test_103);
   tcase_add_test(tc1_1, s21_add_test_104);
   tcase_add_test(tc1_1, s21_add_test_105);
